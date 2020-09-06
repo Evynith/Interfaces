@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+}
+canvas{
+    border-style: solid 2px grey;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.menu{
+    background-color: gray;
+}
+nav{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    direction: row;
+    align-items: center;
+}
+aside{
+    flex: 0.5;
+    order: 3;
+}
+.canvas{
+    flex: auto;
+    order: 2;
+}
+.js-menu-herramientas{
+    flex: 0.1;
+   order: 1;
+   display: flex;
+   flex-direction: column;
+}
+.js-menu-herramientas button{
+    flex: 0.06;
+}
+.js-pantallaInicial{
+    display: none;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    height: 92%;
+}
+.input1{
+    display: none;
+}
