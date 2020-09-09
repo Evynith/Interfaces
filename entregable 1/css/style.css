@@ -46,3 +46,7 @@ aside{
 .input1{
     display: none;
 }
+button:focus{
+    background-color:rgb(190, 190, 190);
+    color: white;
+}
