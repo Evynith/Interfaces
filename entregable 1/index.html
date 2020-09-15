@@ -7,21 +7,50 @@
 	</head>
 	<body>
 		<nav class="menu">
-			<img src="" alt="logo MyPaint">
+			<img id="logo" src="./images/dibujo.svg" alt="logo MyPaint">
+			<h1>My Paint</h1>
 			<div>
-				<button class="js-nuevoEspacio">New</button>
-				<button class="js-cargarImagen">Open</button>
-				<a download="myImage.jpg" class="js-guardar">Save</a>
+				<button class="js-nuevoEspacio"><img src="./images/papel.svg" alt="Nuevo"><figcaption>New</figcaption></button>
+				<button class="js-cargarImagen"><img src="./images/television.svg" alt="Open"><figcaption>Open</figcaption></button>
+				<button class="js-restaurarImagen"><img src="./images/restaurar.svg" alt="Restore"><figcaption>Restore</figcaption></button>
+				<a download="myImage.jpg" class="js-guardar"><img src="./images/salvar.svg" alt="Save"></a>
 			</div>
 		</nav>
 		<div class="container">
 			<div class="menu js-menu-herramientas">
-				<button class="js-lapiz">Lapiz</button>
-				<button class="js-goma">Goma</button>
-				<button class="js-filtro1">Filtros</button>
+				<div id="herr-dibujo">
+					<button id="js-lapiz"><img src="./images/lapiz.svg" alt="Lapiz"><figcaption>Lapiz</figcaption></button>
+					<button id="js-goma"><img src="./images/borrador.svg" alt="Goma"><figcaption>Goma</figcaption></button>
+				</div>
+				<!-- <button id="js-filtro1">Filtros</button> -->
 			</div>
+			
 			<aside class="menu js-configuraciones-herramienta">
-				<div class="filtros">
+				<p>Configuraciones</p>
+				<div id="prop-trazo">
+				<form id="prop-color" class="oculto">
+					<!-- <input type="color"> -->
+					<input class="color" type="range" id="red" min="0" max="255" step="1" id="red" value="0">
+					<label for="red">red</label>
+					<input class="color" type="range" id="green" min="0" max="255" step="1" id="green" value="0">
+					<label for="green">green</label>
+					<input class="color" type="range" id="blue" min="0" max="255" step="1" id="blue" value="0">
+					<label for="blu">blue</label>
+					
+					<div id="display">  </div>
+				</form>
+				<form id="prop-trazo-lapiz" class="oculto">
+					<label for="tamanio-lapiz">tamaño</label>
+					<input type="range" id="tamanio-lapiz" min="1" step="10" max="100" value="14">
+				</form>
+				<form id="prop-trazo-goma" class="oculto">
+					<label for="tamanio-goma">tamaño</label>
+					<input type="range" id="tamanio-goma" min="1" step="10" max="100" value="14">
+				</form>
+				</div>
+				<div class="p-filtro">
+				<p class="p-filtro">Filtros</p>
+				<div class="filtros menu">
 					<figure id="blur">
 						<img src="./images/prevFiltroBlur.png" >
 						<figcaption>Blur</figcaption>
@@ -59,10 +88,22 @@
 						<figcaption>Grises</figcaption>
 					</figure>
 				</div>
+				</div>
 			</aside>
+
+			<form id="prop-filter" class="oculto">
+				<label for="intensidad"></label>
+				<input type="range" id="intensidad" min="1" step="10" max="20" value="14">
+			</form>
+			<form id="prop-filter-binarizacion" class="oculto">
+				<label for="rad-color">a color</label>
+				<input type="radio" id="rad-color" value="0">
+				<label for="rad-negro">blanco y negro</label>
+				<input type="radio" id="rad-negro" value="1">
+			</form>
 		
 			<div class="canvas">
-				<canvas id="myCanvas" width="600" height="600"></canvas>
+				<canvas id="myCanvas" width="1000" height="600"></canvas>
 			</div>
 			<input class="input1" type="file">
 		</div>

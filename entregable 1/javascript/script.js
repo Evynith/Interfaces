@@ -1,20 +1,29 @@
-
+/* 
+*   Siempre estara activo lapiz o goma para modificar sobre el area de trabajo
+*   Cuando se seleccione un filtro se implementara automaticamente 
+*/
 function myPaint(){
     let canvas = document.querySelector("#myCanvas");
     let context = canvas.getContext("2d");
 
     let width = canvas.width;
-    let height = canvas.height;//TODO: permitir al usuario elegir????
+    let height = canvas.height;
 
     let imageData = context.createImageData(width, height);
     let input = document.querySelector(".input1");
 
-    document.querySelector(".js-nuevoEspacio").onclick = function () {nuevoEspacio(width,height);};
+    let valorRGBlienzo = [255,255,255];
+    let valorRGBtrazo = [0,0,0];
+    let valorTamanioTrazoDefecto = 1;
+    setearDisplay(valorRGBtrazo[0],valorRGBtrazo[1], valorRGBtrazo[2]);
+    let vectorRestauracion = new Array();
+
+    document.querySelector(".js-nuevoEspacio").onclick = function () {nuevoEspacio(width,height,valorRGBlienzo);};
 
     document.querySelector(".js-cargarImagen").onclick = function () {input.click();};
     
-    function nuevoEspacio(width,height){
-        context.fillStyle = "rgb(0,0,0)";//TODO: pasar color por parametro
+    function nuevoEspacio(width,height,valorRGBlienzo){
+        context.fillStyle = `rgb(${valorRGBlienzo[0]},${valorRGBlienzo[0]},${valorRGBlienzo[0]})`;
         context.fillRect(0,0,width,height);
     };
 
@@ -23,8 +32,34 @@ function myPaint(){
         return copia;
     };
 
-    input.onchange = e => {
-        nuevoEspacio(width,height);//limpio el canvas(cuadrado vacio)
+    function save(){
+        vectorRestauracion.push(copiaCanvasActual());
+    };
+
+    function restore(){
+        let restore = vectorRestauracion.pop();
+        context.putImageData(restore,0,0);
+    };
+
+    function setearDisplay(r,g,b){
+        let display = document.querySelector("#display");
+        display.style.background = `rgb(${r},${g},${b})`;
+    };
+
+    document.querySelector(".js-guardar").onclick = function () {
+        let dataURL = canvas.toDataURL("image/png;base64");
+        this.href = dataURL;
+    };
+
+    document.querySelector(".js-restaurarImagen").onclick = () => { restore();};
+
+    input.onclick = () => { //permite que se pueda subir una imagen que se ha subido con anterioridad
+        if(input.value != "") {
+            input.value = "";
+        };
+    };
+
+    input.onchange = (e) => { 
         let file = e.target.files[0]; //dir de donde esta el archivo
         let reader = new FileReader();//interpreta el archivo
 
@@ -35,21 +70,14 @@ function myPaint(){
             let img = new Image();
             img.src = content;
 
-            img.onload = function () { //TODO: reescala imagen
-                let imageAspectRatio = 0;
-                let imageScaleWidth = 0;
-                let imageScaleHeight = 0;
+            img.onload = function () { 
+                save();
+                context.clearRect(0, 0, width, height);
+                let imageAspectRatio = Math.min(width / this.width, height/this.height);
+                let imageScaleWidth = this.width * imageAspectRatio;
+                let imageScaleHeight = this.height * imageAspectRatio;
                 //calcula el tamaño de la imagen
-                if(width > height) { //si es mas ancha que alta
-                    imageAspectRatio = ( 1.0 * this.height) / this.width;
-                    imageScaleWidth = width;
-                    imageScaleHeight = width * imageAspectRatio;
                 
-                }else {// si es mas alta que ancha
-                    imageAspectRatio = ( 1.0 * this.width) / this.height;
-                    imageScaleWidth = height * imageAspectRatio;
-                    imageScaleHeight = height;
-                };
 
                 context.drawImage(img, 0, 0,imageScaleWidth,imageScaleHeight);
                 imageData = context.getImageData(0,0,imageScaleWidth,imageScaleHeight);
@@ -58,31 +86,28 @@ function myPaint(){
         };
     };
     
-    document.querySelector(".js-filtro1").onclick = function () {
-        //TODO: hacer que sea visible la seccion filtro y se oculte la de colores
-    };
-
     document.querySelector(".filtros").onclick = function (e) {
         let filtroPresionado = e.target.parentNode.id;
+        save();
         let copia = copiaCanvasActual();
         switch(filtroPresionado){
             case "blur":
-                copia = filterBlur(copia);
+                copia = filterBlur(copia,3);//TODO: setear por usuario
             break;
             case "suavizado":
-                filterSuavizado(copia);       //TODO:
+                copia = filterSuavizado(copia);  
             break;
             case "saturacion":
-                copia = filterSaturacion(copia);
+                copia = filterSaturacion(copia,3);//TODO: setear por usuario
             break;
             case "brillo":
-                copia = filterBrillo(copia);
+                copia = filterBrillo(copia,50);//TODO: setear por usuario
             break;
             case "bordes":
                 copia = filterBordes(copia);
             break;
             case "binarizacion":
-                copia = filterBinarizacion(copia);
+                copia = filterBinarizacion(copia,1);//TODO: setear por usuario
             break;
             case "sepia":
                 copia = filterSepia(copia);
@@ -97,101 +122,107 @@ function myPaint(){
         context.putImageData(copia,0,0);
     };
 
-    document.querySelector(".js-guardar").onclick = function () {
-        let dataURL = canvas.toDataURL("image/png;base64");
-        this.href = dataURL;
+    document.querySelector("#js-lapiz").onclick = () => {
+        menuLapiz();
+        trazarCanvas(valorRGBtrazo[0],valorRGBtrazo[1],valorRGBtrazo[2],valorTamanioTrazoDefecto);
+
+        let piker = document.querySelectorAll(".color, #tamanio-lapiz");
+        for(let i = 0; i < piker.length; i++) {
+            piker[i].addEventListener("input", function() {
+                let nvsValores = traerValoresLapiz();
+                setearDisplay(nvsValores[0],nvsValores[1], nvsValores[2]);
+                trazarCanvas(nvsValores[0],nvsValores[1], nvsValores[2], nvsValores[3]);
+            });
+        }; 
     };
 
-    let dibujar = false; 
-    document.querySelector(".js-lapiz").onclick = function() {
-        let r = 100;
-        let g = 100;
-        let b = 100;
-        
-        dibujarCanvas(r,g,b);
+    document.querySelector("#js-goma").onclick = () => {
+        menuGoma();
+        let r = valorRGBlienzo[0];
+        let g = valorRGBlienzo[1];
+        let b = valorRGBlienzo[2];
+        trazarCanvas(r,g,b,valorTamanioTrazoDefecto);
+
+        document.querySelector("#tamanio-goma").addEventListener("input", function(){
+            tam = document.querySelector("#tamanio-goma").value;
+            trazarCanvas(r,g,b,tam);
+        });
     };
-    
-    function dibujarCanvas(r,g,b){
-        
-        canvas.addEventListener("mousedown", function () {
+
+    function traerValoresLapiz(){
+        let r = document.querySelector("#red").value;
+        let g = document.querySelector("#green").value;
+        let b = document.querySelector("#blue").value;
+        let tamanio = document.querySelector("#tamanio-lapiz").value;
+
+        return [r,g,b,tamanio];
+    }
+      
+    function trazarCanvas(r,g,b,tam){ 
+        let dibujar = false; 
+        canvas.onmousedown = () => {
             //inicia dibujo
             dibujar = true; 
-            context.lineWidth = 14; //TODO: por usuario
+            context.lineWidth = tam;
             context.strokeStyle = `rgb(${r},${g},${b})`;
-            //context.lineCap="butt|round|square";
             context.lineCap="round";
-            //context.lineJoin="bevel|round|miter";
             context.lineJoin="round";
             context.beginPath();
-        });
+        };
 
-        canvas.addEventListener("mousemove", function (event) {
+        canvas.onmousemove = (event) => {
             let espacioNav = document.querySelector("nav").offsetHeight;
             let espacioMenuDerecha = document.querySelector(".js-menu-herramientas").offsetWidth;
             let cX = event.clientX - espacioMenuDerecha;
             let cY = event.clientY - espacioNav;
-            setPixelCoord(cX,cY);
+            setPixelCoord(cX,cY,dibujar);
             
-        });
+        };
 
-        canvas.addEventListener("mouseup", function () {
+        canvas.onmouseup = () => {
             //para dibujo
             dibujar = false; 
             context.closePath();
-        });
+            save();
+        };
     };
 
-    function setPixelCoord(cX,cY){ //TODO: pasar color
+    function setPixelCoord(cX,cY,dibujar){ 
         //dibujo
         if (!dibujar) return; 
-        let a = 255;
-        
         context.lineTo(cX,cY);
         context.stroke();
     };
 
-    document.querySelector(".js-goma").onclick = function() {//TODO:
-        let r = 255;
-        let g = 255;
-        let b = 255;
-        dibujarCanvas(r,g,b);
-    };
-  
-    function setPixel(imageData, x, y, r, g, b , a) {
-        let index = (x + y * imageData.width) * 4; 
-        imageData.data[index + 0] = r;
-        imageData.data[index + 1] = g;
-        imageData.data[index + 2] = b;
-        imageData.data[index + 3] = a;
+    function setPixel(image, x, y, r, g, b , a) {
+        let index = (x + y * image.width) * 4; 
+        image.data[index + 0] = r;
+        image.data[index + 1] = g;
+        image.data[index + 2] = b;
+        image.data[index + 3] = a;
     };
 
-    function RGBpromedio(img,x,y){ //saca el gris con el promedio de r, g y b
-        r = getR(img,x,y);
-        g = getG(img,x,y);
-        b = getB(img,x,y);
-
-        let promedio = (r+g+b)/3;
-        return promedio;
-    };
-
-    function getR(imageData, x, y){
-        let index = ((x + y * imageData.width) * 4);
-        return imageData.data[index + 0];
+    function getR(image, x, y){
+        let index = ((x + y * image.width) * 4);
+        return image.data[index + 0];
 
     };
-    function getG(imageData, x, y){
-        let index = ((x + y * imageData.width) * 4);
-        return imageData.data[index + 1];
+    function getG(image, x, y){
+        let index = ((x + y * image.width) * 4);
+        return image.data[index + 1];
     };
-    function getB(imageData, x, y){
-        let index = ((x + y * imageData.width) * 4);
-        return imageData.data[index + 2];
+    function getB(image, x, y){
+        let index = ((x + y * image.width) * 4);
+        return image.data[index + 2];
+    };
+    function getGrey(image, x,y){
+        return getR(image, x, y) + getG(image, x, y) + getB(image, x, y) / 3;
     };
 
     function filterGrey(img){ //gris, donde los 3 valores de colores son iguales.. estandar es el valor promedio
         for(let x = 0; x < width; x++) {
             for(let y = 0; y < height; y++){
-                let grey = RGBpromedio(img, x,y);
+                let grey = getGrey(img, x,y);
 
                 setPixel(img, x, y, grey, grey, grey , 255);
             };
@@ -216,17 +247,16 @@ function myPaint(){
         return img;
     };
 
-    function filterBrillo(img){
-        let f = 125; // TODO: slider 
+    function filterBrillo(img, f){
         for(let x = 0; x < width; x++) {
             for(let y = 0; y < height; y++){
                 let r = getR(img,x,y);
                 let g = getG(img,x,y);
                 let b = getB(img,x,y);
 
-                r = r+f; 
-                g = g+f;
-                b = b+f; 
+                r = r + f; 
+                g = g + f;
+                b = b + f; 
 
                 setPixel(img, x, y, r,g,b , f);
             };
@@ -234,26 +264,26 @@ function myPaint(){
         return img;
     }
 
-    function filterBinarizacion(img){ //TODO: si a color o blancoo y negro
+    function filterBinarizacion(img,index){ //0: color, 1: byn
         for(let x = 0; x < width; x++) {
             for(let y = 0; y < height; y++){
-                let grey = RGBpromedio(img, x,y);
-                let greyBinarizado = colorBinarizado(grey);
 
-                r = greyBinarizado;
-                g = greyBinarizado;
-                b = greyBinarizado;
+                if(index == 1){
+                    let grey = getGrey(img, x,y);
+                    let greyBinarizado = colorBinarizado(grey);
 
-                /*
-                let r = getR(img,x,y);
-                let g = getG(img,x,y);
-                let b = getB(img,x,y);
+                    r = greyBinarizado;
+                    g = greyBinarizado;
+                    b = greyBinarizado;
+                }else{
+                    let r = getR(img,x,y);
+                    let g = getG(img,x,y);
+                    let b = getB(img,x,y);
 
-                r = colorBinarizado(r);
-                g = colorBinarizado(g);
-                b = colorBinarizado(b); 
-                */
-
+                    r = colorBinarizado(r);
+                    g = colorBinarizado(g);
+                    b = colorBinarizado(b);
+                };
                 setPixel(img, x, y, r,g,b , 255);
             };
         };
@@ -261,7 +291,7 @@ function myPaint(){
     };
 
     function colorBinarizado(color){
-        let umbral = (255 /2); // TODO: elegido por el usuario (todos con slider)
+        let umbral = (255 /2);
         if(color > umbral){
             return 0;
         } else {
@@ -286,7 +316,7 @@ function myPaint(){
         return img;
     };
 
-    function filterSaturacion(img){
+    function filterSaturacion(img,f){//luz extra
         for(let x = 0; x < width; x++) {
             for(let y = 0; y < height; y++){
                 let r = getR(img,x,y);
@@ -294,7 +324,6 @@ function myPaint(){
                 let b = getB(img,x,y);
 
                 let grey =(r+g+b)/3;
-                let f = 4; //TODO: usuario
 
                 r = r + (r-grey)*f;
                 g = g + (g-grey)*f;
@@ -306,8 +335,7 @@ function myPaint(){
         return img; 
     };
 
-    function filterBlur(img){
-        let px = 3; //de alto (radio) TODO: usuario
+    function filterBlur(img, px){//de alto (radio)
         let cont=0;
         while(cont < width*height){
             for(let x = 0; x < width ; x ++) {
@@ -346,106 +374,106 @@ function myPaint(){
         return [promedioR, promedioG,promedioB];
     };
 
-    function filterBordes(img){
-        //let px = 2; //de alto (radio) TODO: usuario
-        let cont = 0;
-        let Gx = [[1,0,-1], [2,0,-2], [1,0,-1]];
-        let Gy = [[1,2,1],[0,0,0], [-1,-2,-1]]; 
-        //f1[c1,c2,c3]
-
-        let imgCopia =  copiaCanvasActual();
- 
-        while(cont < width*height){
-            for(let x = 0; x < width ; x ++) {
-                for(let y = 0; y < height; y ++){
-                    cont ++;
-                    let rgbGx = kernelPromedio(x,y,Gx, imgCopia);
-                    let rgbGy = kernelPromedio(x,y,Gy, imgCopia);
-
-                    let coso = Math.sqrt(Math.pow(rgbGx,2) + Math.pow(rgbGy,2));
-                    if(coso > 255) {coso = 255};
-                    if(coso < 0) {coso = 0}; 
-
-                    setPixel(img, x, y, coso, coso, coso, 255);
-                };
-            };
-        };
-        return img;
-    };
-
-    function kernelPromedio(x,y,kernel, copiaImg){
-        let  pixel = (
-            (kernel[0][0] * RGBpromedio(copiaImg,x - 1, y - 1)) +
-            (kernel[0][1] * RGBpromedio(copiaImg,x, y - 1)) +
-            (kernel[0][2] * RGBpromedio(copiaImg,x + 1, y - 1)) +
-            (kernel[1][0] * RGBpromedio(copiaImg,x - 1, y)) +
-            (kernel[1][1] * RGBpromedio(copiaImg,x, y)) +
-            (kernel[1][2] * RGBpromedio(copiaImg,x + 1, y)) +
-            (kernel[2][0] * RGBpromedio(copiaImg,x - 1, y + 1)) +
-            (kernel[2][1] * RGBpromedio(copiaImg,x, y + 1)) +
-            (kernel[2][2] * RGBpromedio(copiaImg,x + 1, y + 1))
-        );
-        return pixel;
-    };
-
     function filterSuavizado(img){ 
-        let kernel = [[1*(1/16),2*(1/16),1*(1/16)],[2*(1/16),4*(1/16),2*(1/16)], [1*(1/16),2*(1/16),1*(1/16)]]; //gauss
+        let kernel = [
+            [1*(1/16),2*(1/16),1*(1/16)],
+            [2*(1/16),4*(1/16),2*(1/16)], 
+            [1*(1/16),2*(1/16),1*(1/16)]
+        ]; //gauss
         //f1[c1,c2,c3]
         //let kernel = [[0,-1,0],[-1,5,-1],[0,-1,0]]; //enfocar
 
-        recorreImg(img,kernel);
+        filtroGenerico(img,kernel);
         return img;
     };
 
+function filterBordes(img){
+    let getGrey = (img, x, y) => (getR(img, x, y) + getG(img, x, y) + getB(img, x, y)) / 3;
+    let cont = 0;
+    let Gx = [
+        [1,0,-1],
+        [2,0,-2],
+        [1,0,-1]
+    ];
+    let Gy = [
+        [1,2,1],
+        [0,0,0],
+        [-1,-2,-1]
+    ]; 
+    //f1[c1,c2,c3]
 
-    function recorreImg(img,kernel){
-        let cont=0;
-        while(cont < width*height){
-            for(let x = 0; x < width ; x ++) {
-                for(let y = 0; y < height; y ++){
-                    cont ++;
-                    let r = kernelPromedio(x,y,kernel,img,"r");
-                    let g = kernelPromedio(x,y,kernel,img,"g");
-                    let b = kernelPromedio(x,y,kernel,img,"b");   
+    let imgCopia =  copiaCanvasActual();
 
-                    setPixel(img, x, y, r,g,b , 255);
-                };
+    while(cont < width*height){
+        for(let x = 0; x < width ; x ++) {
+            for(let y = 0; y < height; y ++){
+                cont ++;
+                let rgbGx = mezclaMatriz(x, y, Gx, imgCopia, getGrey);
+                let rgbGy = mezclaMatriz(x, y, Gy, imgCopia, getGrey);
+
+                let result = Math.sqrt(Math.pow(rgbGx,2) + Math.pow(rgbGy,2));
+                if(result > 255) {result = 255};
+                if(result < 0) {result = 0}; 
+
+                setPixel(img, x, y, result, result, result, 255);
             };
         };
-        return img;
     };
+    return img;
+};
 
-    function kernelPromedio(x,y,kernel, copiaImg,color){
-        let  pixel = (
-            (kernel[0][0] * getC(copiaImg,x - 1, y - 1,color)) +
-            (kernel[0][1] * getC(copiaImg,x, y - 1,color)) +
-            (kernel[0][2] * getC(copiaImg,x + 1, y - 1,color)) +
-            (kernel[1][0] * getC(copiaImg,x - 1, y,color)) +
-            (kernel[1][1] * getC(copiaImg,x, y,color)) +
-            (kernel[1][2] * getC(copiaImg,x + 1, y,color)) +
-            (kernel[2][0] * getC(copiaImg,x - 1, y + 1,color)) +
-            (kernel[2][1] * getC(copiaImg,x, y + 1,color)) +
-            (kernel[2][2] * getC(copiaImg,x + 1, y + 1,color))
-        );
-        return pixel;
-    };
+function filtroGenerico(img,kernel){
+    let cont=0;
+    while(cont < width*height){
+        for(let x = 0; x < width ; x ++) {
+            for(let y = 0; y < height; y ++){
+                cont ++;
+                let r = mezclaMatriz(x, y, kernel, img, getR);
+                let g = mezclaMatriz(x, y, kernel, img, getG);
+                let b = mezclaMatriz(x, y, kernel, img, getB);   
 
-    function getC(img,x,y, color){ 
-        r = getR(img,x,y);
-        g = getG(img,x,y);
-        b = getB(img,x,y);
-
-        if(color == "r"){
-            let index = ((x + y * imageData.width) * 4);
-            return imageData.data[index + 0];
-        }else if (color == "g"){
-            let index = ((x + y * imageData.width) * 4);
-            return imageData.data[index + 1];
-        }else if (color == "b"){
-            let index = ((x + y * imageData.width) * 4);
-            return imageData.data[index + 2];
+                setPixel(img, x, y, r,g,b , 255);
+            };
         };
     };
+    return img;
+};
+
+function mezclaMatriz(x,y,kernel, copiaImg,color){ // entonces si color es una funcion que devuelve el color, tiene que recibir (img, x, y)
+    let  pixel = (
+        (kernel[0][0] * color(copiaImg, x-1, y-1  )) +
+        (kernel[0][1] * color(copiaImg, x,   y-1  )) +
+        (kernel[0][2] * color(copiaImg, x+1, y-1  )) +
+        (kernel[1][0] * color(copiaImg, x-1, y    )) +
+        (kernel[1][1] * color(copiaImg, x,   y    )) +
+        (kernel[1][2] * color(copiaImg, x+1, y    )) +
+        (kernel[2][0] * color(copiaImg, x-1, y+1  )) +
+        (kernel[2][1] * color(copiaImg, x,   y+1  )) +
+        (kernel[2][2] * color(copiaImg, x+1, y+1  ))
+    );
+    return pixel;
+};
+
+//_______________________manejo de ventanas___________________________________________
+function ocultarMenuHerramientas(){
+    let btnHerr = document.querySelector("#prop-trazo").childNodes;
+    for (let key in btnHerr){
+        let elem = btnHerr[key];
+        if ((elem.classList !== undefined) && (elem.classList != "filtros" || elem.classList != "p-filtro")) elem.classList.add("oculto");
+    };
+};
+
+function menuLapiz(){
+    ocultarMenuHerramientas();
+    document.querySelector("#prop-color").classList.remove("oculto");
+    document.querySelector("#prop-trazo-lapiz").classList.remove("oculto");
+};
+
+function menuGoma(){
+    ocultarMenuHerramientas();
+    document.querySelector("#prop-trazo-goma").classList.remove("oculto");
+};
+//____________________________________________________________________________________
 
 };
 
