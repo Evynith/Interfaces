@@ -18,6 +18,7 @@ nav{
     display: flex;
     direction: row;
     align-items: center;
+    z-index: 1;
 }
 aside{
     flex: 0.5;
@@ -63,7 +64,7 @@ aside{
     border: 2px solid rgb(111, 111, 111);
     border-radius: 10px;
     width: 20vw;
-    max-height: 50vh;
+    max-height: 40vh;
     flex:1;
     overflow: scroll;
     overflow-x: hidden;
@@ -128,8 +129,11 @@ p{
     border-radius: 10px;
     flex:1;
 }
-/* #prop-trazo form{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-} */
+
+#prop-filter{
+    z-index: 3;
+}
+#prop-filter{
+    background-color: #616161;
+    border-radius: 3px;
+}

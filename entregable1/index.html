@@ -27,26 +27,36 @@
 			
 			<aside class="menu js-configuraciones-herramienta">
 				<p>Configuraciones</p>
+				
 				<div id="prop-trazo">
-				<form id="prop-color" class="oculto">
-					<!-- <input type="color"> -->
-					<input class="color" type="range" id="red" min="0" max="255" step="1" id="red" value="0">
-					<label for="red">red</label>
-					<input class="color" type="range" id="green" min="0" max="255" step="1" id="green" value="0">
-					<label for="green">green</label>
-					<input class="color" type="range" id="blue" min="0" max="255" step="1" id="blue" value="0">
-					<label for="blu">blue</label>
-					
-					<div id="display">  </div>
-				</form>
-				<form id="prop-trazo-lapiz" class="oculto">
-					<label for="tamanio-lapiz">tamaño</label>
-					<input type="range" id="tamanio-lapiz" min="1" step="10" max="100" value="14">
-				</form>
-				<form id="prop-trazo-goma" class="oculto">
-					<label for="tamanio-goma">tamaño</label>
-					<input type="range" id="tamanio-goma" min="1" step="10" max="100" value="14">
-				</form>
+					<form id="prop-color" class="oculto">
+						<p>Trazo Lapiz</p>
+						<!-- <input type="color"> -->
+						<input class="color" type="range" id="red" min="0" max="255" step="1" id="red" value="0">
+						<label for="red">red</label>
+						<input class="color" type="range" id="green" min="0" max="255" step="1" id="green" value="0">
+						<label for="green">green</label>
+						<input class="color" type="range" id="blue" min="0" max="255" step="1" id="blue" value="0">
+						<label for="blu">blue</label>
+						
+						<div id="display">  </div>
+					</form>
+					<form id="prop-trazo-lapiz" class="oculto">
+						<label for="tamanio-lapiz">tamaño</label>
+						<input type="range" id="tamanio-lapiz" min="1" step="10" max="100" value="14">
+					</form>
+					<form id="prop-trazo-goma" class="oculto">
+						<p>Trazo Goma</p>
+						<label for="tamanio-goma">tamaño</label>
+						<input type="range" id="tamanio-goma" min="1" step="10" max="100" value="14">
+					</form>
+					<form id="prop-filter" class="oculto">
+						<p>Propiedad Filtro</p>
+						<label for="intensidad">Intensidad</label>
+						<input type="range" id="intensidad" min="1" step="1" max="10" value="3">
+						<button id="aplicar-filter">Apply</button>
+						<button id="cancelar-filter">Cancel</button>
+					</form>
 				</div>
 				<div class="p-filtro">
 				<p class="p-filtro">Filtros</p>
@@ -91,28 +101,17 @@
 				</div>
 			</aside>
 
-			<form id="prop-filter" class="oculto">
-				<label for="intensidad"></label>
-				<input type="range" id="intensidad" min="1" step="10" max="20" value="14">
-			</form>
-			<form id="prop-filter-binarizacion" class="oculto">
+			<!-- <form id="prop-filter-binarizacion">
 				<label for="rad-color">a color</label>
 				<input type="radio" id="rad-color" value="0">
 				<label for="rad-negro">blanco y negro</label>
 				<input type="radio" id="rad-negro" value="1">
-			</form>
-		
-			<div class="canvas">
+			</form> -->
+
+			<div id= "mostrar2" class="canvas">
 				<canvas id="myCanvas" width="1000" height="600"></canvas>
 			</div>
 			<input class="input1" type="file">
-		</div>
-		<div class="menu js-pantallaInicial">
-			<p>Bienvenido!</p>
-			<button class="js-nuevoEspacio">New</button>
-			<button class="js-cargarImagen">Open</button>
-			<input class="input1" type="file">
-			<canvas id="myCanvas2" width="300" height="300"></canvas>
 		</div>
 		<script type="text/javascript" src="./javascript/script.js"></script>
 	</body>

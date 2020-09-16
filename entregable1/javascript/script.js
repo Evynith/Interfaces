@@ -85,23 +85,48 @@ function myPaint(){
             };
         };
     };
-    
+
+    let menuFilterCancel =  document.querySelector("#cancelar-filter");
+    if(menuFilterCancel) {
+        menuFilterCancel.addEventListener("click", function (e){
+            e.preventDefault();
+            document.querySelector("#prop-filter").classList.add("oculto");
+        });
+    };
+
+    function filterSet(img,funcion){
+        document.querySelector("#prop-filter").classList.remove("oculto");
+        document.querySelector("#aplicar-filter").onclick = (e) => {
+            e.preventDefault();
+            let intensidad = parseInt(document.querySelector("#intensidad").value); 
+            img = funcion(img,intensidad);
+            document.querySelector("#prop-filter").classList.add("oculto");
+            context.putImageData(img,0,0);
+        };
+    };
+
     document.querySelector(".filtros").onclick = function (e) {
         let filtroPresionado = e.target.parentNode.id;
         save();
         let copia = copiaCanvasActual();
         switch(filtroPresionado){
             case "blur":
-                copia = filterBlur(copia,3);//TODO: setear por usuario
+                let funcionBlur = (imgCopy,int) => filterBlur(imgCopy,int);
+                filterSet(copia,funcionBlur);
+                //copia = filterBlur(copia,3);
             break;
             case "suavizado":
                 copia = filterSuavizado(copia);  
             break;
             case "saturacion":
-                copia = filterSaturacion(copia,3);//TODO: setear por usuario
+                let funcionSat = (imgCopy,int) => filterSaturacion(imgCopy,int);
+                filterSet(copia,funcionSat);
+                //copia = filterSaturacion(copia,3);
             break;
             case "brillo":
-                copia = filterBrillo(copia,50);//TODO: setear por usuario
+                // let funcionBrillo = (imgCopy,int) => filterBrillo(imgCopy,int);
+                // filterSet(copia,funcionBrillo);
+                copia = filterBrillo(copia,12);
             break;
             case "bordes":
                 copia = filterBordes(copia);
@@ -216,7 +241,7 @@ function myPaint(){
         return image.data[index + 2];
     };
     function getGrey(image, x,y){
-        return getR(image, x, y) + getG(image, x, y) + getB(image, x, y) / 3;
+        return (getR(image, x, y) + getG(image, x, y) + getB(image, x, y)) / 3;
     };
 
     function filterGrey(img){ //gris, donde los 3 valores de colores son iguales.. estandar es el valor promedio
@@ -254,16 +279,16 @@ function myPaint(){
                 let g = getG(img,x,y);
                 let b = getB(img,x,y);
 
-                r = r + f; 
-                g = g + f;
-                b = b + f; 
+                r += f ; 
+                g += f ;
+                b += f ; 
 
                 setPixel(img, x, y, r,g,b , f);
             };
         };
         return img;
     }
-
+    
     function filterBinarizacion(img,index){ //0: color, 1: byn
         for(let x = 0; x < width; x++) {
             for(let y = 0; y < height; y++){
