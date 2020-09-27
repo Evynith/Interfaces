@@ -23,8 +23,6 @@ export default class Tablero {
                 this.#tablero[i].push(new Casilla(x, y, this.#altoCasilla,this.#anchoCasilla, i , j));
             }
         }
-        console.table(this.#tablero);
-
     }
 
     get tablero() { return this.#tablero; }
@@ -40,6 +38,9 @@ export default class Tablero {
         if(casillaY != null){
             let posY = casillaY.fila;//casilla.sector
             this.#tablero[posY][posX].ficha = ficha;//primero filas despues columnas
+            if (this.revisarGanador(posX,posY, ficha)) {//le paso posicion en el tablero de la ultima ficha
+                console.log("ganador : ", ficha.jugador);
+            }
             return true;
         } else {
             return false;
@@ -75,30 +76,107 @@ export default class Tablero {
      */
     * iteradorColumna(x) {
         for (let i = this.#filas -1; i >= 0; i--) { // recorro filas al reve
-            yield this.#tablero[i][x] // devuelvo la casilla en la columna 'x' de la fila actual
+            yield this.#tablero[i][x]; // devuelvo la casilla en la columna 'x' de la fila actual
+        }
+    }
+    
+    * iteradorRevisionColumna(x){
+        for(let i = x; i < this.#filas; i++){ //desde mi posicion hacia abajo, porque voy a ser la ultima posicion de la ficha ingresada 
+            yield this.#tablero[i][x];
+        }
+    }
+    * iteradorRevisionfilaDerecha(y){
+        for(let i = y; i < this.#columnas; i++){ //desde mi posicion hacia derecha
+            yield this.#tablero[y][i];
+        }
+    }
+    * iteradorRevisionfilaIzquierda(y){
+        for(let i = y; i >= 0; i--){ //desde mi posicion hacia izquierda
+            yield this.#tablero[y][i];
         }
     }
 
-    revisarGanador(){ //cuando ingreso ficha
-        //empiezo en 1 (yo)
-        let cont = 1;
-        //--izquierda derecha
-        //mientras haya un tipo igual sumar hacia izquierda (-1 en x)
-        //mientras haya un tipo igual sumar hacia derecha (+1 en x)
-        //si llego a 4 retornar y terminar
-        cont = 1;
-        //--arriba abajo
-        //mientras haya un tipo igual sumar hacia arriba (+1 en y)
-        //mientras haya un tipo igual sumar hacia abajo (-1 en y)
-        cont = 1;
-        //diagonal decreciente 
-        //izq (+1 de y, -1 de x)
-        //der (-1 de y, +1 de x)
+    * iteradorRevisionDiagonalCrecienteSup(x,y){
+        for(let i = x, j = y; i < this.#filas -1, j >= 0; i++, j--){ //desde mi posicion hacia arriba diagonal derecha
+            console.log("DiagonalCrecienteSup",i,j);
+            yield this.#tablero[j][i]  //y,x -> alto, ancho
+        }
+    }
+    * iteradorRevisionDiagonalCrecienteInf(x,y){
+        for(let i = x, j = y; i >= 0 , j < this.#filas -1; i--, j++){ //desde mi posicion hacia abajo diagonal derecha
+            console.log("DiagonalCrecienteInf",i,j);
+            yield this.#tablero[j][i] 
+        }
+    }
+    * iteradorRevisionDiagonalDecrecienteInf(x,y){
+        for(let i = x, j = y ; i < this.#filas -1, j < this.#columnas -1; i++, j++){ //desde mi posicion hacia abajo diagonal derecha
+            console.log("DiagonalDecrecienteInf",i,j);
+            yield this.#tablero[j][i] 
+        }
+    }
+    * iteradorRevisionDiagonalDecrecienteSup(x,y){
+        for(let i = x , j = y ; i >= 0, j >= 0; i--, j--){ //desde mi posicion hacia arriba diagonal izquierda
+            console.log("DiagonalDecrecienteSup",i,j);
+            yield this.#tablero[j][i] 
+        }
+    }
 
-        cont = 1;
-        //diagomnal creciente
-        //izq (+1 de y, +1 de x)
-        //der (-1 de y, -1 de x)
+    contadorGenerico(x,y,jugador,iterador){
+        let contador = 0; 
+        for (const casilla of  iterador(x,y)) {
+            if ((casilla != null) && (!casilla.esVacia())) {
+                if(casilla.ficha.jugador == jugador){
+                    contador ++;
+                }
+            }
+        }
+        return contador;
+    }
+
+    contadorDiagonalCreciente(x,y,jugador){
+        let diagCrecienteSup = () => this.iteradorRevisionDiagonalCrecienteSup(x,y);
+        let diagCrecienteInf = () => this.iteradorRevisionDiagonalCrecienteInf(x,y);
+        let valor1 = 0, valor2 = 0;
+        valor1 = this.contadorGenerico(x,y,jugador,diagCrecienteSup);
+        valor2 = this.contadorGenerico(x,y,jugador,diagCrecienteInf);
+
+        return valor1 + valor2;
+    }
+
+    contadorDiagonalDecreciente(x,y,jugador){
+        let diagDecrecienteSup = () => this.iteradorRevisionDiagonalDecrecienteSup(x,y);
+        let diagDecrecienteInf = () => this.iteradorRevisionDiagonalDecrecienteInf(x,y);
+        let valor1 = 0, valor2 = 0;
+        valor1 = this.contadorGenerico(x,y,jugador,diagDecrecienteSup);
+        valor2 = this.contadorGenerico(x,y,jugador,diagDecrecienteInf);
+        
+        return valor1 + valor2;
+    }
+
+    contadorHorizontal(x,y,jugador){
+        let horizontalDer = () => this.iteradorRevisionfilaDerecha(y);
+        let horizontalIzq = () => this.iteradorRevisionfilaIzquierda(y);
+        
+        let valor1 = this.contadorGenerico(x,y,jugador,horizontalDer);
+        let valor2 = this.contadorGenerico(x,y,jugador,horizontalIzq);
+        console.log("horiz", valor1 + valor2);
+        return valor1 + valor2;
+    }
+
+    contadorVertical(x,y,jugador){
+        let fila = () => this.iteradorRevisionColumna(x);
+        let valor = this.contadorGenerico(x,y,jugador,fila);
+        console.log("vertic",valor);
+        return valor;
+    }
+
+    revisarGanador(x,y,ficha){ //cuando ingreso ficha, a partir de su posicion, retorno si es ficha de ganador
+        let jugador = ficha.jugador;
+        if( ( this.contadorDiagonalCreciente(x,y,jugador) >= 4) ||  (this.contadorDiagonalDecreciente(x,y,jugador) >= 4) ||  (this.contadorHorizontal(x,y,jugador) >= 4) || (this.contadorVertical(x,y,jugador) >=4)){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     dibujar(context) {
