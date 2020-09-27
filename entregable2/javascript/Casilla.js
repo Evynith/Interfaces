@@ -25,20 +25,11 @@ export default class Casilla {
     get fila() {return this.#ubicacion.fila}
     get columna() {return this.#ubicacion.columna}
 
-    get radio() {
-        return (this.#width / 2) - (this.#borde * 2);
-    }
-    get borde(){
-        return this.#borde;
-    }
-    set ficha(f) {
-        console.log("insertada");
-        // actualizar la posicion de la ficha a la de la casilla en la que se insertó
-        this.#ficha = f; //TODO: poner aca la ficha cuando se ubique, hacer el context general¿? una clase canvas de la que accedo de todos lados?
-    }
-    get ficha() {
-        return this.#ficha;
-    }
+    get radio() { return (this.#width / 2) - (this.#borde * 2); }
+    get borde(){ return this.#borde; }
+    
+    get ficha() { return this.#ficha; }
+    set ficha(f) { this.#ficha = f; }//TODO: poner aca la ficha cuando se ubique, hacer el context general¿? una clase canvas de la que accedo de todos lados?
 
     esVacia() { 
         if(this.#ficha == null){
@@ -47,7 +38,7 @@ export default class Casilla {
             return false;
         }
     }
-//TODO: separar las figuras de la clase casilla
+//TODO: separar las figuras de la clase casilla??
     dibujarFondo(context){
         context.beginPath();
         context.rect(this.posX, this.posY, this.#width, this.#height);

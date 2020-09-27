@@ -20,23 +20,12 @@ export default class Jugador {
         }
     }
 
-    get nombre(){
-        return this.#nombre;
-    }
-
-    //hace todo esto cuando detecta que una ficha esta en posicion___________________
-    distanciaEntrePuntos(x1, y1, x2, y2) {
-        let c1 = x1 - x2; 
-        let c2 = y1 - y2; 
-        let distancia = Math.hypot(c1, c2);
-        return distancia;
-    }
+    get nombre(){ return this.#nombre; }
 
     fichaSeleccionada(x,y){
         let ficha = null;
         this.#fichas.forEach(e => {
-            if((this.distanciaEntrePuntos(x,y, e.posX, e.posY) <= e.radio)){//si esta dentro de esta figura
-                console.log("devolvi ficha", e);
+            if(e.dentro(x,y)) { //si esta dentro de esta figura
                 ficha = e;
             }
         }) 
@@ -46,8 +35,7 @@ export default class Jugador {
     esFicha(x,y){
         let result = false;
         this.#fichas.forEach(e => {
-            if((this.distanciaEntrePuntos(x,y,e.posX,e.posY) <= e.radio)){//si esta dentro de esta figura
-                console.log("devolvi true");
+            if(e.dentro(x,y)){
                 result = true;
             }
         }) 
@@ -64,17 +52,13 @@ export default class Jugador {
         let i = this.#fichas.indexOf(ficha);
         this.#fichas.splice(i,1);
     }
-    //__________________________________________________________________
-    moverFicha(xMouse,yMouse, x,y){ //context
-        //TODO: eliminara de donde estaba (en main?)
+    
+    moverFicha(xMouse,yMouse, x,y){ 
         let ficha = this.fichaSeleccionada(xMouse,yMouse);
-        console.log("ficha encontrada", ficha);
         ficha.mover(x,y);
-        //this.fichaSeleccionada(xMouse,yMouse).dibujar(context,x,y ,20); //FIXME: radio hardcodeado
     }
 
-    // Retorna un número aleatorio entre min (incluido) y max (excluido)
-    getRandomArbitrary(min, max) {
+    getRandomArbitrary(min, max) { // Retorna un número aleatorio entre min (incluido) y max (excluido)
         return Math.random() * (max - min) + min;
     }
 
@@ -94,7 +78,7 @@ export default class Jugador {
         this.dibujoFichas(context);
     }
 
-    dibujoFichas(context){ //TODO: sacarlo de aca, no es tarea del jugador
+    dibujoFichas(context){ //TODO: sacarlo de aca, no es tarea del jugador??
         this.#fichas.forEach(e => {
             e.redibujar(context);//FIXME: esta funcion no va
         })

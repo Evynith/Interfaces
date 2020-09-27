@@ -39,7 +39,7 @@ export default class Tablero {
             let posY = casillaY.fila;//casilla.sector
             this.#tablero[posY][posX].ficha = ficha;//primero filas despues columnas
             if (this.revisarGanador(posX,posY, ficha)) {//le paso posicion en el tablero de la ultima ficha
-                console.log("ganador : ", ficha.jugador);
+                console.log("ganador : ", ficha.jugador); //TODO:
             }
             return true;
         } else {
@@ -70,13 +70,9 @@ export default class Tablero {
         return null; //no hay casilla libre
     }
 
-    /**
-     * Iterador de las casillas de la columna x, en orden inverso (de la ultima (la mas abajo) a la primera)
-     * en js un iterador se hace con una funcion con antes un *, para devolver un elemento se usa la palabra clave 'yield'
-     */
     * iteradorColumna(x) {
-        for (let i = this.#filas -1; i >= 0; i--) { // recorro filas al reve
-            yield this.#tablero[i][x]; // devuelvo la casilla en la columna 'x' de la fila actual
+        for (let i = this.#filas -1; i >= 0; i--) { 
+            yield this.#tablero[i][x]; 
         }
     }
     
@@ -98,25 +94,21 @@ export default class Tablero {
 
     * iteradorRevisionDiagonalCrecienteSup(x,y){
         for(let i = x, j = y; i < this.#filas -1, j >= 0; i++, j--){ //desde mi posicion hacia arriba diagonal derecha
-            console.log("DiagonalCrecienteSup",i,j);
             yield this.#tablero[j][i]  //y,x -> alto, ancho
         }
     }
     * iteradorRevisionDiagonalCrecienteInf(x,y){
         for(let i = x, j = y; i >= 0 , j < this.#filas -1; i--, j++){ //desde mi posicion hacia abajo diagonal derecha
-            console.log("DiagonalCrecienteInf",i,j);
             yield this.#tablero[j][i] 
         }
     }
     * iteradorRevisionDiagonalDecrecienteInf(x,y){
         for(let i = x, j = y ; i < this.#filas -1, j < this.#columnas -1; i++, j++){ //desde mi posicion hacia abajo diagonal derecha
-            console.log("DiagonalDecrecienteInf",i,j);
             yield this.#tablero[j][i] 
         }
     }
     * iteradorRevisionDiagonalDecrecienteSup(x,y){
         for(let i = x , j = y ; i >= 0, j >= 0; i--, j--){ //desde mi posicion hacia arriba diagonal izquierda
-            console.log("DiagonalDecrecienteSup",i,j);
             yield this.#tablero[j][i] 
         }
     }
@@ -159,14 +151,12 @@ export default class Tablero {
         
         let valor1 = this.contadorGenerico(x,y,jugador,horizontalDer);
         let valor2 = this.contadorGenerico(x,y,jugador,horizontalIzq);
-        console.log("horiz", valor1 + valor2);
         return valor1 + valor2;
     }
 
     contadorVertical(x,y,jugador){
         let fila = () => this.iteradorRevisionColumna(x);
         let valor = this.contadorGenerico(x,y,jugador,fila);
-        console.log("vertic",valor);
         return valor;
     }
 

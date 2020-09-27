@@ -78,7 +78,6 @@ jugador2.inicializoFichas(context);
 //_____________________________________________________________________________
 t.dibujar(context);
 
-//________________________________________________________________
 const init = {
     x : null,
     y : null
@@ -135,7 +134,6 @@ function mover(jugador){
         if (figuraArrastrada) {
             let nuevoX = e.layerX + offset.x;
             let nuevoY = e.layerY + offset.y;
-            console.log(nuevoX,nuevoY);
             if((nuevoX >= areaTablero.x) && (nuevoX <= areaTablero.xFinal) &&
                 (nuevoY >= areaTablero.y)){
                 clear();
@@ -147,7 +145,6 @@ function mover(jugador){
             (nuevoY < areaTablero.y)){ //area huecos
                 clear();
                 let metido = jugador.addFicha(nuevoX, nuevoY, figuraArrastrada);
-                console.log(metido);
                 if (metido){
                     t.dibujar(context);
                     jugador1.dibujoFichas(context);
@@ -172,5 +169,4 @@ function mover(jugador){
 }
 
 //borra context, inicializo tablero, inicializo fichas TODO: podria solo borrar area jugador
-//_______________________________________________________________
 

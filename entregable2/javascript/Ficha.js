@@ -11,35 +11,17 @@ export default class Ficha {
     constructor(jugador, imagen) {//TODO: radio por aca!!!
         this.#jugador = jugador;
         this.#imagen = imagen;
-        this.#posX = 0;//no
-        this.#posY = 0;//no
-        this.#radio = 30;//no
     }
 
-    get imagen() {
-        return this.#imagen;
-    }
-    get jugador(){
-        return this.#jugador;
-    }
-    get radio(){
-        return this.#radio;
-    }
-    set radio(r){
-        this.#radio = r;
-    }
-    set posX(x){
-        this.#posX = x;
-    }
-    set posY(y){
-        this.#posY = y;
-    }
-    get posX(){
-        return this.#posX;
-    }
-    get posY(){
-        return this.#posY;
-    }
+    get imagen() { return this.#imagen; }
+    get jugador(){ return this.#jugador; }
+    get radio(){ return this.#radio; }
+    get posX(){ return this.#posX; }
+    get posY(){ return this.#posY; }
+    set radio(r){ this.#radio = r; }
+    set posX(x){ this.#posX = x; }
+    set posY(y){ this.#posY = y; }
+    
 
     dibujar(context, x, y, radio) {
         this.#radio = radio;//TODO:
@@ -56,10 +38,19 @@ export default class Ficha {
         this.dibujar(context, this.#posX, this.#posY, this.#radio);
     }
     
-    mover(x,y){      //(context,x,y){
+    mover(x,y){  
         this.#posX = x;
         this.#posY = y;
-        //console.log("movida");
-        //this.dibujar(context,x,y,this.#radio)
+    }
+
+    distanciaEntrePuntos(x1, y1) {
+        let c1 = x1 - this.posX; 
+        let c2 = y1 - this.posY; 
+        let distancia = Math.hypot(c1, c2);
+        return distancia;
+    }
+
+    dentro(x,y){
+        return (this.distanciaEntrePuntos(x,y) <= this.radio)//si esta dentro de esta figura
     }
 }
