@@ -138,7 +138,6 @@ function mover(jugador){
             console.log(nuevoX,nuevoY);
             if((nuevoX >= areaTablero.x) && (nuevoX <= areaTablero.xFinal) &&
                 (nuevoY >= areaTablero.y)){
-                //FIXME: que no deje ficha del jugador en la del otro o no la recupera nunca
                 clear();
                 figuraArrastrada.mover(init.x, init.y);
                 t.dibujar(context);
@@ -147,14 +146,22 @@ function mover(jugador){
             } else if((nuevoX >= areaTablero.x) && (nuevoX <= areaTablero.xFinal) &&
             (nuevoY < areaTablero.y)){ //area huecos
                 clear();
-                jugador.addFicha(nuevoX, nuevoY, figuraArrastrada);
-                t.dibujar(context);
-                jugador1.dibujoFichas(context);
-                jugador2.dibujoFichas(context); //TODO: sacar el codigo repetido
-                //FIXME: si esta llena hacer lo de abajo
+                let metido = jugador.addFicha(nuevoX, nuevoY, figuraArrastrada);
+                console.log(metido);
+                if (metido){
+                    t.dibujar(context);
+                    jugador1.dibujoFichas(context);
+                    jugador2.dibujoFichas(context); //TODO: sacar el codigo repetido
+                } else {
+                    clear();
+                    figuraArrastrada.mover(init.x, init.y);
+                    t.dibujar(context);
+                    jugador1.dibujoFichas(context);
+                    jugador2.dibujoFichas(context);
+                }
             } else {
                 clear();
-                figuraArrastrada.mover(nuevoX, nuevoY);
+                figuraArrastrada.mover(init.x, init.y);
                 t.dibujar(context);
                 jugador1.dibujoFichas(context);
                 jugador2.dibujoFichas(context);

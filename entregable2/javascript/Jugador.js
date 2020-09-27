@@ -55,8 +55,9 @@ export default class Jugador {
     }
 
     addFicha(xMouse, yMouse, ficha){//FIXME: error si seteo antes la posicion de la ficha y tomo x e y de ahi
-        this.#tablero.addFicha(xMouse, yMouse, ficha);
-        this.quitarFichaDeBatea(ficha);
+        let metida = this.#tablero.addFicha(xMouse, yMouse, ficha);
+        if (metida) { this.quitarFichaDeBatea(ficha); }
+        return metida;
     }
 
     quitarFichaDeBatea(ficha){

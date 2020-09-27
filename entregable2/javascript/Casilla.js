@@ -1,13 +1,15 @@
 export default class Casilla {
 
     #posicion;
+    #ubicacion;
     #ficha;
     #height;
     #width;
     #borde;
 
-    constructor(x, y, alto, ancho) {
+    constructor(x, y, alto, ancho, fila,columna) {
         this.#posicion = { x, y };
+        this.#ubicacion = { fila, columna };
         this.#ficha = null;
         this.#borde = parseInt(5);
         this.#height = alto;
@@ -20,6 +22,9 @@ export default class Casilla {
     get posX() { return this.#posicion.x; }
     get posY() { return this.#posicion.y; }
 
+    get fila() {return this.#ubicacion.fila}
+    get columna() {return this.#ubicacion.columna}
+
     get radio() {
         return (this.#width / 2) - (this.#borde * 2);
     }
@@ -27,6 +32,7 @@ export default class Casilla {
         return this.#borde;
     }
     set ficha(f) {
+        console.log("insertada");
         // actualizar la posicion de la ficha a la de la casilla en la que se insertó
         this.#ficha = f; //TODO: poner aca la ficha cuando se ubique, hacer el context general¿? una clase canvas de la que accedo de todos lados?
     }

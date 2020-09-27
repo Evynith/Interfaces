@@ -20,36 +20,29 @@ export default class Tablero {
         for (let i = 0, y = this.posY; i < filas; i++, y += this.#altoCasilla) { //FIXME: si lo hago al reves da error
             this.#tablero.push(new Array());
             for (let j = 0, x = this.posX; j < columnas; j++, x += this.#anchoCasilla) {
-                this.#tablero[i].push(new Casilla(x, y, this.#altoCasilla,this.#anchoCasilla));
+                this.#tablero[i].push(new Casilla(x, y, this.#altoCasilla,this.#anchoCasilla, i , j));
             }
         }
         console.table(this.#tablero);
 
     }
-    get tablero() {
-        return this.#tablero;
-    }
-    get posX() {
-        return this.#posicion.x;
-    }
-    get posY() {
-        return this.#posicion.y;
-    }
-    get width() {
-        return this.#posicion.xFinal - this.posX;
-    }
-    get height() {
-        return this.#posicion.yFinal - this.posY;
-    }
-    get espacios(){
-        return (this.#filas * this.#columnas);
-    }
+
+    get tablero() { return this.#tablero; }
+    get posX() { return this.#posicion.x; }
+    get posY() { return this.#posicion.y; }
+    get width() { return this.#posicion.xFinal - this.posX; }
+    get height() { return this.#posicion.yFinal - this.posY; }
+    get espacios(){ return (this.#filas * this.#columnas); }
 
     addFicha(x, y, ficha) {//posicion que cae
-        let posX = this.sectorCorrespondienteX(x);
-        let posY = this.sectorCorrespondienteY(posX);
-        if(posY){
+        let posX = this.sectorCorrespondienteX(x);//sector
+        let casillaY = this.sectorCorrespondienteY(posX);
+        if(casillaY != null){
+            let posY = casillaY.fila;//casilla.sector
             this.#tablero[posY][posX].ficha = ficha;//primero filas despues columnas
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -64,21 +57,16 @@ export default class Tablero {
                 break;
             }
         }
-        console.log("x",ubicacion);
         return ubicacion;
     }
 
     sectorCorrespondienteY(x){
-        // encontrar la primer casilla vacia de la columna X
-        // recorrer la columna de filas.length a 0 (al reves) -> hago un iterador que me devuelva las casillas en ese orden
         for (const casilla of this.iteradorColumna(x)) {
-            // devolver la primer casilla vacia
             if (casilla.esVacia()) {
-                // lugar para insertar
-                return casilla;
+                return casilla;// lugar para insertar
             }
         }
-        return no hay casilla libre;
+        return null; //no hay casilla libre
     }
 
     /**
@@ -86,8 +74,8 @@ export default class Tablero {
      * en js un iterador se hace con una funcion con antes un *, para devolver un elemento se usa la palabra clave 'yield'
      */
     * iteradorColumna(x) {
-        for (let i = tablero.length-1; i >= 0; i--) { // recorro filas al reve
-            yield tablero[i][x] // devuelvo la casilla en la columna 'x' de la fila actual
+        for (let i = this.#filas -1; i >= 0; i--) { // recorro filas al reve
+            yield this.#tablero[i][x] // devuelvo la casilla en la columna 'x' de la fila actual
         }
     }
 
