@@ -16,8 +16,8 @@ export default class Casilla {
         this.#width = ancho;
     }
 
-    get posXcentro() { return this.#posicion.x + (this.radio + this.#borde *2); } //verdadero lugar
-    get posYcentro() { return this.#posicion.y + (this.radio + this.#borde *2); }
+    get posXcentro() { return this.#posicion.x + (this.#width/2); } //verdadero lugar
+    get posYcentro() { return this.#posicion.y + (this.#height/2); }
 
     get posX() { return this.#posicion.x; }
     get posY() { return this.#posicion.y; }
@@ -25,7 +25,11 @@ export default class Casilla {
     get fila() {return this.#ubicacion.fila}
     get columna() {return this.#ubicacion.columna}
 
-    get radio() { return (this.#width / 2) - (this.#borde * 2); }
+    get radio() { 
+        let menor = Math.min(this.#width,this.#height);
+        return (menor / 2) - (this.#borde * 2); 
+    }
+
     get borde(){ return this.#borde; }
     
     get ficha() { return this.#ficha; }
@@ -38,14 +42,14 @@ export default class Casilla {
             return false;
         }
     }
-//TODO: separar las figuras de la clase casilla??
-    dibujarFondo(context){
-        context.beginPath();
-        context.rect(this.posX, this.posY, this.#width, this.#height);
-        context.fillStyle = "#0000CC";
-        context.fill();
-        context.closePath();
-    }
+
+    // dibujarFondo(context,image){
+    //     context.beginPath();
+    //     context.rect(this.posX, this.posY, this.#width, this.#height);
+    //     context.fillStyle = context.createPattern(image , "no-repeat");;
+    //     context.fill();
+    //     context.closePath();
+    // }
     dibujarHueco(context){
         context.beginPath();
         context.arc(this.posXcentro, this.posYcentro, this.radio, 0, 2*Math.PI);
@@ -57,8 +61,8 @@ export default class Casilla {
         context.closePath();
     }
 
-    dibujar(context) {
-        this.dibujarFondo(context);
+    dibujar(context,image) {
+        //this.dibujarFondo(context,image);
         this.dibujarHueco(context);
         if (!this.esVacia()) {
             this.ficha.dibujar(context, this.posXcentro, this.posYcentro, this.radio); //TODO: que no tenga que ´pasarle el radio

@@ -1,0 +1,12 @@
+.bordeTablero{
+    position: absolute;
+    top: 7%;
+    right: 18%;
+    bottom: 7%;
+    left: 18%;
+    border: silver solid;
+    border-image-source: url("../images/esfera-madera.png");
+    /* border-image-slice: ; */
+    border-image-width: 40px;
+    border-image-slice: 380;
+}

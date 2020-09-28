@@ -8,8 +8,10 @@ export default class Tablero {
     #anchoCasilla;
     #filas;
     #columnas;
+    #image;
 
-    constructor(area, filas, columnas) {
+    constructor(area, filas, columnas, image) {
+        this.#image = image;
         this.#filas = filas;
         this.#columnas = columnas;
         this.#posicion = area;
@@ -32,14 +34,15 @@ export default class Tablero {
     get height() { return this.#posicion.yFinal - this.posY; }
     get espacios(){ return (this.#filas * this.#columnas); }
 
-    addFicha(x, y, ficha) {//posicion que cae
+    addFicha(ficha) {
+        let x = ficha.posX, y = ficha.posY; //posicion que cae
         let posX = this.sectorCorrespondienteX(x);//sector
         let casillaY = this.sectorCorrespondienteY(posX);
         if(casillaY != null){
             let posY = casillaY.fila;//casilla.sector
             this.#tablero[posY][posX].ficha = ficha;//primero filas despues columnas
             if (this.revisarGanador(posX,posY, ficha)) {//le paso posicion en el tablero de la ultima ficha
-                console.log("ganador : ", ficha.jugador); //TODO:
+                console.log("ganador : ", ficha.jugador); //TODO: observer??
             }
             return true;
         } else {
@@ -170,10 +173,33 @@ export default class Tablero {
     }
 
     dibujar(context) {
+        this.borde(context);
         for (const fila of this.#tablero) {
             for (const casilla of fila) {
-                casilla.dibujar(context);
+                casilla.dibujar(context, this.#image);
             }
         }
+    }
+
+    borde(context){
+        context.fillStyle = context.createPattern(this.#image , "repeat");
+        context.beginPath();
+        this.roundedRect(context,this.posX - 20,this.posY -20,this.width +40,this.height +40,90);
+        context.fill();
+        context.closePath();
+    }
+
+    roundedRect(ctx,x,y,width,height,radius){
+        ctx.beginPath();
+        ctx.moveTo(x,y+radius);
+        ctx.lineTo(x,y+height-radius);
+        ctx.quadraticCurveTo(x,y+height,x+radius,y+height);
+        ctx.lineTo(x+width-radius,y+height);
+        ctx.quadraticCurveTo(x+width,y+height,x+width,y+height-radius);
+        ctx.lineTo(x+width,y+radius);
+        ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
+        ctx.lineTo(x+radius,y);
+        ctx.quadraticCurveTo(x,y,x,y+radius);
+        //ctx.stroke();
     }
 }

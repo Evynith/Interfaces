@@ -27,10 +27,19 @@ export default class Ficha {
         this.#radio = radio;//TODO:
         this.#posX = x;
         this.#posY = y;
+        // context.beginPath();
+        // context.arc(this.posX, this.posY, this.#radio, 0, 2*Math.PI);
+        // context.fillStyle = this.imagen;
+        // context.fill();
+        // context.closePath();
+
         context.beginPath();
-        context.arc(this.posX, this.posY, this.#radio, 0, 2*Math.PI);
-        context.fillStyle = this.imagen;
+        context.fillStyle = context.createPattern(this.#imagen , "no-repeat");
+        context.save();
+        context.translate(this.posX - this.radio, this.posY- this.radio);
+        context.arc(0 + this.radio, 0 + this.radio, this.#radio, 0, 2*Math.PI);
         context.fill();
+        context.restore();
         context.closePath();
     }
 
