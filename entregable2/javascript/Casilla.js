@@ -33,23 +33,8 @@ export default class Casilla {
     get borde(){ return this.#borde; }
     
     get ficha() { return this.#ficha; }
-    set ficha(f) { this.#ficha = f; }//TODO: poner aca la ficha cuando se ubique, hacer el context general¿? una clase canvas de la que accedo de todos lados?
+    set ficha(f) { this.#ficha = f; }
 
-    esVacia() { 
-        if(this.#ficha == null){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // dibujarFondo(context,image){
-    //     context.beginPath();
-    //     context.rect(this.posX, this.posY, this.#width, this.#height);
-    //     context.fillStyle = context.createPattern(image , "no-repeat");;
-    //     context.fill();
-    //     context.closePath();
-    // }
     dibujarHueco(context){
         context.beginPath();
         context.arc(this.posXcentro, this.posYcentro, this.radio, 0, 2*Math.PI);
@@ -61,11 +46,11 @@ export default class Casilla {
         context.closePath();
     }
 
-    dibujar(context,image) {
-        //this.dibujarFondo(context,image);
+    dibujar(context){
         this.dibujarHueco(context);
-        if (!this.esVacia()) {
-            this.ficha.dibujar(context, this.posXcentro, this.posYcentro, this.radio); //TODO: que no tenga que ´pasarle el radio
+        if (this.ficha != null) {
+            this.ficha.mover(this.posXcentro, this.posYcentro);
+            this.ficha.dibujar(context);
         }
     }
 }

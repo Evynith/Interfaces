@@ -8,7 +8,8 @@ export default class Ficha {
     #posX;
     #posY;
 
-    constructor(jugador, imagen) {//TODO: radio por aca!!!
+    constructor(jugador, imagen, radio) {
+        this.#radio = radio;
         this.#jugador = jugador;
         this.#imagen = imagen;
     }
@@ -18,21 +19,12 @@ export default class Ficha {
     get radio(){ return this.#radio; }
     get posX(){ return this.#posX; }
     get posY(){ return this.#posY; }
-    set radio(r){ this.#radio = r; }
+
     set posX(x){ this.#posX = x; }
     set posY(y){ this.#posY = y; }
     
 
-    dibujar(context, x, y, radio) {
-        this.#radio = radio;//TODO:
-        this.#posX = x;
-        this.#posY = y;
-        // context.beginPath();
-        // context.arc(this.posX, this.posY, this.#radio, 0, 2*Math.PI);
-        // context.fillStyle = this.imagen;
-        // context.fill();
-        // context.closePath();
-
+    dibujar(context) {
         context.beginPath();
         context.fillStyle = context.createPattern(this.#imagen , "no-repeat");
         context.save();
@@ -42,14 +34,10 @@ export default class Ficha {
         context.restore();
         context.closePath();
     }
-
-    redibujar(context){ //TODO: sacar 
-        this.dibujar(context, this.#posX, this.#posY, this.#radio);
-    }
     
     mover(x,y){  
-        this.#posX = x;
-        this.#posY = y;
+        this.posX = x;
+        this.posY = y;
     }
 
     distanciaEntrePuntos(x1, y1) {

@@ -6,9 +6,53 @@
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
 	<body>
+		<!-- <nav>
+			<div class="j1"> <p>nombre jugador 1</p> <p>partidas ganadas</p></div>
+			<button>Terminar Partida</button>  //muestra menu intermedio 
+			<div class="j2"> <p>nombre jugador 2</p> <p>partidas ganadas</p></div>
+		</nav> -->
+
         <div id= "canvas">
 			<!-- <div class="bordeTablero"></div> -->
             <canvas id="myCanvas" width="1000" height="600"></canvas>
+		</div>
+
+		<div id="menuIntermedio" class="menuIntermedio oculto">
+			<h1>Ha ganado jugador X!!</h1>
+			<div>
+				<div class="j1"> <p>nombre jugador 1, partidas ganadas</p></div>
+				<div class="j2"> <p>nombre jugador 2, partidas ganadas</p></div>
+			</div>
+			<div>
+				<button class="reiniciarJuego">Terminar</button>
+				<button class="terminarPartida"> Jugar otra vez</button>
+			</div>
+		</div>
+
+
+		<div id="menuInicial" class="menu menuInicial">
+			<form id="form-inicial">
+				<button id="btn-1player" type="button">1 jugador</button>
+				<button id="btn-2player" type="button">2 jugadores</button> <!-- si un jugador ocultar input y label de jugador 2 y llenar variable bot-->
+
+				<input id="jugador1" class="" type="text" value="" required="required">
+				<label for="jugador1" id="label-j1" class="" >Nombre jugador1</label>
+				<input id="jugador2" class="oculto" type="text" value="Dummie Bot" required="required">
+				<label for="jugador2" id="label-j2" class="oculto">Nombre jugador2</label>
+
+				<input class="tamanio" type="range" id="js-tamanio" min="0" max="2" step="1" value="0">
+				<label for="js-tamanio">tamaño de tablero</label>
+
+				<div class="temas">
+					<a data-tipo = "0"><img> Tema madera</a>
+					<a data-tipo = "1"><img> Tema metal</a>
+					<a data-tipo = "2"><img> Tema casino</a>
+					<input id="tema" class="oculto" type="number" value="0">
+				</div>
+
+				<button type="submit"> Jugar! </button>
+				<!-- <input type="submit"> -->
+			</form>
 		</div>
 		
 		<script type="module" src="./javascript/Main.js"></script>
