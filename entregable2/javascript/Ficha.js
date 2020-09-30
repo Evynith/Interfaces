@@ -27,7 +27,7 @@ export default class Ficha {
     dibujar(context) {
         context.beginPath();
         context.fillStyle = context.createPattern(this.#imagen , "no-repeat");
-        context.save();
+        context.save(); 
         context.translate(this.posX - this.radio, this.posY- this.radio);
         context.arc(0 + this.radio, 0 + this.radio, this.#radio, 0, 2*Math.PI);
         context.fill();

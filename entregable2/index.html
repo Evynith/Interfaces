@@ -6,22 +6,21 @@
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
 	<body>
-		<!-- <nav>
-			<div class="j1"> <p>nombre jugador 1</p> <p>partidas ganadas</p></div>
-			<button>Terminar Partida</button>  //muestra menu intermedio 
-			<div class="j2"> <p>nombre jugador 2</p> <p>partidas ganadas</p></div>
-		</nav> -->
+		<nav class="navegador">
+			<div > <p class="j1">jugador 1 partidas ganadas : 0</p></div>
+			<button id="terminar">Terminar Partida</button>
+			<div > <p class="j2">jugador 2 partidas ganadas : 0</p></div>
+		</nav>
 
         <div id= "canvas">
-			<!-- <div class="bordeTablero"></div> -->
             <canvas id="myCanvas" width="1000" height="600"></canvas>
 		</div>
 
 		<div id="menuIntermedio" class="menuIntermedio oculto">
 			<h1>Ha ganado jugador X!!</h1>
 			<div>
-				<div class="j1"> <p>nombre jugador 1, partidas ganadas</p></div>
-				<div class="j2"> <p>nombre jugador 2, partidas ganadas</p></div>
+				<div > <p class="j1">nombre jugador 1, partidas ganadas</p></div>
+				<div > <p class="j2">nombre jugador 2, partidas ganadas</p></div>
 			</div>
 			<div>
 				<button class="reiniciarJuego">Terminar</button>
@@ -46,12 +45,11 @@
 				<div class="temas">
 					<a data-tipo = "0"><img> Tema madera</a>
 					<a data-tipo = "1"><img> Tema metal</a>
-					<a data-tipo = "2"><img> Tema casino</a>
+					<!-- <a data-tipo = "2"><img> Tema casino</a> -->
 					<input id="tema" class="oculto" type="number" value="0">
 				</div>
 
 				<button type="submit"> Jugar! </button>
-				<!-- <input type="submit"> -->
 			</form>
 		</div>
 		

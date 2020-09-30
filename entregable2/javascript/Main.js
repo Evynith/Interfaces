@@ -5,20 +5,19 @@ import Bot from './Bot.js';
 const canvas = document.querySelector("#myCanvas");
 const context = canvas.getContext("2d");
 canvas.width = window.innerWidth -20;
-canvas.height = window.innerHeight -20;
+canvas.height = window.innerHeight -40;
 const clear = () => context.clearRect(0, 0, width, height);
 
 const width = canvas.width;
 const height = canvas.height;
 
 const tamOriginal = [7,6];
-const tamGrande = [10,7]; //FIXME: se buguea en otros tamaños
+const tamGrande = [10,7]; 
 const tamEnorme = [13,8];
 
 let tema0 = ["./images/textura-madera1.jpg","./images/textura-madera2.jpg","./images/textura-madera3.jpg"];
 let tema1 = ["./images/textura-metal1.jpg","./images/textura-metal2.jpg","./images/textura-metal3.jpg"];
-//let tema2 = ["./images/textura-casino1.jpg","./images/textura-casino2.jpg","./images/textura-casino3.jpg"];
-let tema2 = tema1; //FIXME:
+//let tema2 = ["./images/textura-casino1.jpg","./images/textura-casino2.png","./images/textura-casino3.png"];
 
 let contrincante = 0; //0 para bot | 1 para compañero
 let turno = null;
@@ -30,10 +29,10 @@ let jugador2;
 
 //______________________________________________________________________________JUEGO
 const areaTablero = {
-    x : ((width * 20) /100),
-    xFinal : width - ((width * 20) /100),
-    y : ((height * 10 )/100),
-    yFinal : height - ((height * 10 )/100)
+    x : ((width * 30) /100),
+    xFinal : width - ((width * 30) /100),
+    y : ((height * 20 )/100),
+    yFinal : height - ((height * 20 )/100)
 };
 
 const areaHuecos = {
@@ -75,6 +74,7 @@ function loadImage(source) {
 }
 
 async function inicializar(j1,j2, tema,tamanio){
+    
     let img1 = await loadImage(tema[0]);
     let img2 = await loadImage(tema[1]);
     let img3 = await loadImage(tema[2]);
@@ -92,6 +92,7 @@ async function inicializar(j1,j2, tema,tamanio){
     jugador1.inicializoFichas(context);
     jugador2.inicializoFichas(context);
     tablero.dibujar(context);
+    actualizarNav();
 }
 
 function reiniciar(){
@@ -101,6 +102,7 @@ function reiniciar(){
     jugador2.inicializoFichas(context);
     tablero.vaciar();
     tablero.dibujar(context);
+    actualizarNav();
 }
 //_____________________________________________________________________________SETEO DE OPCIONES
 document.querySelector("#btn-1player").click();//TODO:
@@ -133,7 +135,6 @@ document.querySelector("#form-inicial").onsubmit = (e) => {
     let j1 = document.querySelector("#jugador1").value;
     let j2 = document.querySelector("#jugador2").value;
     let tam = parseInt(document.querySelector("#js-tamanio").value);
-    //TODO: ocultar este div
     crearJuego(j1,j2,tam,tema);
 }
 
@@ -165,7 +166,7 @@ function crearJuego(j1,j2,tam,tema){
     }
 
 
-    inicializar(j1,j2, figuras,tamanio);//TODO: cuando las img esten cargadaas
+    inicializar(j1,j2, figuras,tamanio);
     document.querySelector("#menuInicial").classList.add("oculto");
     document.querySelector("#menuInicial").classList.remove("menu");
     document.querySelector("#form-inicial").classList.add("oculto");
@@ -270,14 +271,15 @@ function mover(jugador){
 
     function terminarJuego(){
         turno = null;
-        if(ganador == null){
-            mostrarMenu("Empate")
-        } else {
-            console.log(ganador);
+        if (ganador){
             ganador.sumarPunto();
             mostrarMenu(`Ha ganado ${ganador.nombre}`);
+        } else {
+            mostrarMenu("Empate");
         }
     }
+
+    //____________________________________________________________________________MENUES DE JUEGO
 
     let menu = document.querySelector("#menuIntermedio");
     function mostrarMenu(texto){
@@ -297,8 +299,16 @@ function mover(jugador){
     document.querySelector(".terminarPartida").onclick = () =>{
         menu.classList.remove("menu");
         menu.classList.add("oculto");
+        clear();
         reiniciar();
     }
 
-//al ganador sumarle un punto en el contador e iniciar de vuelta el juego con los mismo s valores 
-//inicializar fichas en jugadores y vaciar tablero (o inicializarlo de 0) ->> inicilizar de juego!!
+    function actualizarNav(){
+        let nav = document.querySelector(".navegador");
+        nav.querySelector(".j1").innerHTML = `${jugador1.nombre} : partidas ganadas ${jugador1.ganadas}`;
+        nav.querySelector(".j2").innerHTML = `${jugador2.nombre} : partidas ganadas ${jugador2.ganadas}`;
+    }
+
+    document.querySelector("#terminar").onclick = function () {terminarJuego(); };
+
+    //_____________________________________________________________________________________________
