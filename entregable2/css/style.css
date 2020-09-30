@@ -12,6 +12,33 @@ input{
     z-index: 1;
 }
 
+#form-inicial img{
+    width: 60%;
+    height: 60%;
+    border-radius: 30px;
+}
+
+#form-inicial{
+    border: 2px solid grey;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 15px;
+    border-radius: 40px;
+    background-color: rgb(109, 109, 109);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tam{
+    margin: 12px;
+}
+.temas{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+
 .menu{
     z-index: 2;
     position: absolute;
@@ -24,12 +51,7 @@ input{
     justify-content: center;
     background-color: rgba(174, 174, 174, 0.496);
 }
-#form-inicial{
-    border: 2px solid grey;
-    padding: 15px;
-    border-radius: 40px;
-    background-color: rgb(109, 109, 109);
-}
+
 button{
     border-radius: 30px;
 }
@@ -54,4 +76,16 @@ nav{
     background-color: grey;
     border: rgb(82, 82, 82);
     border-radius: 20px;
+}
+
+#menuIntermedio div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    border-radius: 20px;
+    padding: 20px;
+}
+#menuIntermedio button{
+    width: 100%;
 }

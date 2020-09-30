@@ -81,7 +81,7 @@ async function inicializar(j1,j2, tema,tamanio){
 
     tablero = new Tablero(areaTablero, tamanio[1], tamanio[0], img1);
     
-    jugador1 = new Jugador(j1, img2 ,tablero,areaJ1);  //TODO: ajustar tamaños para fichas de jugadores si toca casino??
+    jugador1 = new Jugador(j1, img2 ,tablero,areaJ1);  
     if (contrincante == 1){
         jugador2 = new Jugador(j2, img3 , tablero, areaJ2);
     } else {
@@ -105,7 +105,7 @@ function reiniciar(){
     actualizarNav();
 }
 //_____________________________________________________________________________SETEO DE OPCIONES
-document.querySelector("#btn-1player").click();//TODO:
+
 document.querySelector("#btn-1player").onclick = () =>{
     let j2 = document.querySelector("#jugador2");
     j2.classList.add("oculto");
@@ -125,7 +125,12 @@ document.querySelector("#btn-2player").onclick = () =>{
 }
 
 document.querySelector(".temas").onclick = (e) =>{
+    let as = document.querySelectorAll(".temas a");
+    as.forEach( e => {
+        e.style.color = "black";
+    })
     let value = e.target.dataset.tipo;
+    e.target.style.color = "red";
     document.querySelector("#tema").setAttribute("value",`${value}`);
 }
 

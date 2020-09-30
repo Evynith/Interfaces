@@ -40,7 +40,7 @@ export default class Casilla {
         context.arc(this.posXcentro, this.posYcentro, this.radio, 0, 2*Math.PI);
         context.fillStyle = "#FFFFFF";
         context.fill();
-        context.strokeStyle = "#804000"; 
+        context.strokeStyle = "#1E1E1E"; 
         context.lineWidth = 3;
         context.stroke();
         context.closePath();

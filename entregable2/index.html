@@ -17,30 +17,37 @@
 		</div>
 
 		<div id="menuIntermedio" class="menuIntermedio oculto">
-			<h1>Ha ganado jugador X!!</h1>
 			<div>
-				<div > <p class="j1">nombre jugador 1, partidas ganadas</p></div>
-				<div > <p class="j2">nombre jugador 2, partidas ganadas</p></div>
-			</div>
-			<div>
-				<button class="reiniciarJuego">Terminar</button>
-				<button class="terminarPartida"> Jugar otra vez</button>
+				<h1>Ha ganado jugador X!!</h1>
+				<div>
+					<div > <p class="j1">nombre jugador 1, partidas ganadas</p></div>
+					<div > <p class="j2">nombre jugador 2, partidas ganadas</p></div>
+				</div>
+				<div>
+					<button class="reiniciarJuego">Terminar</button>
+					<button class="terminarPartida"> Jugar otra vez</button>
+				</div>
 			</div>
 		</div>
 
 
 		<div id="menuInicial" class="menu menuInicial">
+			
 			<form id="form-inicial">
-				<button id="btn-1player" type="button">1 jugador</button>
-				<button id="btn-2player" type="button">2 jugadores</button> <!-- si un jugador ocultar input y label de jugador 2 y llenar variable bot-->
-
+				<img src="./images/logo.jpg">
+				<div>
+					<button id="btn-1player" type="button">1 jugador</button>
+					<button id="btn-2player" type="button">2 jugadores</button> <!-- si un jugador ocultar input y label de jugador 2 y llenar variable bot-->
+				</div>
 				<input id="jugador1" class="" type="text" value="" required="required">
 				<label for="jugador1" id="label-j1" class="" >Nombre jugador1</label>
 				<input id="jugador2" class="oculto" type="text" value="Dummie Bot" required="required">
 				<label for="jugador2" id="label-j2" class="oculto">Nombre jugador2</label>
 
-				<input class="tamanio" type="range" id="js-tamanio" min="0" max="2" step="1" value="0">
-				<label for="js-tamanio">tamaño de tablero</label>
+				<div class="tam">
+					<input class="tamanio" type="range" id="js-tamanio" min="0" max="2" step="1" value="0">
+					<label for="js-tamanio">tamaño de tablero</label>
+				</div>
 
 				<div class="temas">
 					<a data-tipo = "0"><img> Tema madera</a>

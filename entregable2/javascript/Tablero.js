@@ -186,6 +186,8 @@ export default class Tablero {
         ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
         ctx.lineTo(x+radius,y);
         ctx.quadraticCurveTo(x,y,x,y+radius);
-        //ctx.stroke();
+        ctx.strokeStyle = "#1E1E1E"; 
+        ctx.lineWidth = 5;
+        ctx.stroke();
     }
 }
