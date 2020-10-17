@@ -22,31 +22,30 @@ let pikaGiraDerecha = pika.animate([
         iterations: 1,
         easing: 'steps(8)',//, jump-start)',
         fill:'forwards' //FIXME:
-  })
-  
-  let pikaCorreDerecha = pika.animate([
-    // keyframes
-    {   background : "url('./images/pikachu home/corriendo.png') left center",
-        backgroundPosition : "0px", 
-        transform : "scaleX(-1)",
-    //   transform: `translate(${coordXb - coordXa}px)` 
-    },
-    {
-        backgroundPosition : "-4200px",
-        transform : "scaleX(-1)"
-    }
-  ], { 
-    // timing options
-    duration: 900, 
-    iterations: 1, //Infinity,
-    easing: 'steps(7)',//, jump-start)',
-    delay: pikaGiraDerecha.effect.getComputedTiming().duration,
-    fill:'forwards' //FIXME:
-  })
-  
+
+  }).finished.then(() => {
+
+        let pikaCorreDerecha = pika.animate([
+            // keyframes
+            {   background : "url('./images/pikachu home/corriendo.png') left center",
+                backgroundPosition : "0px", 
+                transform : "scaleX(-1)",
+            //   transform: `translate(${coordXb - coordXa}px)` 
+            },
+            {
+                backgroundPosition : "-4200px",
+                transform : "scaleX(-1)"
+            }
+        ], { 
+            // timing options
+            duration: 900, 
+            iterations: 1, //Infinity,
+            easing: 'steps(7)',//, jump-start)',
+            //delay: pikaGiraDerecha.effect.getComputedTiming().duration,
+            fill:'forwards' //FIXME:
+        })
+  });  
 }
-
-
 
 card.onmouseover = () => {
     document.onmousemove = (e) => {
