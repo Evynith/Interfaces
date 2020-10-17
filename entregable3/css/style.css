@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+}
+/*________________________________________________________________________CARTEL*/
+.fondo-cartel{
+    background-color: black;
+}
+.test{
+    width: 920px;
+    height: 528px;
+    background: url("../images/cartel/FramesCartel.png") left center;
+    animation: cartel 1.5s steps(15) infinite;
+    /* animation: cartel-2 3s linear infinite; */
+}
+
+@keyframes cartel {
+    0%{ background-position: 0px;}
+    100% {background-position: -13800px;}
+}
+
+@keyframes cartel-2 {
+    0%{ background: url("../images/cartel/016.png");}
+    50% {background: url("../images/cartel/017.png");}
+    100% {background: url("../images/cartel/016.png");}
+}
+/*__________________________________________________________________________HEADER*/
+
+.cielo{
+    position: absolute;
+    z-index: 0;
+    background-color: rgb(79, 134, 164);
+    top: 0;
+    left: 0;
+    height: 30%;
+}
+
+.presentacion-hero{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.fondo{
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(27, 32, 50);
+    top: 30%;
+    left: 0;
+    height: 70%;
+}
+
+.calle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background: url("../images/fondo/calle.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 60%;
+}
+
+.edificios-fondo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    background: url("../images/fondo/edificios-fondo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+}
+.edificios{
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+
+.edificios-medio{
+    position: absolute;
+    top: -30%;
+    left: -25%;
+    height: 140%;
+    width: 140%;
+    z-index: 4;
+    background: url("../images/fondo/edificios-medio.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+}
+
+.edificios-izquierda{
+    position: absolute;
+    top: -20%;
+    left: -15%;
+    height: 130%;
+    width: 130%;
+    z-index: 5;
+    background: url("../images/fondo/edificios-izquierda.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+    transform-origin: 0 50%;
+    transition: transform 1s;
+}
+
+.edificios-derecha{
+    position: absolute;
+    top: -23%;
+    left: -20%;
+    height: 130%;
+    width: 130%;
+    z-index: 6;
+    background: url("../images/fondo/edificios-derecha.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+    transform-origin: 100% 50%;
+    transition: transform 1s;
+}
+/*____________________________________________________________________PIKACHU*/
+
+.pikachu{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    z-index: 7;
+    width: 600px;
+    height: 900px;
+    background : "url('../images/pikachu home/girando.png') left center";
+    /* background: url("../images/pikachu\ home/corriendo.png") left center; 
+    animation: corriendo-derecha 0.9s steps(7) infinite; */
+    /* background: url("../images/pikachu\ home/girando.png") left center;
+    animation: girando-derecha-frente 1s steps(8) infinite; */
+}
+/*animaciones en simultaneo separadas por coma*/
+
+@keyframes corriendo-izquierda {
+    0%{ background-position: 0px;}
+    100% {background-position: -4200px;}
+}
+
+@keyframes corriendo-derecha {
+    0%{ background-position: 0px; transform: scaleX(-1);}
+    100% {background-position: -4200px; transform: scaleX(-1);}
+}
+
+@keyframes girando-izquierda {
+    0%{ background-position: 0px;}
+    100% {background-position: -4800px;}
+}
+
+@keyframes girando-izquierda-frente {
+    0%{ background-position: -4800px;}
+    100% {background-position: 0px;}
+}
+
+@keyframes girando-derecha {
+    0%{ background-position: 0px; transform: scaleX(-1);}
+    100% {background-position: -4800px; transform: scaleX(-1);}
+}
+
+@keyframes girando-derecha-frente {
+    0%{ background-position: -4800px; transform: scaleX(-1);}
+    100% {background-position: 0px; transform: scaleX(-1);}
+}
+/*_____________________________________________________________________CUBO*/      
+/*  
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    perspective: 90em;
+    overflow: hidden;
+  }
+
+  #cube {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+
+  #cube .figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  #cube .back {
+    background: url("../images/fondo/edificios-medio.png");
+    background-repeat: no-repeat;
+    background-size: 200% 300%; 
+    background-position-y: 60%;
+    background-position-x: 60%;
+    transform: rotateX(0deg) translateZ(-75px);
+  }
+
+  #cube .left {
+    top: -10%;
+    left: -10%;
+    background: url("../images/fondo/edificios-izquierda.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 50%;
+    transform: rotateY(35deg) translateZ(-75px);
+  }
+
+  #cube .right {
+    top: -10%;
+    left: 5%;
+    background: url("../images/fondo/edificios-derecha.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+     background-position-y: 50%;
+    transform: rotateY(-35deg) translateZ(75px); 
+  } */
+
+  
