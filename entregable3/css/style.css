@@ -25,17 +25,18 @@
 }
 /*__________________________________________________________________________HEADER*/
 
-.cielo{
+/* .cielo{
     position: absolute;
     z-index: 0;
     background-color: rgb(79, 134, 164);
     top: 0;
     left: 0;
     height: 30%;
-}
+} */
 
 .presentacion-hero{
     position: relative;
+    background-color: rgb(27, 32, 50);
     top: 0;
     left: 0;
     height: 100vh;
@@ -65,7 +66,7 @@
     background-position-y: 60%;
 }
 
-.edificios-fondo{
+/* .edificios-fondo{
     position: absolute;
     top: 0;
     left: 0;
@@ -78,7 +79,7 @@
     transform: translateZ(100px);
     transform-style: preserve-3d;
     background-position-y: 50%;
-}
+} */
 .edificios{
     width: 100%;
     height: 100%;
@@ -133,50 +134,126 @@
     transform-origin: 100% 50%;
     transition: transform 1s;
 }
+/*_______________________________________________________________BOTONES HOME*/
+
+.cartel{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    width: 5%;
+    font-size: 2rem;
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow: 0 0 10px #ff00de, 0 0 12px #ff00de;
+    -webkit-text-fill-color: #F4ECFF;
+    -webkit-text-stroke-color:#C546F7;
+    -webkit-text-stroke-width:0.2px;
+}
+
+.cartel:hover{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
+}
+
+.sup{
+    z-index: 10;
+}
+
+.trailer{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    z-index: 5;
+}
+
+.market{
+    position: absolute;
+    top: 20%;
+    left: 75%;
+    z-index: 5;
+}
+
 /*____________________________________________________________________PIKACHU*/
 
 .pikachu{
     position: absolute;
-    top: 10%;
-    left: 50%;
+    top: 70%;
+    left: 45%;
     z-index: 7;
-    width: 600px;
-    height: 900px;
-    background : "url('../images/pikachu home/girando.png') left center";
-    /* background: url("../images/pikachu\ home/corriendo.png") left center; 
-    animation: corriendo-derecha 0.9s steps(7) infinite; */
-    /* background: url("../images/pikachu\ home/girando.png") left center;
-    animation: girando-derecha-frente 1s steps(8) infinite; */
+    width: 150px; /*  600:4 */
+    height: 225px;/*  900:4 */
+}
+/* animation: [animation-name] [animation-duration] [animation-timing-function]
+[animation-delay] [animation-iteration-count] [animation-direction]
+[animation-fill-mode] [animation-play-state]; */
+.Gderecha{
+    background : url('../images/pikachu home/girando.png') left center; 
+    background-size : 1200px 150px;
+    animation:  girando-derecha 1s steps(8) 1 forwards; 
+}
+.Cderecha{
+    background : url('../images/pikachu home/corriendo.png') left center;
+    background-size : 1050px 150px;
+    animation:   corriendo-derecha 0.9s steps(7) infinite forwards;
+}
+.GderechaF{
+    background : url('../images/pikachu home/girando.png') left center; 
+    background-size : 1200px 150px;
+    animation:   girando-izquierda-frente 1s steps(8) 1 forwards;
+}
+.Gizquierda{
+    background : url('../images/pikachu home/girando.png') left center; 
+    background-size : 1200px 150px;
+    animation:  girando-izquierda 1s steps(8) 1 forwards; 
+}
+.Cizquierda{
+    background : url('../images/pikachu home/corriendo.png') left center;
+    background-size : 1050px 150px;
+    animation:   corriendo-izquierda 0.9s steps(7) infinite forwards;
+}
+.GizquierdaF{
+    background : url('../images/pikachu home/girando.png') left center; 
+    background-size : 1200px 150px;
+    animation:   girando-izquierda-frente 1s steps(8) 1 forwards;
 }
 /*animaciones en simultaneo separadas por coma*/
 
 @keyframes corriendo-izquierda {
-    0%{ background-position: 0px;}
-    100% {background-position: -4200px;}
+    0%{ background : url('../images/pikachu home/corriendo.png') left center;
+        background-position: 0px;
+        background-size : 1050px 150px;}
+        100% {background-position: -1200px;}
+    100% {background-position: -1050px;}
 }
 
 @keyframes corriendo-derecha {
-    0%{ background-position: 0px; transform: scaleX(-1);}
-    100% {background-position: -4200px; transform: scaleX(-1);}
+    0%{ background-position: 0px; transform: scaleX(-1);
+       }
+    100% {background-position: -1050px; transform: scaleX(-1);}
 }
 
 @keyframes girando-izquierda {
-    0%{ background-position: 0px;}
-    100% {background-position: -4800px;}
+    0%{ background : url('../images/pikachu home/girando.png') left center;
+        background-position: 0px;
+        background-size : 1200px 150px;}
 }
 
 @keyframes girando-izquierda-frente {
-    0%{ background-position: -4800px;}
+    0%{ background : url('../images/pikachu home/girando.png') left center; 
+        background-position: -1200px;
+        background-size : 1200px 150px;}
     100% {background-position: 0px;}
 }
 
 @keyframes girando-derecha {
-    0%{ background-position: 0px; transform: scaleX(-1);}
-    100% {background-position: -4800px; transform: scaleX(-1);}
+    0%{ 
+        background-position: 0px; transform: scaleX(-1);
+       }
+    100% {background-position: -1200px; transform: scaleX(-1);}
 }
 
 @keyframes girando-derecha-frente {
-    0%{ background-position: -4800px; transform: scaleX(-1);}
+    0%{
+        background-position: -1200px; transform: scaleX(-1);
+       }
     100% {background-position: 0px; transform: scaleX(-1);}
 }
 /*_____________________________________________________________________CUBO*/      

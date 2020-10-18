@@ -3,98 +3,98 @@ let coordXa = 0;
 let coordXb = 0;
 let pika =  document.querySelector(".pikachu");
 
-function pikaDerecha () {
-    
-let pikaGiraDerecha = pika.animate([
-    // keyframes
-    {   background : "url('./images/pikachu home/girando.png') left center",
-        backgroundPosition : "0px",
-        transform: "scaleX(-1)",
-    //   transform: "translate(0px)"
-    }, 
-    {
-        backgroundPosition : "-4800px", 
-        transform: "scaleX(-1)"
-    }
-  ], { 
-    // timing options
-        duration: 1000, 
-        iterations: 1,
-        easing: 'steps(8)',//, jump-start)',
-        fill:'forwards' //FIXME:
 
-  }).finished.then(() => {
-
+function pDerecha(actual, posicion){
+    pika.classList.remove("GizquierdaF");
+    pika.classList.remove("Cizquierda");
+    pika.classList.remove("GderechaF");
+    pika.classList.add("Gderecha");
+    setTimeout(function () {
+        
         let pikaCorreDerecha = pika.animate([
             // keyframes
-            {   background : "url('./images/pikachu home/corriendo.png') left center",
-                backgroundPosition : "0px", 
-                transform : "scaleX(-1)",
-            //   transform: `translate(${coordXb - coordXa}px)` 
-            },
-            {
-                backgroundPosition : "-4200px",
-                transform : "scaleX(-1)"
-            }
-        ], { 
+            {   left: `${actual}px`, transform : /* "translate(0) */ "scaleX(-1)" }, //porque se sobreescribe el transform
+            {   left: `${posicion}px`,  transform : /* `translate(${posicion}px) */ `scaleX(-1)` }
+            ], { 
             // timing options
-            duration: 900, 
-            iterations: 1, //Infinity,
-            easing: 'steps(7)',//, jump-start)',
-            //delay: pikaGiraDerecha.effect.getComputedTiming().duration,
-            fill:'forwards' //FIXME:
-        })
-  });  
+                duration: 1000,
+                iterations: 1,
+                // delay : 900,//por animacion inicial
+                // easing: "linear",
+                fill:'forwards' 
+        });
+        pika.classList.remove("Gderecha");
+        pika.classList.add("Cderecha");
+        pikaCorreDerecha.finished.then(() => { 
+            // pika.style.left = pika.getBoundingClientRect().left + (posicion - pika.getBoundingClientRect().left);
+            pika.classList.remove("Cderecha");
+            pika.classList.add("GderechaF");
+        });
+    }, 1000);
+}
+function pIzquierda(actual, posicion){
+    pika.classList.remove("GderechaF");
+    pika.classList.remove("Cderecha");
+    pika.classList.remove("GizquierdaF");
+    pika.classList.add("Gizquierda");
+    setTimeout(function () {
+        pika.classList.remove("Gizquierda");
+        pika.classList.add("Cizquierda");
+        let pikaCorreDerecha = pika.animate([
+            // keyframes
+            {   left: `${actual}px`, /* transform : "translate(0)"  */}, 
+            {   left: `${posicion}px`  /* transform : `translate(${posicion}px)` */ }
+            ], { 
+            // timing options
+                duration: 1000,
+                iterations: 1,
+                // delay : 1000,//por animacion inicial
+                // easing: "linear",
+                fill:'forwards' 
+        });
+        
+        pikaCorreDerecha.finished.then(() => { 
+            // pika.style.left = pika.getBoundingClientRect().left + (posicion - pika.getBoundingClientRect().left);
+            pika.classList.remove("Cizquierda");
+            pika.classList.add("GizquierdaF");
+        });
+    }, 1000);
+}
+
+function limpiarAnimacionPika(){
+    pika.getAnimations().forEach(
+        animation => animation.pause() //para que no se sature la memoria
+    );
 }
 
 card.onmouseover = () => {
     document.onmousemove = (e) => {
- 
+        
+        let posActual = pika.getBoundingClientRect().left;
+        console.log(posActual);
         if(coordXa == 0) {coordXa = e.screenX}
         coordXb = e.screenX;
 
         if(coordXa < coordXb){
             //animacion a la derecha
-            pikaDerecha();
-
-
+            pDerecha(posActual, posActual +100);
         }else if(coordXa >= coordXb){
             //animacion a la izquierda
-
+            pIzquierda(posActual, posActual -100);
         }
         coordXa = coordXb;
-
+        // limpiarAnimacionPika();
 
         if (  (e.screenX > (screen.width/2 +50)) )  { 
             document.querySelector(".edificios-derecha").style.transform = `rotateY(${-38}deg) `;
-            document.querySelector(".edificios-izquierda").style.transform = `rotateY(${-0.7}deg) `; //TODO: revisar
+            document.querySelector(".edificios-izquierda").style.transform = `rotateY(${-0.7}deg) `; 
         } else if ( (e.screenX < (screen.width/2 -50)) ) { 
-            document.querySelector(".edificios-derecha").style.transform = `rotateY(${-0.7}deg) `; //TODO: revisar
+            document.querySelector(".edificios-derecha").style.transform = `rotateY(${-0.7}deg) `; 
             document.querySelector(".edificios-izquierda").style.transform = `rotateY(${-38}deg) `;
-         }  // else {
-        //     document.querySelector(".edificios-derecha").style.transform = `rotateY(${0}deg) `;
-        //     document.querySelector(".edificios-izquierda").style.transform = `rotateY(${0}deg) `;
-        // } 
-
-       
-        // if (e.screenX > (screen.width/2)){//izquierdo
-        //     let distancia = (screen.width/2) - e.screenX;
-        //     let porcentaje = (distancia *100)/ screen.width;
-        //     let grados = (porcentaje/100) * 90; //de la mitad hacia X lado de la pantalla equivale al 90grados
-        //     let antigrados = Math.cos((180 - grados) *(Math. PI / 180));
-        //     console.log(grados,antigrados);
-            
-        //     document.querySelector(".edificios-derecha").style.transform = `rotateY(${grados}deg) `;
-        //     document.querySelector(".edificios-izquierda").style.transform = `rotateY(${antigrados/(Math. PI / 180)}deg) `;
-        // } else if (e.screenX < (screen.width/2)){ //derecho
-        //     let distancia = e.screenX - (screen.width/2);
-        //     let porcentaje = (distancia *100)/ screen.width;
-        //     let grados = (porcentaje/100) * 90; //de la mitad hacia X lado de la pantalla equivale al 90grados
-        //     let antigrados = Math.cos((180 - grados) *(Math. PI / 180));//convierto a radianes
-            
-        //     document.querySelector(".edificios-izquierda").style.transform = `rotateY(${grados}deg) `; 
-        //     document.querySelector(".edificios-derecha").style.transform = `rotateY(${antigrados/(Math. PI / 180)}deg) `; //convierto a grados de nuevo
-        // }
-
+         } 
     }
+}
+
+document.querySelectorAll(".cartel").onmouseover = () => {
+    document.querySelector(".cartel").style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de";
 }
