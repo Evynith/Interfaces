@@ -197,7 +197,7 @@
 .GderechaF{
     background : url('../images/pikachu home/girando.png') left center; 
     background-size : 1200px 150px;
-    animation:   girando-izquierda-frente 1s steps(8) 1 forwards;
+    animation:   girando-derecha-frente 1s steps(8) 1 forwards;
 }
 .Gizquierda{
     background : url('../images/pikachu home/girando.png') left center; 
@@ -217,44 +217,39 @@
 /*animaciones en simultaneo separadas por coma*/
 
 @keyframes corriendo-izquierda {
-    0%{ background : url('../images/pikachu home/corriendo.png') left center;
+    from{ background : url('../images/pikachu home/corriendo.png') left center;
         background-position: 0px;
         background-size : 1050px 150px;}
-        100% {background-position: -1200px;}
-    100% {background-position: -1050px;}
+    to {background-position: -1050px;}
 }
 
 @keyframes corriendo-derecha {
-    0%{ background-position: 0px; transform: scaleX(-1);
-       }
-    100% {background-position: -1050px; transform: scaleX(-1);}
+    from{ background-position: 0px; transform: scaleX(-1);}
+    to {background-position: -1050px; transform: scaleX(-1);}
 }
 
 @keyframes girando-izquierda {
-    0%{ background : url('../images/pikachu home/girando.png') left center;
+    from{ background : url('../images/pikachu home/girando.png') left center;
         background-position: 0px;
         background-size : 1200px 150px;}
+    to {background-position: -1200px;}
 }
 
 @keyframes girando-izquierda-frente {
-    0%{ background : url('../images/pikachu home/girando.png') left center; 
+    from{ background : url('../images/pikachu home/girando.png') left center; 
         background-position: -1200px;
         background-size : 1200px 150px;}
-    100% {background-position: 0px;}
+    to {background-position: 0px;}
 }
 
 @keyframes girando-derecha {
-    0%{ 
-        background-position: 0px; transform: scaleX(-1);
-       }
-    100% {background-position: -1200px; transform: scaleX(-1);}
+    from{ background-position: 0px; transform: scaleX(-1);}
+    to {background-position: -1200px; transform: scaleX(-1);}
 }
 
 @keyframes girando-derecha-frente {
-    0%{
-        background-position: -1200px; transform: scaleX(-1);
-       }
-    100% {background-position: 0px; transform: scaleX(-1);}
+    from{  background-position: -1200px; transform: scaleX(-1);}
+    to {background-position: 0px; transform: scaleX(-1);}
 }
 /*_____________________________________________________________________CUBO*/      
 /*  
