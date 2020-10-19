@@ -36,7 +36,7 @@
 
 .presentacion-hero{
     position: relative;
-    background-color: rgb(27, 32, 50);
+    background-color: black;/* rgb(27, 32, 50); */
     top: 0;
     left: 0;
     height: 100vh;
@@ -47,13 +47,13 @@
 .fondo{
     position: absolute;
     z-index: 1;
-    background-color: rgb(27, 32, 50);
+    background-color: black;/* rgb(27, 32, 50); */
     top: 30%;
     left: 0;
     height: 70%;
 }
 
-.calle{
+/* .calle{
     position: absolute;
     top: 0;
     left: 0;
@@ -64,7 +64,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 60%;
-}
+} */
 
 /* .edificios-fondo{
     position: absolute;
@@ -86,19 +86,43 @@
     z-index: 6;
 }
 
-.edificios-medio{
+/* .edificios-medio{
     position: absolute;
     top: -30%;
     left: -25%;
     height: 140%;
     width: 140%;
     z-index: 4;
-    background: url("../images/fondo/edificios-medio.png");
+    background: url("../images/fondo/edificios-medioV2.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: translateZ(100px);
     transform-style: preserve-3d;
     background-position-y: 50%;
+} */
+
+.edificios-medio{
+    position: absolute;
+    top:  45%;
+    left: 40%;
+    height: 50%;
+    width: 50%;
+    z-index: 4;
+    background: url("../images/fondo/paredV2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+}
+
+@keyframes derEd {
+    from{ left : 29%}
+    to {left: 40%}
+}
+@keyframes izqEd {
+    from{ left: 40%}
+    to {left : 29%}
 }
 
 .edificios-izquierda{
@@ -108,14 +132,14 @@
     height: 130%;
     width: 130%;
     z-index: 5;
-    background: url("../images/fondo/edificios-izquierda.png");
+    background: url("../images/fondo/edificios-izquierdaV2.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: translateZ(100px);
     transform-style: preserve-3d;
     background-position-y: 50%;
     transform-origin: 0 50%;
-    transition: transform 1s;
+    transition: transform 1s; /* para que tarde en moverse*/
 }
 
 .edificios-derecha{
@@ -125,7 +149,7 @@
     height: 130%;
     width: 130%;
     z-index: 6;
-    background: url("../images/fondo/edificios-derecha.png");
+    background: url("../images/fondo/edificios-derechaV2.png");
     background-repeat: no-repeat;
     background-size: cover;
     transform: translateZ(100px);
@@ -175,80 +199,74 @@
 
 .pikachu{
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 45%;
     z-index: 7;
-    width: 150px; /*  600:4 */
-    height: 225px;/*  900:4 */
+    width: 300px; /*  600:2 */
+    height: 450px;/*  900:2 */
 }
 /* animation: [animation-name] [animation-duration] [animation-timing-function]
 [animation-delay] [animation-iteration-count] [animation-direction]
 [animation-fill-mode] [animation-play-state]; */
 .Gderecha{
     background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 1200px 150px;
+    background-size : 2400px 450px; /* 300*8 y alto*/
     animation:  girando-derecha 1s steps(8) 1 forwards; 
 }
 .Cderecha{
     background : url('../images/pikachu home/corriendo.png') left center;
-    background-size : 1050px 150px;
+    background-size : 2100px 450px;
     animation:   corriendo-derecha 0.9s steps(7) infinite forwards;
 }
 .GderechaF{
     background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 1200px 150px;
+    background-size :2400px 450px;
     animation:   girando-derecha-frente 1s steps(8) 1 forwards;
 }
 .Gizquierda{
     background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 1200px 150px;
+    background-size : 2400px 450px;
     animation:  girando-izquierda 1s steps(8) 1 forwards; 
 }
 .Cizquierda{
     background : url('../images/pikachu home/corriendo.png') left center;
-    background-size : 1050px 150px;
+    background-size : 2100px 450px;
     animation:   corriendo-izquierda 0.9s steps(7) infinite forwards;
 }
 .GizquierdaF{
     background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 1200px 150px;
+    background-size : 2400px 450px;
     animation:   girando-izquierda-frente 1s steps(8) 1 forwards;
 }
 /*animaciones en simultaneo separadas por coma*/
 
 @keyframes corriendo-izquierda {
-    from{ background : url('../images/pikachu home/corriendo.png') left center;
-        background-position: 0px;
-        background-size : 1050px 150px;}
-    to {background-position: -1050px;}
+    from{ background-position: 0px;}
+    to {background-position: -2100px;}
 }
 
 @keyframes corriendo-derecha {
     from{ background-position: 0px; transform: scaleX(-1);}
-    to {background-position: -1050px; transform: scaleX(-1);}
+    to {background-position: -2100px; transform: scaleX(-1);}
 }
 
 @keyframes girando-izquierda {
-    from{ background : url('../images/pikachu home/girando.png') left center;
-        background-position: 0px;
-        background-size : 1200px 150px;}
-    to {background-position: -1200px;}
+    from{background-position: 0px;}
+    to {background-position: -2400px;}
 }
 
 @keyframes girando-izquierda-frente {
-    from{ background : url('../images/pikachu home/girando.png') left center; 
-        background-position: -1200px;
-        background-size : 1200px 150px;}
+    from{ background-position: -2400px;}
     to {background-position: 0px;}
 }
 
 @keyframes girando-derecha {
     from{ background-position: 0px; transform: scaleX(-1);}
-    to {background-position: -1200px; transform: scaleX(-1);}
+    to {background-position: -2400px; transform: scaleX(-1);}
 }
 
 @keyframes girando-derecha-frente {
-    from{  background-position: -1200px; transform: scaleX(-1);}
+    from{  background-position: -2400px; transform: scaleX(-1);}
     to {background-position: 0px; transform: scaleX(-1);}
 }
 /*_____________________________________________________________________CUBO*/      

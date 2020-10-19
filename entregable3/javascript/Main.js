@@ -4,7 +4,6 @@ let coordXb = 0;
 let pika =  document.querySelector(".pikachu");
 let corriendo = false; //controla que no quiera animarse si ya hay uno corriendo en ese mismo div
 
-
 function pDerecha(actual, posicion){
     corriendo = true;
     pika.classList.remove("GizquierdaF");
@@ -15,20 +14,17 @@ function pDerecha(actual, posicion){
         
         let pikaCorreDerecha = pika.animate([
             // keyframes
-            {   left: `${actual}px`,/*  transform :  "translate(0) scaleX(-1)" */ }, //porque se sobreescribe el transform
-            {   left: `${posicion}px`/* ,  transform :  `translate(${posicion}px) scaleX(-1)` */ }
+            {   left: `${actual}px`},
+            {   left: `${posicion}px`}
             ], { 
             // timing options
                 duration: 1000,
                 iterations: 1,
-                // delay : 900,//por animacion inicial
-                // easing: "linear",
                 fill:'forwards' 
         });
         pika.classList.remove("Gderecha");
         pika.classList.add("Cderecha");
         pikaCorreDerecha.finished.then(() => { 
-            // pika.style.left = pika.getBoundingClientRect().left + (posicion - pika.getBoundingClientRect().left);
             pika.classList.remove("Cderecha");
             pika.classList.add("GderechaF");
             setTimeout(function () { corriendo = false; }, 1000); //porque los girando duran 1s
@@ -46,19 +42,16 @@ function pIzquierda(actual, posicion){
         pika.classList.add("Cizquierda");
         let pikaCorreDerecha = pika.animate([
             // keyframes
-            {   left: `${actual}px`, /* transform : "translate(0)"  */}, 
-            {   left: `${posicion}px`  /* transform : `translate(${posicion}px)` */ }
+            {   left: `${actual}px`, }, 
+            {   left: `${posicion}px`}
             ], { 
             // timing options
                 duration: 1000,
                 iterations: 1,
-                // delay : 1000,//por animacion inicial
-                // easing: "linear",
                 fill:'forwards' 
         });
         
         pikaCorreDerecha.finished.then(() => { 
-            // pika.style.left = pika.getBoundingClientRect().left + (posicion - pika.getBoundingClientRect().left);
             pika.classList.remove("Cizquierda");
             pika.classList.add("GizquierdaF");
             setTimeout(function () { corriendo = false; }, 1000); //porque los girando duran 1s
@@ -66,44 +59,34 @@ function pIzquierda(actual, posicion){
     }, 1000);
 }
 
-// function limpiarAnimacionPika(){
-//     pika.getAnimations().forEach(
-//         animation => animation.pause() //para que no se sature la memoria
-//     );
-// }
-
 card.onmouseover = () => {
     document.onmousemove = (e) => {
-        
-        // let posActual = pika.getBoundingClientRect().left;
-        // console.log(posActual);
-        // if(coordXa == 0) {coordXa = e.screenX}
-        // coordXb = e.screenX;
 
-        // if(coordXa < coordXb){
-        //     //animacion a la derecha
-        //     console.log("derecha");
-        //     pDerecha(posActual, posActual +100);
-        // }else if(coordXa >= coordXb){
-        //     //animacion a la izquierda
-        //     console.log("izquierda");
-        //     pIzquierda(posActual, posActual -100);
-        // }
-        // coordXa = coordXb;
-        // limpiarAnimacionPika();
+        // //fondo
+        // let coordX = window.innerWidth/2;
+        let mouseX = e.clientX;
+        // let movCapa = `${((mouseX - coordX) * 0.008) +35}%`; // + = casi sigue al mouse, - = lado contrario... 25 del lugar de inicio
+        // console.log(movCapa);
+        // document.querySelector(".edificios-medio").style.left = movCapa;
 
-        if (  (e.screenX > (screen.width/2 +50)) )  { 
+        if (  (mouseX > (screen.width/2 +50)) )  { 
             document.querySelector(".edificios-derecha").style.transform = `rotateY(${-38}deg) `;
             document.querySelector(".edificios-izquierda").style.transform = `rotateY(${-0.7}deg) `;
+            document.querySelector(".edificios-medio").style.animation = "derEd 0.9s linear 1 forwards";
             if ((corriendo == false) && (Math.round(pika.getBoundingClientRect().left) != 1000)) {
                 pDerecha(200, 1000);
             };
-        } else if ( (e.screenX < (screen.width/2 -50)) ) { 
+            //TODO: cuando comienza y mueve por primera vez vaya desde pos inicial al lado correspondiente, sino hace un salto
+            //TODO: pasar a porcentaje por si se tiene otra resolucion
+            //FIXME: si justo muevo hacia el otro lado y seguia caminando hacia el lado anterior se queda ahi hasta que muev el mouse otra vez
+        } else if ( (mouseX < (screen.width/2 -50)) ) { 
             document.querySelector(".edificios-derecha").style.transform = `rotateY(${-0.7}deg) `; 
             document.querySelector(".edificios-izquierda").style.transform = `rotateY(${-38}deg) `;
+            document.querySelector(".edificios-medio").style.animation = "izqEd 0.9s linear 1 forwards";
             if ((corriendo == false) && (Math.round(pika.getBoundingClientRect().left) != 200)) {
                 pIzquierda(1000, 200)};
-         } 
+        } 
+        
     }
 }
 
