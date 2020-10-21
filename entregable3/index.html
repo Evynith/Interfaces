@@ -4,28 +4,73 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Entregable 3 - Evelyn C. Vega</title>
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<script src="https://kit.fontawesome.com/dae0c75d82.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 
-		<div id="card" class="presentacion-hero">
-			<div class="cartel trailer">
+		<!-- <div class="sticky-nav">
+			<div id="navbar">
+				<input class="check" type="checkbox">
+				<i class="fas fa-hamburger"></i>
+				<i class="fas fa-times"></i>
+				<nav>
+					<ul>
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+						<li><a href="#">Item 4</a></li>
+						<li><a href="#">Item 5</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div> -->
+
+		<div class="sticky-nav">
+			<div id="navbar">
+				<button class="btn-nav">|||</button>
+				<nav>
+					<ul>
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+						<li><a href="#">Item 4</a></li>
+						<li><a href="#">Item 5</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		
+		<div class="fondo"></div>
+
+		<div id="card" id="home" class="presentacion-hero">
+
+			<div class="cartel-peli">
+				<div class="fondo-cartel">
+					<div class="test"></div>
+				</div>
+
+				<div class="countdown-reloj cartel"></div>
+			</div>
+
+			<!-- <div class="cartel trailer">
 				<p>T</p><p>R</p><p>A</p><p>I</p><p>L</p><p>E</p><p>R</p>
 			</div>
 	
 			<div class="cartel market">
 				<p>M</p><p>A</p><p>R</p><p>K</p><p>E</p><p>T</p>
-			</div>
-			<div class="cielo"></div>
+			</div> -->
+
+			<!-- <div class="cielo"></div> -->
 			<div class="calle"></div>
-			<div class="edificios-fondo"></div>
+			<!-- <div class="edificios-fondo"></div> -->
 			<div class= "edificios-medio"></div>
 			<div class="edificios-izquierda"></div>
 			<div class="edificios-derecha"></div>
 			<div class="pikachu"></div>
 		</div>
 			
-		<div class="cartel trailer sup"></div>
-		<div class="cartel market sup"></div>
+		<!-- <div class="cartel trailer sup"></div>
+		<div class="cartel market sup"></div> -->
 
 		<!-- <div id="cube">
 			<div class="container">
@@ -35,11 +80,64 @@
 			</div>
 		</div> -->
 
-        <div class="fondo-cartel">
-			<div class="test"></div>
-        </div>
-		
-    
+		<div class="resto-pagina">
+			<div class="carrousel"></div>
+
+			<!-- <div id="countdown">
+
+				<div>10</div>
+				<div>9</div>
+				<div>8</div>
+				<div>7</div>
+				<div>6</div>
+				<div>5</div>
+				<div>4</div>
+				<div>3</div>
+				<div>2</div>
+				<div>1</div>
+			   
+			</div> -->
+
+
+			<div class="personajes">
+
+				<div class="personaje"> <!-- sino no gira bien porque cambia el area -->
+					<div class="tarjeta personaje1">
+						<div class="cara p1-lado1"></div>
+						<div class="cara p1-lado2"></div>
+					</div>
+				</div>
+
+				<div class="personaje"> <!-- sino no gira bien porque cambia el area -->
+					<div class="tarjeta personaje2">
+						<div class="cara p2-lado1"></div>
+						<div class="cara p2-lado2"></div>
+					</div>
+				</div>
+
+				<div class="personaje"> <!-- sino no gira bien porque cambia el area -->
+					<div class="tarjeta personaje2">
+						<div class="cara p3-lado1"></div>
+						<div class="cara p3-lado2"></div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="fondo-transparente invisible">
+				<form class="saludos invisible">
+					<h1>Saluda a tu artista!</h1>    
+				  <label>Nombre<input id="nombre" type="" name=""></label>
+				  <label>Correo<input id="mail" type="email" name=""></label>
+				  <label>Comentario y/o saludo<textarea id="texto"></textarea></label>
+				  <div class="btn-contenedor">
+				 
+				  <button id="btn-personaje" type="submit">Enviar!</button>
+				</form>
+			</div>
+			
+
+		</div>
 		<script type="module" src="./javascript/Main.js"></script>
 	</body>
 </html>
