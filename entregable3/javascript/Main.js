@@ -3,24 +3,10 @@
 
 //__________________________________________________________________________________________________________________________HAMBURGUESA/NAV
 
-// let checkbox = document.querySelector(".check");
-// checkbox.addEventListener( 'change', function() {
-// if(this.checked === true) {
-//     let nav = document.querySelector("nav");
-//     nav.style.display = "block";
-//     nav.classList.add("mostrar");
-// } 
-// console.log(this.checked);
-// if(this.checked === false) {
-//     nav.style.display = "none";
-// }
-// });
-
 let iconHamb = document.querySelector(".icono-hamburguer");
 let nav = document.querySelector("nav");
 
 if (iconHamb)
-    // iconHamb.onclick = () =>{
     iconHamb.onmouseover = () => {
         //estilo
         document.querySelector("#icon1").classList.add("animIc1");
@@ -28,14 +14,6 @@ if (iconHamb)
         //menu
         nav.style.display = "block";
         nav.classList.add("mostrar");
-
-        // if(nav.classList.contains("mostrar")){
-        //     nav.style.display = "none";
-        //     nav.classList.remove("mostrar");
-        // } else {
-        //     nav.style.display = "block";
-        //     nav.classList.add("mostrar");
-        // }
     }
 
 if (nav)
@@ -45,17 +23,6 @@ if (nav)
         nav.style.display = "none";
         nav.classList.remove("mostrar");
     }
-
-
-
-// iconHamb.onmouseover = () => { //TODO:
-//     document.querySelector("#icon1").classList.add("aclarar");
-//     document.querySelector("#icon2").classList.add("aclarar");
-// }
-// iconHamb.onmouseout = () => {
-//     document.querySelector("#icon1").classList.remove("aclarar");
-//     document.querySelector("#icon2").classList.remove("aclarar");
-// }
 
 //_______________________________________________________________________________________________________________________________________________________LOAD
 
@@ -124,9 +91,9 @@ function aumentarProgreso() {
 }
 
 //___________________________________________________________________________________________________________________________________________________COUNTDOWN
-let fechaEstreno = new Date("May 3, 2021 00:00:00").getTime();
+let fechaEstreno = new Date("May 10, 2021 00:00:00").getTime();
 
-// let fechaEstreno = new Date("November 3, 2020 00:08:00").getTime();
+// let fechaEstreno = new Date("November 4, 2020 00:08:00").getTime();
 
 let countReloj = document.querySelector(".countdown-reloj");
 let dia = -1;
@@ -178,9 +145,6 @@ if (countReloj) {
     }, 1000);
 
     function cambiarSector(nvoNro, sector) {
-        // sector.style.animate = "count 0.5s linear 1";
-        // sector.innerHTML = `${nvoNro}`;
-        // sector.style.animate = "count 0.5s linear 1 reverse";
 
         let animacion = [
             // keyframes
@@ -325,10 +289,6 @@ if (card)
         }
     }
 
-// document.querySelectorAll(".cartel").onmouseover = () => {
-//     document.querySelector(".cartel").style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de";
-// }
-
 //_______________________________________________________________________________________________________________________________________________________________CARROUSEL
 let carrusel = document.querySelector(".carrousel");
 
@@ -352,12 +312,6 @@ function myCarrousel() {
         }, 3000) //espera a primera animacion
 
         //FIXME: medio que vibra??
-
-        //se borraban todos los div
-        // img.addEventListener("animationend", function () {
-        //     // console.log("terminada");
-        //     img.remove();
-        // })
     }
 
     function adelantar() {
@@ -443,34 +397,6 @@ window.addEventListener("scroll", () => {
 });
 //________________________________________________________________________________________________________________________________________________________________SCROLL
 
-// function scrollMove(x, y) {
-//     // let x = window.scrollX;
-//     // let y = window.scrollY;
-//     window.onscroll = function () { window.scroll(x, y) };
-// }
-
-// let buttons = document.querySelectorAll(".section-btn");
-// buttons.forEach((button) => {
-//     button.onclick = (e) => {
-//         e.preventDefault();
-//         let target = e.currentTarget.getAttribute("href");
-
-//         // console.log(document.querySelector(target));
-//         // // document.querySelector(target).scrollIntoView({
-//         //     behavior: 'smooth'
-//         // });
-
-//         let posY = document.querySelector(target).getBoundingClientRect().y + window.scrollY;
-//         console.log(posY);
-
-//         window.scroll({
-//             top: 1000,
-//             behavior: 'smooth'
-//           });
-//     };
-// });
-
-//_________________________________________________
 let menuScroll = document.querySelector(".menu-scroll");
 
 if (menuScroll) {
@@ -511,29 +437,6 @@ if (menuScroll) {
 /************************************************************************************SALUDOS*****************************************************************************************************************/
 
 //____________________________________________________________________________________________________________________________________________________FORMULARIO
-
-// let form = document.querySelector(".saludos");
-
-// tarjeta.onclick = () => {
-//     form.classList.remove("invisible");
-//     document.querySelector(".fondo-transparente").classList.remove("invisible");
-//     form.style.animation = "aparicion-form 3s ease-out 1";
-
-// }
-
-// if(form){
-//     form.addEventListener("submit", function(e) {
-//         e.preventDefault();
-//         let nombre = document.querySelector("#nombre").value;
-//         let mail = document.querySelector("#mail").value;
-//         let texto = document.querySelector("#texto").value;
-
-//         form.classList.add("invisible");
-//         document.querySelector(".fondo-transparente").classList.add("invisible");
-//     })
-// }
-
-//ya no porque lo pase a una pagina aparte
 
 let formulario =  document.querySelector("form");
 if(formulario){
