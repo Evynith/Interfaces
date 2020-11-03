@@ -1,38 +1,66 @@
-*{
-    margin: 0;
+* {
+    margin         : 0;
     text-decoration: none;
 }
-/*________________________________________________________________________CARTEL*/
-.fondo-cartel{
-    /* background-color: black; */
-}
-.test{
-    width: 920px; /*920 dividido 2*/
-    height: 528px; /*528*/
-    background: url("../images/cartel/FramesCartel.png") left center;
-    /* background-size: contain; */
-    animation: cartel 1.5s steps(15) infinite;
-    /* animation: cartel-2 3s linear infinite; */
+
+p {
+    color: ivory;
 }
 
-/* TODO: no se quiere achicar como pikachu*/
+body {
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+    height    : 200vh;
+}
+
+section {
+    height: 100vh;
+}
+
+section div {
+    width: 100vw;
+}
+
+a {
+    z-index: 10;
+}
+
+/*________________________________________________________________________CARTEL*/
+.fondo-cartel {
+    /* background-color: black; */
+    position: absolute;
+    top     : 15%;
+}
+
+.cartel-peli {
+    position: relative;
+    width   : 100%;
+    height  : 100%;
+}
+
+.test {
+    width          : 306px;
+    /*920 dividido 2*/
+    height         : 176px;
+    /*528*/
+    background     : url("../images/cartel/FramesCartel.webp") left center;
+    background-size: 4600px 176px;
+    animation      : cartel 1.5s steps(15) infinite;
+    /* animation   : cartel-2 3s linear infinite; */
+}
 
 @keyframes cartel {
-    from{background-position: 0px;}
-    to {background-position: -13800px;} /*13800*/
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -4600px;
+    }
+
+    /*13800*/
 }
 
-@keyframes cartel-2 {
-    0%{ 
-        background: url("../images/cartel/016.png");
-    }
-    50% {
-        background: url("../images/cartel/017.png");
-    }
-    100% {
-        background: url("../images/cartel/016.png");
-    }
-}
 /*__________________________________________________________________________HEADER*/
 
 /* .cielo{
@@ -44,14 +72,14 @@
     height: 30%;
 } */
 
-.presentacion-hero{
-    position: relative;
+.presentacion-hero {
+    position           : relative;
     /* background-color: black; */
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    top                : 0;
+    left               : 0;
+    height             : 100%;
+    width              : 100%;
+    overflow           : hidden;
 }
 
 /* .calle{
@@ -81,9 +109,9 @@
     transform-style: preserve-3d;
     background-position-y: 50%;
 } */
-.edificios{
-    width: 100%;
-    height: 100%;
+.edificios {
+    width  : 100%;
+    height : 100%;
     z-index: 6;
 }
 
@@ -102,80 +130,95 @@
     background-position-y: 50%;
 } */
 
-.edificios-medio{
-    position: absolute;
-    top:  0%;
-    left: 0%;
-    height: 100%;
-    width: 100%;
-    z-index: 3;
-    background: url("../images/fondo/luz.png");
-    background-repeat: no-repeat;
-    background-size: 180% 260%;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
+.edificios-medio {
+    position             : absolute;
+    top                  : 0%;
+    left                 : 0%;
+    height               : 100%;
+    width                : 100%;
+    z-index              : 3;
+    background           : url("../images/fondo/luz.webp");
+    background-repeat    : no-repeat;
+    background-size      : 180% 260%;
+    transform            : translateZ(100px);
+    transform-style      : preserve-3d;
     background-position-y: 55%;
     background-position-x: 57%;
 }
 
 @keyframes derEd {
-    from{ left : 0%}
-    to {left: 14%}
-}
-@keyframes izqEd {
-    from{ left: 14%}
-    to {left : 0%}
+    from {
+        left: 0%
+    }
+
+    to {
+        left: 14%
+    }
 }
 
-.edificios-izquierda{
-    position: absolute;
-    top: -20%;
-    left: -15%;
-    height: 130%;
-    width: 130%;
-    z-index: 5;
-    background: url("../images/fondo/edificios-izquierdaV2.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
+@keyframes izqEd {
+    from {
+        left: 14%
+    }
+
+    to {
+        left: 0%
+    }
+}
+
+.edificios-izquierda {
+    position             : absolute;
+    top                  : -20%;
+    left                 : -15%;
+    height               : 130%;
+    width                : 130%;
+    z-index              : 5;
+    background           : url("../images/fondo/edificios-izquierdaV2.webp");
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    transform            : translateZ(100px);
+    transform-style      : preserve-3d;
     background-position-y: 50%;
-    transform-origin: 0 50%;
-    transition: transform 1s; /* para que tarde en moverse*/
+    transform-origin     : 0 50%;
+    transition           : transform 1s;
+    /* para que tarde en moverse*/
+    pointer-events       : none;
 }
 
 /* TODO: haz de luz en la luminaria 
 */
 
-.edificios-derecha{
-    position: absolute;
-    top: -23%;
-    left: -20%;
-    height: 130%;
-    width: 130%;
-    z-index: 6;
-    background: url("../images/fondo/edificios-derechaV2.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
+.edificios-derecha {
+    position             : absolute;
+    top                  : -23%;
+    left                 : -20%;
+    height               : 130%;
+    width                : 130%;
+    z-index              : 6;
+    background           : url("../images/fondo/edificios-derechaV2.webp");
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    transform            : translateZ(100px);
+    transform-style      : preserve-3d;
     background-position-y: 50%;
-    transform-origin: 100% 50%;
-    transition: transform 1s;
+    transform-origin     : 100% 50%;
+    transition           : transform 1s;
+    pointer-events       : none;
 }
+
 /*_______________________________________________________________BOTONES HOME*/
 
-.cartel{
+.cartel {
     /* display: flex;
     flex-direction: row; */
     /* height: 5%;
     width: 60%; */
-    font-size: 2rem;
+    font-size                : 2rem;
     /* offset-x | offset-y | blur-radius | color */
-    text-shadow: 0 0 10px #ff00de, 0 0 12px #ff00de;
-    -webkit-text-fill-color: #F4ECFF;
-    -webkit-text-stroke-color:#C546F7;
-    -webkit-text-stroke-width:0.2px;
+    text-shadow              : 0 0 10px #ff00de, 0 0 12px #ff00de;
+    -webkit-text-fill-color  : #F4ECFF;
+    -webkit-text-stroke-color: #C546F7;
+    -webkit-text-stroke-width: 0.2px;
 }
 
 /* .cartel:hover{
@@ -202,117 +245,170 @@
 
 /*____________________________________________________________________PIKACHU*/
 
-.pikachu{
+.pikachu {
     position: absolute;
-    top: 50%;
-    left: 45%;
-    z-index: 7;
-    width: 300px; /*  600:2 */
-    height: 450px;/*  900:2 */
+    bottom  : -131px;
+    /*espacio en blanco de la propia imagen de pikachu*/
+    left    : 45%;
+    z-index : 8;
+    width   : 300px;
+    /*  600 :2 */
+    height  : 450px;
+    /*  900 :2 */
 }
+
 /* animation: [animation-name] [animation-duration] [animation-timing-function]
 [animation-delay] [animation-iteration-count] [animation-direction]
 [animation-fill-mode] [animation-play-state]; */
-.Gderecha{
-    background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 2400px 450px; /* 300*8 y alto*/
-    animation:  girando-derecha 1s steps(8) 1 forwards; 
+.Gderecha {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    /* 300*8 y alto*/
+    animation      : girando-derecha 1s steps(8) 1 forwards;
 }
-.Cderecha{
-    background : url('../images/pikachu home/corriendo.png') left center;
-    background-size : 2100px 450px;
-    animation:   corriendo-derecha 0.9s steps(7) infinite forwards;
+
+.Cderecha {
+    background     : url('../images/pikachu home/corriendo.webp') left center;
+    background-size: 2100px 450px;
+    animation      : corriendo-derecha 0.9s steps(7) infinite forwards;
 }
-.GderechaF{
-    background : url('../images/pikachu home/girando.png') left center; 
-    background-size :2400px 450px;
-    animation:   girando-derecha-frente 1s steps(8) 1 forwards;
+
+.GderechaF {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    animation      : girando-derecha-frente 1s steps(8) 1 forwards;
 }
-.Gizquierda{
-    background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 2400px 450px;
-    animation:  girando-izquierda 1s steps(8) 1 forwards; 
+
+.Gizquierda {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    animation      : girando-izquierda 1s steps(8) 1 forwards;
 }
-.Cizquierda{
-    background : url('../images/pikachu home/corriendo.png') left center;
-    background-size : 2100px 450px;
-    animation:   corriendo-izquierda 0.9s steps(7) infinite forwards;
+
+.Cizquierda {
+    background     : url('../images/pikachu home/corriendo.webp') left center;
+    background-size: 2100px 450px;
+    animation      : corriendo-izquierda 0.9s steps(7) infinite forwards;
 }
-.GizquierdaF{
-    background : url('../images/pikachu home/girando.png') left center; 
-    background-size : 2400px 450px;
-    animation:   girando-izquierda-frente 1s steps(8) 1 forwards;
+
+.GizquierdaF {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    animation      : girando-izquierda-frente 1s steps(8) 1 forwards;
 }
+
 /*animaciones en simultaneo separadas por coma*/
 
 @keyframes corriendo-izquierda {
-    from{ background-position: 0px;}
-    to {background-position: -2100px;}
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -2100px;
+    }
 }
 
 @keyframes corriendo-derecha {
-    from{ background-position: 0px; transform: scaleX(-1);}
-    to {background-position: -2100px; transform: scaleX(-1);}
+    from {
+        background-position: 0px;
+        transform          : scaleX(-1);
+    }
+
+    to {
+        background-position: -2100px;
+        transform          : scaleX(-1);
+    }
 }
 
 @keyframes girando-izquierda {
-    from{background-position: 0px;}
-    to {background-position: -2400px;}
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -2400px;
+    }
 }
 
 @keyframes girando-izquierda-frente {
-    from{ background-position: -2400px;}
-    to {background-position: 0px;}
+    from {
+        background-position: -2400px;
+    }
+
+    to {
+        background-position: 0px;
+    }
 }
 
 @keyframes girando-derecha {
-    from{ background-position: 0px; transform: scaleX(-1);}
-    to {background-position: -2400px; transform: scaleX(-1);}
+    from {
+        background-position: 0px;
+        transform          : scaleX(-1);
+    }
+
+    to {
+        background-position: -2400px;
+        transform          : scaleX(-1);
+    }
 }
 
 @keyframes girando-derecha-frente {
-    from{  background-position: -2400px; transform: scaleX(-1);}
-    to {background-position: 0px; transform: scaleX(-1);}
-}
-/*__________________________________________________________________PARALLAX*/      
+    from {
+        background-position: -2400px;
+        transform          : scaleX(-1);
+    }
 
-.fondo{
-    position: absolute;
-    z-index: 0;
-    background: url("../images/fondo/paredSola.png");
-    background-repeat: repeat;
-    background-size: 600px 325px;
+    to {
+        background-position: 0px;
+        transform          : scaleX(-1);
+    }
+}
+
+/*__________________________________________________________________PARALLAX*/
+
+.fondo {
+    position           : absolute;
+    z-index            : 0;
+    background         : url("../images/fondo/paredSola.webp");
+    background-repeat  : repeat;
+    background-size    : 600px 325px;
     /* background-color: black; */
-    /* top: 0;
-    left: 0; */
-    height: 100vh;
-    width: 100vw;
+    /* top             : 0;
+    left               : 0; */
+    height             : 100vh;
+    width              : 100vw;
 }
 
-.resto-pagina{
-    z-index: 1;
-    width: 100%;
-    height: 300vh; /*equivlente a tres pantallas*/
+.resto-pagina {
+    z-index   : 1;
+    width     : 100%;
+    /* height : 300vh; */
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.425));
 }
 
 /*_____________________________________________________________________CARROUSEL*/
-.carrousel{
-    position: absolute;
-    border: 10px solid hotpink;
-    overflow: hidden;
-    width: 40vw;
-    height: 40vh;
-    left: 40%;
-    z-index: 3;
+.carrousel {
+    transition                : transform 1s;
+    transition-timing-function: linear;
+    position                  : absolute;
+    /* border                 : 10px solid hotpink; */
+    transform                 : rotateX(90deg);
+    overflow                  : hidden;
+    width                     : 60vw;
+    height                    : 50vh;
+    left                      : 20%;
+    z-index                   : 3;
+    box-shadow                : 0 0 10px #ff00de, 0 0 12px #ff00de;
 }
-.carrousel div{
-    left : 100%;
-    border: 10px solid rgb(33, 254, 48);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 4;
+
+.carrousel div {
+    left     : 100%;
+    /* border: 10px solid rgb(33, 254, 48); */
+    position : absolute;
+    width    : 100%;
+    height   : 100%;
+    z-index  : 4;
 }
 
 /* .imagen1{
@@ -331,14 +427,33 @@
 
 
 @keyframes carrouselElemA {
-    from {left : 100% }
-    to { left: 0% }
-}
-@keyframes carrouselElemB {
-    from {left: 0% }
-    to {left : -100% }
+    from {
+        left: 100%
+    }
+
+    to {
+        left: 0%
+    }
 }
 
+@keyframes carrouselElemB {
+    from {
+        left: 0%
+    }
+
+    to {
+        left: -100%
+    }
+}
+
+/* @keyframes carrouselElemC {
+    from {left : -100% }
+    to { left: 0% }
+}
+@keyframes carrouselElemD {
+    from {left: 0% }
+    to {left : 100% } 
+}*/
 /* @keyframes carrouselElemA {
     from {transform : translate(); }
     to { transform : translate(-100%, 0%); }
@@ -348,409 +463,818 @@
     to { transform : translate(-100%, 0%); }
 } */
 /*____________________________________________________________________________COUNTDOWN*/
-@keyframes switch{
+@keyframes switch {
 
-    0%{
-     opacity: 0;
-     filter: blur(20px);
-     transform: scale(4);
+    0% {
+        opacity  : 0;
+        filter   : blur(20px);
+        transform: scale(4);
     }
- 
-    3%{
-     opacity: 1;
-     filter: blur(0);
-     transform: scale(1);
+
+    3% {
+        opacity  : 1;
+        filter   : blur(0);
+        transform: scale(1);
     }
- 
-    10%{
-     opacity: 1;
-     filter: blur(0);
-     transform: scale(0.9);
+
+    10% {
+        opacity  : 1;
+        filter   : blur(0);
+        transform: scale(0.9);
     }
- 
-    13%{
-     opacity: 0;
-     filter: blur(10px);
-     transform: scale(0.1);
+
+    13% {
+        opacity  : 0;
+        filter   : blur(10px);
+        transform: scale(0.1);
     }
- 
-    80%{
-     opacity: 0;
-    }
-    100%{
-     opacity: 0;
-    }
-}
 
-#countdown{
-    font-size: 24vw;
-    z-index: 3;
-    margin: 20vh auto;
-    height: 20vh;
-    text-transform: uppercase;  
-   }
- 
-   #countdown div{
-    position: absolute;
-    margin: 2vh 0;
-    opacity: 0;
-    left: 10vw;
-    width: 80vw;
-    animation: switch 10s linear 1;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
-    color: mediumvioletred;
-}
- 
-   #countdown div:nth-child(1){
-    animation-delay: 3s;
-   }
- 
-   #countdown div:nth-child(2){
-    animation-delay: 4s;
-   }
- 
-   #countdown div:nth-child(3){
-    animation-delay: 5s;
-   }
- 
-   #countdown div:nth-child(4){
-    animation-delay: 6s;
-   }
- 
-   #countdown div:nth-child(5){
-    animation-delay: 7s;
-   }
- 
-   #countdown div:nth-child(6){
-    animation-delay: 8s;
-   }
- 
-   #countdown div:nth-child(7){
-    animation-delay: 9s;
-   }
- 
-   #countdown div:nth-child(8){
-    animation-delay: 10s;
-   }
- 
-   #countdown div:nth-child(9){
-    animation-delay: 11s;
-   }
- 
-   #countdown div:nth-child(10){
-    animation-delay: 12s;
-   }
-   /*TODO: counter-increment igual sirve? */
-
-   .countdown-reloj{
-       z-index: 5;
-        /* writing-mode: vertical-lr;
-        transform: rotate(180deg); */
-   }
-
-   .cartel-peli{
-       z-index: 4;
-       position: absolute;
-       display: flex;
-       flex-direction:column;
-        top: -5%;
-        left: 35%;
-   }
-
-   /*_______________________________________________________________________CARDS PERSONAJES*/
-   .personaje{
-    width: 200px;
-    height: 260px;
-    border: 1px solid #CCC;
-    margin: 40px 0;
-    perspective: 600px; /*hacia el fondo*/
-    z-index: 7;
-  }
-  
-  .tarjeta {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transform-origin: center right;
-    transition: transform 1s;
-    z-index: 6;
-  }
-  
-  .tarjeta:hover{ /*por clase desde js FIXME:*/
-    transform: translateX(-100%) rotateY(-180deg);
-  }
-  
-  .cara {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    line-height: 260px;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    backface-visibility: hidden;
-  }
-  
-  .p1-lado1 {
-    background : url('../images/personajes/pika1.jpg') left center; 
-    background-size: contain;
-  }
-  
-  .p1-lado2 {
-    background : url('../images/personajes/pika2.webp') left center; 
-    background-size: contain;
-    transform: rotateY(180deg);
-  }
-
-  .p2-lado1 {
-    background : url('../images/personajes/lucy1.png') left center; 
-    background-size: contain;
-  }
-  
-  .p2-lado2 {
-    background : url('../images/personajes/lucy2.png') left center; 
-    background-size: contain;
-    transform: rotateY(180deg);
-  }
-  .p3-lado1 {
-    background : url('../images/personajes/tim1.png') left center; 
-    background-size: contain;
-  }
-  
-  .p3-lado2 {
-    background : url('../images/personajes/tim2.webp') left center; 
-    background-size: contain;
-    transform: rotateY(180deg);
-  }
-  /*TODO: demas personajes */
-
-  /*_______________________________________________________*/
-
-  @keyframes aparicion-form{
-
-        0%{
+    80% {
         opacity: 0;
-        transform: scale(0);
-        }
-    
-        30%{
-        opacity: 1;
-        transform: scale(1);
-        }
-    
-        60%{
-        opacity: 1;
-        transform: scale(2);
-        }
-    
-        100%{
-        opacity: 1;
-        transform: scale(1);
-        }
-
-
     }
 
-.fondo-transparente{
-    z-index: 9;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes count {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+#countdown {
+    position      : fixed;
+    left          : 30%;
+    top           : 0;
+    font-size     : 24vw;
+    z-index       : 10;
+    margin        : 20vh auto;
+    height        : 20vh;
+    text-transform: uppercase;
+}
+
+#countdown div {
+    position   : absolute;
+    margin     : 2vh 0;
+    opacity    : 0;
+    left       : 10vw;
+    width      : 80vw;
+    animation  : switch 10s linear 1;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
+    color      : mediumvioletred;
+}
+
+#countdown div:nth-child(1) {
+    animation-delay: 3s;
+}
+
+#countdown div:nth-child(2) {
+    animation-delay: 4s;
+}
+
+#countdown div:nth-child(3) {
+    animation-delay: 5s;
+}
+
+#countdown div:nth-child(4) {
+    animation-delay: 6s;
+}
+
+#countdown div:nth-child(5) {
+    animation-delay: 7s;
+}
+
+#countdown div:nth-child(6) {
+    animation-delay: 8s;
+}
+
+#countdown div:nth-child(7) {
+    animation-delay: 9s;
+}
+
+#countdown div:nth-child(8) {
+    animation-delay: 10s;
+}
+
+#countdown div:nth-child(9) {
+    animation-delay: 11s;
+}
+
+#countdown div:nth-child(10) {
+    animation-delay: 12s;
+}
+
+/*TODO: counter-increment igual sirve? */
+
+.countdown-reloj {
+    z-index        : 5;
+    display        : flex;
+    position       : absolute;
+    left           : 40%;
+    flex-direction : row;
+    /* writing-mode: vertical-lr;
+        transform  : rotate(180deg); */
+}
+
+.countdown-reloj p {
+    font-size: xx-large;
+}
+
+.cartel-peli {
+    z-index       : 4;
+    position      : absolute;
+    display       : flex;
+    flex-direction: column;
+    top           : -5%;
+    left          : 35%;
+}
+
+/*_______________________________________________________________________CARDS PERSONAJES*/
+.personajes div {
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-around;
+}
+
+.personaje {
+    transition                : height 1s, visibility 1s;
+    transition-timing-function: linear;
+    width                     : 200px;
+    height                    : 0px;
+    /* 260px */
+    border                    : 1px solid #CCC;
+    margin                    : 40px 0;
+    perspective               : 600px;
+    /*hacia el fondo*/
+    z-index                   : 7;
+}
+
+.tarjeta {
+    box-shadow      : 0 0 10px #ff00de, 0 0 12px #ff00de;
+    pointer-events  : none;
+    width           : 100%;
+    height          : 100%;
+    position        : relative;
+    transform-style : preserve-3d;
+    transform-origin: center right;
+    transition      : transform 1s;
+    z-index         : 6;
+}
+
+/*   
+  .tarjeta:hover{ 
+    transform: translateX(-100%) rotateY(-180deg);
+  } */
+
+.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+.cara {
+    position           : absolute;
+    width              : 100%;
+    height             : 100%;
+    line-height        : 260px;
+    color              : white;
+    text-align         : center;
+    font-weight        : bold;
+    font-size          : 40px;
+    backface-visibility: hidden;
+}
+
+.p1-lado1 {
+    background     : url('../images/personajes/pika1.jpg') left center;
+    background-size: cover;
+    /*contain;*/
+}
+
+.p1-lado2 {
+    background     : url('../images/personajes/pika2.webp') left center;
+    background-size: cover;
+    /*contain;*/
+    transform      : rotateY(180deg);
+}
+
+.p2-lado1 {
+    background     : url('../images/personajes/lucy1.png') left center;
+    background-size: cover;
+    /*contain;*/
+}
+
+.p2-lado2 {
+    background     : url('../images/personajes/lucy2.png') left center;
+    background-size: cover;
+    /*contain;*/
+    transform      : rotateY(180deg);
+}
+
+.p3-lado1 {
+    background     : url('../images/personajes/tim1.png') left center;
+    background-size: cover;
+    /*contain;*/
+}
+
+.p3-lado2 {
+    background     : url('../images/personajes/tim2.webp') left center;
+    background-size: cover;
+    /*contain;*/
+    transform      : rotateY(180deg);
+}
+
+.aparece {
+    animation: apareceDiv 3s linear 1 forwards;
+}
+
+@keyframes apareceDiv {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 260px;
+    }
+}
+
+/*_______________________________________________________FORM*/
+
+@keyframes aparicion-form {
+
+    0% {
+        opacity  : 0;
+        transform: scale(0);
+    }
+
+    30% {
+        opacity  : 1;
+        transform: scale(1);
+    }
+
+    60% {
+        opacity  : 1;
+        transform: scale(2);
+    }
+
+    100% {
+        opacity  : 1;
+        transform: scale(1);
+    }
+
+
+}
+
+.fondo-transparente {
+    z-index        : 0;
+    /* position    : absolute; */
+    /* top         : 0;
+    left           : 0; */
+    overflow       : hidden;
+    display        : flex;
+    width          : 100vw;
+    height         : 90vh;
     justify-content: center;
-	align-items: center;
+    align-items    : center;
 }
 
-.saludos{
+.saludos {
     position: relative;
-    z-index: 10;
-    width: 60vw;
-    height: 60vh;
+    z-index : 0;
+    width   : 60vw;
+    height  : 60vh;
 }
-.invisible{
-    display: none;
 
+.invisible {
+    display: none;
+}
+
+/*________________________________________________BTN*/
+
+/*________________________________________________P1*/
+/* .btn-coso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:10%;
+    width: 15%;
+    background: #350345;
+    } */
+
+#btn-personaje {
+    position       : relative;
+    display        : inline-block;
+    padding        : 5px 10px;
+    color          : #fff;
+    text-decoration: none;
+    overflow       : hidden;
+    transition     : 0.2s;
+    z-index        : 9;
+}
+
+/* #btn-personaje:hover{ 
+background: #a945c7;
+box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+transition-delay: 1s;
+} */
+
+/*________________________________________________P2*/
+
+#btn-personaje span {
+    position: absolute;
+    display : block;
+}
+
+#span1 {
+    top       : 0;
+    left      : -100%;
+    width     : 100%;
+    height    : 2px;
+    background: linear-gradient(90deg, transparent, #a945c7);
+}
+
+#btn-personaje:hover #span1 {
+    left      : 100%;
+    transition: 1s;
+}
+
+#span3 {
+    bottom    : 0;
+    right     : -100%;
+    width     : 100%;
+    height    : 2px;
+    background: linear-gradient(270deg, transparent, #a945c7);
+}
+
+#btn-personaje:hover #span3 {
+    right           : 100%;
+    transition      : 1s;
+    transition-delay: 0.5s;
+}
+
+#span2 {
+    top       : -100%;
+    right     : 0;
+    width     : 2px;
+    height    : 100%;
+    background: linear-gradient(180deg, transparent, #a945c7);
+}
+
+#btn-personaje:hover #span2 {
+    top             : 100%;
+    transition      : 1s;
+    transition-delay: 0.25s;
+}
+
+#span4 {
+    bottom    : -100%;
+    left      : 0;
+    width     : 2px;
+    height    : 100%;
+    background: linear-gradient(360deg, transparent, #a945c7);
+}
+
+#btn-personaje:hover #span4 {
+    bottom          : 100%;
+    transition      : 1s;
+    transition-delay: 0.75s;
+}
+
+/*__________________________________________________P3*/
+
+input:focus,
+textarea:focus,
+#btn-personaje:active {
+    background         : #a945c7;
+    box-shadow         : 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+    /* transition-delay: 1s; */
 }
 
 
 
 /*___________________________________________________________NAV*/
 
-.sticky-nav{
-    width: 100%;
-    min-height: 55px;
+.sticky-nav {
+    width   : 100%;
+    height  : 50px;
     position: fixed;
-    z-index: 10;
+    z-index : 10;
 }
 
-.navbar{
-    overflow: hidden;
-    background: #000912;
-    position: relative; 
-    top: 0;
-    width: 100vw;
-    height: 60px;
-    padding: 10px;
+/* .btn-nav{
+    margin: 10px;
+} */
+
+.icono-hamburguer {
+    position    : relative;
+    margin-right: 3%;
+    width       : 35px;
+    height      : 35px;
+}
+
+#icon1,
+#icon2 {
+    position   : absolute;
+    left       : 45%;
+    font-size  : xx-large;
+    font-weight: bold;
+    transform  : rotate(90deg);
+}
+
+#icon1 {
+    top         : -15%;
+    /* animation: hamburguesaSup 0.5s linear 1 forwards; */
+}
+
+#icon2 {
+    top         : 15%;
+    /* animation: hamburguesaInf 0.5s linear 1 forwards; */
+}
+
+.animIc1 {
+    animation: hamburguesaSup 0.5s linear 1 forwards;
+}
+
+.animIc2 {
+    animation: hamburguesaInf 0.5s linear 1 forwards;
+}
+
+@keyframes hamburguesaSup {
+    from {
+        transform: rotate(0) translateZ(0);
     }
 
-    i{
-        margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    to {
+        transform: rotate(45deg) translateZ(0);
+    }
+}
+
+@keyframes hamburguesaInf {
+    from {
+        transform: rotate(0) translateZ(0);
     }
 
-    nav li { 
-        color: inherit;
-        display: block;
-        padding: 10px 20px;
-        border-bottom: 2px solid #000000;
-        max-width: 200px;
-        background: #000912;
-      }
+    to {
+        transform: rotate(-45deg) translateZ(0) translateY(-25%) translateX(50%);
+    }
+}
 
-      /* .check[type=checkbox] {
+@keyframes navHover {
+    from {
+        color: black;
+    }
+
+    to {
+        color: rgb(99, 99, 99);
+    }
+}
+
+#navbar {
+    overflow        : hidden;
+    width           : 100%;
+    height          : 100%;
+    background-color: rgb(242, 255, 0);
+    display         : flex;
+    flex-direction  : column;
+    align-items     : flex-end;
+    justify-content : center;
+    position        : relative;
+    top             : 0;
+}
+
+i {
+    margin        : 0;
+    padding       : 0;
+    border        : 0;
+    font-size     : 100%;
+    font          : inherit;
+    vertical-align: baseline;
+}
+
+nav li {
+    color        : inherit;
+    display      : block;
+    padding      : 10px 20px;
+    border-bottom: 2px solid #000000;
+    min-width    : 150px;
+    background   : rgb(242, 255, 0);
+}
+
+/* .check[type=checkbox] {
         transform: scale(1.3);
       } */
 
-      .check {
-        opacity: 0; 
-      }
+.check {
+    opacity: 0;
+}
 
-      .check,.fas {
-        position: absolute;  
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        left: 0;
-        top: 0;
-        width: 48px;
-        height: 48px;  
-      }
-       
-      .fas {
-        font-size: 48px;
-        pointer-events: none; /*no le hace caso al mouse asi lo toma el de abajo*/
-      }
-       
-      nav {
-        display: none;
-      }
-       
-      /* .check:checked ~ nav { 
+.check,
+.fas {
+    position  : absolute;
+    box-sizing: border-box;
+    margin    : 0;
+    padding   : 0;
+    left      : 0;
+    top       : 0;
+    width     : 48px;
+    height    : 48px;
+}
+
+.fas {
+    font-size     : 48px;
+    pointer-events: none;
+    /*no le hace caso al mouse asi lo toma el de abajo*/
+}
+
+nav {
+    float  : right;
+    display: none;
+}
+
+/* .check:checked ~ nav { 
         transition: display 5s;
         display: block;
       } */
-       
-      .check:checked ~ .fa-hamburger {/* selector de hermanos generales*/
-        display: none;
-      }
-       
-      .check:not(:checked) ~ .fa-times {
-        display: none;
-      }
 
-      /*reverse, antes de filmode*/
-
-      @keyframes aparicion-nav{
-
-        from{
-        opacity: 0;
-        display: block;
-        }
-    
-        to{
-        opacity: 1;
-        /* display: block; */
-        }
-    }
-
-    .mostrar {
-        animation : aparicion-nav 1s linear 1 forwards; 
-    }
-
-/*_______________________________________________________________BTN*/
-/* }
-.btn-contenedor{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 60px;
-    background: #1a0321;
-    font-family:consolas;
-    }
-
-.btn-personaje{
-    position: relative;
-display: inline-block;
-padding: 15px 30px;
-color: #fff;
-letter-spacing: 4px;
-text-decoration: none;
-font-size: 24px;
-    overflow: hidden;
-    transition: 0.2s;
+.check:checked~.fa-hamburger {
+    /* selector de hermanos generales*/
+    display: none;
 }
 
-#btn-personaje:hover{
-    background: #a945c7;
-    box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
-    transition-delay: 1s;
+.check:not(:checked)~.fa-times {
+    display: none;
+}
+
+/*reverse, antes de filmode*/
+
+@keyframes aparicion-nav {
+
+    from {
+        opacity: 0;
+        display: block;
     }
-   #btn-personaje span{
+
+    to {
+        opacity   : 1;
+        /* display: block; */
+    }
+}
+
+/* .aclarar{
+        animation: navHover 0.4 linear 1 forwards;
+    } */
+
+/* .icono-hamburguer:hover{
+        border: 2px solid black;
+        border-radius: 5px;
+    } */
+
+nav li:hover {
+    animation: centrar 0.9s linear 1 forwards;
+}
+
+nav li:not(:hover) {
+    animation: centrar 0.9s linear 1 reverse forwards;
+}
+
+@keyframes centrar {
+    from {
+        text-align: left;
+    }
+
+    to {
+        text-align: center;
+    }
+}
+
+.mostrar {
+    animation: aparicion-nav 1s linear 1 forwards;
+}
+
+/*______________________________________________________________________________BAR*/
+
+.loader {
+    width          : 117px;
+    /*468          :4 */
+    height         : 75px;
+    /*300          :4*/
+    z-index        : 9;
+    background     : url('../images/loader/loader.png') left center;
+    background-size: 468px 75px;
+    animation      : pika-bar 0.3s steps(4) infinite forwards;
+}
+
+@keyframes pika-bar {
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -468px;
+    }
+}
+
+.bolita-2 {
+    width           : 10px;
+    height          : 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius   : 100px;
+}
+
+.spinner-2 {
+    width  : 50px;
+    height : 50px;
+    display: grid;
+    grid-template-areas:
+        ". b1 b2 . "
+        "b8 . . b3"
+        "b7 . . b4"
+        ". b6 b5 ."
+    ;
+}
+
+.bolita-2 {
+    z-index  : 10;
+    animation: spinner-2 0.8s infinite;
+}
+
+#pos1 {
+    grid-area: b1;
+}
+
+#pos2 {
+    grid-area      : b2;
+    animation-delay: 0.1s;
+}
+
+#pos3 {
+    grid-area      : b3;
+    animation-delay: 0.2s;
+}
+
+#pos4 {
+    grid-area      : b4;
+    animation-delay: 0.3s;
+}
+
+#pos5 {
+    grid-area      : b5;
+    animation-delay: 0.4s;
+}
+
+#pos6 {
+    grid-area      : b6;
+    animation-delay: 0.5s;
+}
+
+#pos7 {
+    grid-area      : b7;
+    animation-delay: 0.6s;
+}
+
+#pos8 {
+    grid-area      : b8;
+    animation-delay: 0.7s;
+}
+
+/* #pos9 {grid-area: b1;  } */
+
+@keyframes spinner-2 {
+    from {
+        transform: scale(2);
+        opacity  : 1;
+    }
+
+    to {
+        transform: scale(0);
+        opacity  : 0;
+    }
+}
+
+.mouseHidden {
+    cursor: none;
+}
+
+#loader-div {
+    position        : absolute;
+    z-index         : 9;
+    top             : 0;
+    left            : 0;
+    background-color: rgb(4, 4, 69);
+}
+
+.pantalla-carga {
+    z-index        : 11;
+    position       : relative;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    width          : 100vw;
+    height         : 100vh;
+}
+
+.contenedor-mouse {
+    z-index       : 10;
+    position      : absolute;
+    pointer-events: none;
+    width         : 60px;
+    height        : 60px;
+}
+
+.progreso {
+    z-index       : 10;
+    pointer-events: none;
+    width         : 60%;
+    height        : 10%;
+}
+
+progress {
+    width : 80%;
+    height: 15%;
+}
+
+.load {
     position: absolute;
-    display: block;
-           }
-    #span1{
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent,#a945c7);
+    left    : 10%;
+}
+
+@keyframes pika-carga {
+    from {
+        transform: translateX();
     }
-    #btn-personaje:hover #span1{
-    left: 100%;
-    transition: 1s;
+
+    to {
+        transform: translateX(5%);
     }
-    #span3{
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent,#a945c7);
+}
+
+/*_________________________________________________________________________ACORDEON*/
+details {
+    /* la transicion siempre va en el estado inicial del div | elemento */
+    height    : auto;
+    transition: height .5s ease;
+    overflow  : hidden;
+}
+
+/* details .hijo{
+    opacity : 0;
+    transition: opacity .3s;
+}
+details[open]{
+    max-height: 500px;
+}
+details[open] .hijo{
+    opacity: 100;
+}  */
+/*FIXME: NO FUNCIONA */
+
+details[open] summary~* {
+    animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+    0% {
+        opacity    : 0;
+        margin-left: -10px
     }
-    #btn-personaje:hover #span3{
-     right: 100%;
-     transition: 1s;
-     transition-delay: 0.5s;
-     }
-     #span2{
-     top: -100%;
-     right: 0;
-     width: 2px;
-     height: 100%;
-     background: linear-gradient(180deg, transparent,#a945c7);
-     }
-     #btn-personaje:hover #span2{
-     top: 100%;
-     transition: 1s;
-     transition-delay: 0.25s;
-     }
-     #span4{
-     bottom: -100%;
-     left: 0;
-     width: 2px;
-     height: 100%;
-     background: linear-gradient(360deg, transparent,#a945c7);
-     }
-     #btn-personaje:hover #span4{
-     bottom: 100%;
-     transition: 1s;
-     transition-delay: 0.75s;
-     } */
+
+    100% {
+        opacity    : 1;
+        margin-left: 0px
+    }
+}
+
+/*______________________________________________________________________________________SCROLL*/
+
+.menu-scroll {
+    position       : fixed;
+    top            : 50%;
+    left           : 94%;
+    /* width       : 10px;
+    height         : 30px; */
+    z-index        : 12;
+    display        : flex;
+    flex-direction : column;
+    text-decoration: none;
+    list-style     : none;
+}
+
+.menu-scroll li {
+    width           : 20px;
+    height          : 20px;
+    margin          : 2px;
+    border-radius   : 100px;
+    z-index         : 13;
+    background-color: white;
+}
+
+.section-btn1,
+.section-btn2,
+.section-btn3 {
+    width  : 100%;
+    height : 100%;
+    padding: 25% 50%;
+}
