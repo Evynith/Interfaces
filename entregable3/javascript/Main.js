@@ -65,7 +65,6 @@ let divCarga = document.querySelector("#loader-div");
 
 if (divCarga) {
     document.querySelector("body").style.overflowY = "hidden";
-    document.querySelector(".sticky-nav").classList.add("invisible");
 }
 
 function ocultarLoad() {
@@ -75,7 +74,7 @@ function ocultarLoad() {
     // }
     document.querySelector(".sticky-nav").classList.remove("invisible");
 
-    let menucito = document.querySelector(".menu-scroll"); //TODO: jugar con el z-index del menucito
+    let menucito = document.querySelector(".menu-scroll"); 
     if(menucito) {menucito.classList.remove("invisible");}
 }
 
@@ -535,6 +534,17 @@ if (menuScroll) {
 // }
 
 //ya no porque lo pase a una pagina aparte
+
+let formulario =  document.querySelector("form");
+if(formulario){
+    let labels = document.querySelectorAll("label");
+    let btnForm = document.querySelector("button");
+
+    labels.forEach( elem => {
+        elem.style.animation = "aparicion-form 3s linear 3s 1 forwards";
+    })
+    btnForm.style.animation = "aparicion-form 3s linear 3s 1 forwards";
+}
 
 
 
