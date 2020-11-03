@@ -58,9 +58,6 @@ summary {
     background-repeat  : repeat;
     background-size    : 600px 325px;
     overflow-y         : scroll;
-    /* background-color: black; */
-    /* top             : 0;
-    left               : 0; */
     height             : 100vh;
     width              : 100vw;
 }
@@ -68,8 +65,6 @@ summary {
 .fondo-transparente {
     position             : fixed;
     z-index              : 1;
-    /* overflow          : hidden; */
-    /* overflow-y        : scroll; */
     display              : flex;
     width                : 100%;
     height               : 100%;
@@ -86,10 +81,6 @@ summary {
     position: fixed;
     z-index : 10;
 }
-
-/* .btn-nav{
-    margin: 10px;
-} */
 
 .icono-hamburguer {
     position    : relative;
@@ -109,12 +100,10 @@ summary {
 
 #icon1 {
     top         : -15%;
-    /* animation: hamburguesaSup 0.5s linear 1 forwards; */
 }
 
 #icon2 {
     top         : 15%;
-    /* animation: hamburguesaInf 0.5s linear 1 forwards; */
 }
 
 .animIc1 {
@@ -186,52 +175,10 @@ nav li {
     background   : rgb(242, 255, 0);
 }
 
-/* .check[type=checkbox] {
-        transform: scale(1.3);
-      } */
-
-.check {
-    opacity: 0;
-}
-
-.check,
-.fas {
-    position  : absolute;
-    box-sizing: border-box;
-    margin    : 0;
-    padding   : 0;
-    left      : 0;
-    top       : 0;
-    width     : 48px;
-    height    : 48px;
-}
-
-.fas {
-    font-size     : 48px;
-    pointer-events: none;
-    /*no le hace caso al mouse asi lo toma el de abajo*/
-}
-
 nav {
     float  : right;
     display: none;
 }
-
-/* .check:checked ~ nav { 
-        transition: display 5s;
-        display: block;
-      } */
-
-.check:checked~.fa-hamburger {
-    /* selector de hermanos generales*/
-    display: none;
-}
-
-.check:not(:checked)~.fa-times {
-    display: none;
-}
-
-/*reverse, antes de filmode*/
 
 @keyframes aparicion-nav {
 
@@ -245,15 +192,6 @@ nav {
         /* display: block; */
     }
 }
-
-/* .aclarar{
-        animation: navHover 0.4 linear 1 forwards;
-    } */
-
-/* .icono-hamburguer:hover{
-        border: 2px solid black;
-        border-radius: 5px;
-    } */
 
 nav li:hover {
     animation: centrar 0.9s linear 1 forwards;
@@ -397,8 +335,6 @@ nav li:not(:hover) {
     position       : absolute;
     left           : 40%;
     flex-direction : row;
-    /* writing-mode: vertical-lr;
-        transform  : rotate(180deg); */
 }
 
 .countdown-reloj p {
@@ -582,9 +518,6 @@ progress {
     background         : url("../images/fondo/paredSola.webp");
     background-repeat  : repeat;
     background-size    : 600px 325px;
-    /* background-color: black; */
-    /* top             : 0;
-    left               : 0; */
     height             : 100vh;
     width              : 100vw;
 }
@@ -601,8 +534,6 @@ progress {
     position       : fixed;
     top            : 50%;
     left           : 94%;
-    /* width       : 10px;
-    height         : 30px; */
     z-index        : 12;
     display        : flex;
     flex-direction : column;
@@ -629,7 +560,6 @@ progress {
 
 /*________________________________________________________________________________________________________CARTEL*/
 .fondo-cartel {
-    /* background-color: black; */
     position: absolute;
     top     : 15%;
 }
@@ -648,7 +578,6 @@ progress {
     background     : url("../images/cartel/FramesCartel.webp") left center;
     background-size: 4600px 176px;
     animation      : cartel 1.5s steps(15) infinite;
-    /* animation   : cartel-2 3s linear infinite; */
 }
 
 @keyframes cartel {
@@ -665,15 +594,6 @@ progress {
 
 /*__________________________________________________________________________________________________________HEADER*/
 
-/* .cielo{
-    position: absolute;
-    z-index: 0;
-    background-color: rgb(79, 134, 164);
-    top: 0;
-    left: 0;
-    height: 30%;
-} */
-
 .presentacion-hero {
     position           : relative;
     /* background-color: black; */
@@ -684,53 +604,23 @@ progress {
     overflow           : hidden;
 }
 
-/* .calle{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-    background: url("../images/fondo/calle.png");
+.poster {
+    height           : 50vh;
+    width            : 25vw;
+    position         : absolute;
+    z-index          : 2;
+    background       : url(../images/fondo/poster.webp);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 60%;
-} */
+    background-size  : contain;
+    top              : 24%;
+    left             : 48%;
+}
 
-/* .edificios-fondo{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 3;
-    background: url("../images/fondo/edificios-fondo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
-    background-position-y: 50%;
-} */
 .edificios {
     width  : 100%;
     height : 100%;
     z-index: 6;
 }
-
-/* .edificios-medio{
-    position: absolute;
-    top: -30%;
-    left: -25%;
-    height: 140%;
-    width: 140%;
-    z-index: 4;
-    background: url("../images/fondo/edificios-medioV2.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
-    background-position-y: 50%;
-} */
 
 .edificios-medio {
     position             : absolute;
@@ -811,10 +701,6 @@ progress {
 /*_____________________________________________________________________________________________________BOTONES HOME*/
 
 .cartel {
-    /* display: flex;
-    flex-direction: row; */
-    /* height: 5%;
-    width: 60%; */
     font-size                : 2rem;
     /* offset-x | offset-y | blur-radius | color */
     text-shadow              : 0 0 10px #ff00de, 0 0 12px #ff00de;
@@ -822,28 +708,6 @@ progress {
     -webkit-text-stroke-color: #C546F7;
     -webkit-text-stroke-width: 0.2px;
 }
-
-/* .cartel:hover{
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
-}
-
-.sup{
-    z-index: 10;
-}
-
-.trailer{
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    z-index: 5;
-}
-
-.market{
-    position: absolute;
-    top: 20%;
-    left: 75%;
-    z-index: 5;
-} */
 
 /*__________________________________________________________________________________________________________PIKACHU*/
 
@@ -985,27 +849,11 @@ progress {
 
 .carrousel div {
     left     : 100%;
-    /* border: 10px solid rgb(33, 254, 48); */
     position : absolute;
     width    : 100%;
     height   : 100%;
     z-index  : 4;
 }
-
-/* .imagen1{
-    background: url("../images/escenas/1.png");
-    background-size : contain;
-    background-repeat : no-repeat;
-}
-
-.imagen2{
-    left : 200%;
-    background: url("../images/escenas/2.png");
-    background-size : contain;
-    background-repeat : no-repeat;
-} 
-*/
-
 
 @keyframes carrouselElemA {
     from {
@@ -1026,23 +874,6 @@ progress {
         left: -100%
     }
 }
-
-/* @keyframes carrouselElemC {
-    from {left : -100% }
-    to { left: 0% }
-}
-@keyframes carrouselElemD {
-    from {left: 0% }
-    to {left : 100% } 
-}*/
-/* @keyframes carrouselElemA {
-    from {transform : translate(); }
-    to { transform : translate(-100%, 0%); }
-}
-@keyframes carrouselElemB {
-    from {transform : translate(); }
-    to { transform : translate(-100%, 0%); }
-} */
 
 /*___________________________________________________________________________________________________CARDS PERSONAJES*/
 .personajes div {
@@ -1212,14 +1043,6 @@ form button {
 /*________________________________________________BTN*/
 
 /*________________________________________________P1*/
-/* .btn-coso{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:10%;
-    width: 15%;
-    background: #350345;
-    } */
 
 #btn-personaje {
     position       : relative;
@@ -1231,12 +1054,6 @@ form button {
     transition     : 0.2s;
     z-index        : 9;
 }
-
-/* #btn-personaje:hover{ 
-background: #a945c7;
-box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
-transition-delay: 1s;
-} */
 
 /*________________________________________________P2*/
 
@@ -1307,7 +1124,6 @@ textarea:focus,
 #btn-personaje:active {
     background         : #a945c7;
     box-shadow         : 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
-    /* transition-delay: 1s; */
 }
 
 /************************************************************************************************************************************************************************************************************/
@@ -1402,17 +1218,6 @@ details a {
 }
 
 /*__________________________________________________________________________________________________*/
-/* details .hijo{
-    opacity : 0;
-    transition: opacity .3s;
-}
-details[open]{
-    max-height: 500px;
-}
-details[open] .hijo{
-    opacity: 100;
-}  */
-/* NO FUNCIONA */
 
 details[open] summary~* {
     animation: sweep .5s ease-in-out;
