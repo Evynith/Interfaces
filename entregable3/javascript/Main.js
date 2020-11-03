@@ -74,6 +74,9 @@ function ocultarLoad() {
     document.querySelector("body").style.overflowY = "scroll";
     // }
     document.querySelector(".sticky-nav").classList.remove("invisible");
+
+    let menucito = document.querySelector(".menu-scroll"); //TODO: jugar con el z-index del menucito
+    if(menucito) {menucito.classList.remove("invisible");}
 }
 
 pantallaCarga.onmouseover = () => {
