@@ -1,3 +1,5 @@
+/************************************************************************************************************************************************************************************************************/
+/************************************************************************************GENERAL*****************************************************************************************************************/
 * {
     margin         : 0;
     text-decoration: none;
@@ -10,7 +12,7 @@ p {
 body {
     /* overflow-y: scroll; */
     overflow-x: hidden;
-    height    : 200vh;
+    max-height: 200vh;
 }
 
 section {
@@ -25,354 +27,12 @@ a {
     z-index: 10;
 }
 
-/*________________________________________________________________________CARTEL*/
-.fondo-cartel {
-    /* background-color: black; */
-    position: absolute;
-    top     : 15%;
-}
-
-.cartel-peli {
-    position: relative;
-    width   : 100%;
-    height  : 100%;
-}
-
-.test {
-    width          : 306px;
-    /*920 dividido 2*/
-    height         : 176px;
-    /*528*/
-    background     : url("../images/cartel/FramesCartel.webp") left center;
-    background-size: 4600px 176px;
-    animation      : cartel 1.5s steps(15) infinite;
-    /* animation   : cartel-2 3s linear infinite; */
-}
-
-@keyframes cartel {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -4600px;
-    }
-
-    /*13800*/
-}
-
-/*__________________________________________________________________________HEADER*/
-
-/* .cielo{
-    position: absolute;
-    z-index: 0;
-    background-color: rgb(79, 134, 164);
-    top: 0;
-    left: 0;
-    height: 30%;
-} */
-
-.presentacion-hero {
-    position           : relative;
-    /* background-color: black; */
-    top                : 0;
-    left               : 0;
-    height             : 100%;
-    width              : 100%;
-    overflow           : hidden;
-}
-
-/* .calle{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-    background: url("../images/fondo/calle.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 60%;
-} */
-
-/* .edificios-fondo{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 3;
-    background: url("../images/fondo/edificios-fondo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
-    background-position-y: 50%;
-} */
-.edificios {
-    width  : 100%;
-    height : 100%;
-    z-index: 6;
-}
-
-/* .edificios-medio{
-    position: absolute;
-    top: -30%;
-    left: -25%;
-    height: 140%;
-    width: 140%;
-    z-index: 4;
-    background: url("../images/fondo/edificios-medioV2.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: translateZ(100px);
-    transform-style: preserve-3d;
-    background-position-y: 50%;
-} */
-
-.edificios-medio {
-    position             : absolute;
-    top                  : 0%;
-    left                 : 0%;
-    height               : 100%;
-    width                : 100%;
-    z-index              : 3;
-    background           : url("../images/fondo/luz.webp");
-    background-repeat    : no-repeat;
-    background-size      : 180% 260%;
-    transform            : translateZ(100px);
-    transform-style      : preserve-3d;
-    background-position-y: 55%;
-    background-position-x: 57%;
-}
-
-@keyframes derEd {
-    from {
-        left: 0%
-    }
-
-    to {
-        left: 14%
-    }
-}
-
-@keyframes izqEd {
-    from {
-        left: 14%
-    }
-
-    to {
-        left: 0%
-    }
-}
-
-.edificios-izquierda {
-    position             : absolute;
-    top                  : -20%;
-    left                 : -15%;
-    height               : 130%;
-    width                : 130%;
-    z-index              : 5;
-    background           : url("../images/fondo/edificios-izquierdaV2.webp");
-    background-repeat    : no-repeat;
-    background-size      : cover;
-    transform            : translateZ(100px);
-    transform-style      : preserve-3d;
-    background-position-y: 50%;
-    transform-origin     : 0 50%;
-    transition           : transform 1s;
-    /* para que tarde en moverse*/
-    pointer-events       : none;
-}
-
-/* TODO: haz de luz en la luminaria 
-*/
-
-.edificios-derecha {
-    position             : absolute;
-    top                  : -23%;
-    left                 : -20%;
-    height               : 130%;
-    width                : 130%;
-    z-index              : 6;
-    background           : url("../images/fondo/edificios-derechaV2.webp");
-    background-repeat    : no-repeat;
-    background-size      : cover;
-    transform            : translateZ(100px);
-    transform-style      : preserve-3d;
-    background-position-y: 50%;
-    transform-origin     : 100% 50%;
-    transition           : transform 1s;
-    pointer-events       : none;
-}
-
-/*_______________________________________________________________BOTONES HOME*/
-
-.cartel {
-    /* display: flex;
-    flex-direction: row; */
-    /* height: 5%;
-    width: 60%; */
-    font-size                : 2rem;
-    /* offset-x | offset-y | blur-radius | color */
-    text-shadow              : 0 0 10px #ff00de, 0 0 12px #ff00de;
-    -webkit-text-fill-color  : #F4ECFF;
-    -webkit-text-stroke-color: #C546F7;
-    -webkit-text-stroke-width: 0.2px;
-}
-
-/* .cartel:hover{
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
-}
-
-.sup{
-    z-index: 10;
-}
-
-.trailer{
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    z-index: 5;
-}
-
-.market{
-    position: absolute;
-    top: 20%;
-    left: 75%;
-    z-index: 5;
-} */
-
-/*____________________________________________________________________PIKACHU*/
-
-.pikachu {
-    position: absolute;
-    bottom  : -131px;
-    /*espacio en blanco de la propia imagen de pikachu*/
-    left    : 45%;
-    z-index : 8;
-    width   : 300px;
-    /*  600 :2 */
-    height  : 450px;
-    /*  900 :2 */
-}
-
-/* animation: [animation-name] [animation-duration] [animation-timing-function]
-[animation-delay] [animation-iteration-count] [animation-direction]
-[animation-fill-mode] [animation-play-state]; */
-.Gderecha {
-    background     : url('../images/pikachu home/girando.webp') left center;
-    background-size: 2400px 450px;
-    /* 300*8 y alto*/
-    animation      : girando-derecha 1s steps(8) 1 forwards;
-}
-
-.Cderecha {
-    background     : url('../images/pikachu home/corriendo.webp') left center;
-    background-size: 2100px 450px;
-    animation      : corriendo-derecha 0.9s steps(7) infinite forwards;
-}
-
-.GderechaF {
-    background     : url('../images/pikachu home/girando.webp') left center;
-    background-size: 2400px 450px;
-    animation      : girando-derecha-frente 1s steps(8) 1 forwards;
-}
-
-.Gizquierda {
-    background     : url('../images/pikachu home/girando.webp') left center;
-    background-size: 2400px 450px;
-    animation      : girando-izquierda 1s steps(8) 1 forwards;
-}
-
-.Cizquierda {
-    background     : url('../images/pikachu home/corriendo.webp') left center;
-    background-size: 2100px 450px;
-    animation      : corriendo-izquierda 0.9s steps(7) infinite forwards;
-}
-
-.GizquierdaF {
-    background     : url('../images/pikachu home/girando.webp') left center;
-    background-size: 2400px 450px;
-    animation      : girando-izquierda-frente 1s steps(8) 1 forwards;
-}
-
-/*animaciones en simultaneo separadas por coma*/
-
-@keyframes corriendo-izquierda {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -2100px;
-    }
-}
-
-@keyframes corriendo-derecha {
-    from {
-        background-position: 0px;
-        transform          : scaleX(-1);
-    }
-
-    to {
-        background-position: -2100px;
-        transform          : scaleX(-1);
-    }
-}
-
-@keyframes girando-izquierda {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -2400px;
-    }
-}
-
-@keyframes girando-izquierda-frente {
-    from {
-        background-position: -2400px;
-    }
-
-    to {
-        background-position: 0px;
-    }
-}
-
-@keyframes girando-derecha {
-    from {
-        background-position: 0px;
-        transform          : scaleX(-1);
-    }
-
-    to {
-        background-position: -2400px;
-        transform          : scaleX(-1);
-    }
-}
-
-@keyframes girando-derecha-frente {
-    from {
-        background-position: -2400px;
-        transform          : scaleX(-1);
-    }
-
-    to {
-        background-position: 0px;
-        transform          : scaleX(-1);
-    }
-}
-
-/*__________________________________________________________________PARALLAX*/
-
 .fondo {
-    position           : absolute;
     z-index            : 0;
     background         : url("../images/fondo/paredSola.webp");
     background-repeat  : repeat;
     background-size    : 600px 325px;
+    overflow-y         : scroll;
     /* background-color: black; */
     /* top             : 0;
     left               : 0; */
@@ -380,486 +40,20 @@ a {
     width              : 100vw;
 }
 
-.resto-pagina {
-    z-index   : 1;
-    width     : 100%;
-    /* height : 300vh; */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.425));
-}
-
-/*_____________________________________________________________________CARROUSEL*/
-.carrousel {
-    transition                : transform 1s;
-    transition-timing-function: linear;
-    position                  : absolute;
-    /* border                 : 10px solid hotpink; */
-    transform                 : rotateX(90deg);
-    overflow                  : hidden;
-    width                     : 60vw;
-    height                    : 50vh;
-    left                      : 20%;
-    z-index                   : 3;
-    box-shadow                : 0 0 10px #ff00de, 0 0 12px #ff00de;
-}
-
-.carrousel div {
-    left     : 100%;
-    /* border: 10px solid rgb(33, 254, 48); */
-    position : absolute;
-    width    : 100%;
-    height   : 100%;
-    z-index  : 4;
-}
-
-/* .imagen1{
-    background: url("../images/escenas/1.png");
-    background-size : contain;
-    background-repeat : no-repeat;
-}
-
-.imagen2{
-    left : 200%;
-    background: url("../images/escenas/2.png");
-    background-size : contain;
-    background-repeat : no-repeat;
-} 
-*/
-
-
-@keyframes carrouselElemA {
-    from {
-        left: 100%
-    }
-
-    to {
-        left: 0%
-    }
-}
-
-@keyframes carrouselElemB {
-    from {
-        left: 0%
-    }
-
-    to {
-        left: -100%
-    }
-}
-
-/* @keyframes carrouselElemC {
-    from {left : -100% }
-    to { left: 0% }
-}
-@keyframes carrouselElemD {
-    from {left: 0% }
-    to {left : 100% } 
-}*/
-/* @keyframes carrouselElemA {
-    from {transform : translate(); }
-    to { transform : translate(-100%, 0%); }
-}
-@keyframes carrouselElemB {
-    from {transform : translate(); }
-    to { transform : translate(-100%, 0%); }
-} */
-/*____________________________________________________________________________COUNTDOWN*/
-@keyframes switch {
-
-    0% {
-        opacity  : 0;
-        filter   : blur(20px);
-        transform: scale(4);
-    }
-
-    3% {
-        opacity  : 1;
-        filter   : blur(0);
-        transform: scale(1);
-    }
-
-    10% {
-        opacity  : 1;
-        filter   : blur(0);
-        transform: scale(0.9);
-    }
-
-    13% {
-        opacity  : 0;
-        filter   : blur(10px);
-        transform: scale(0.1);
-    }
-
-    80% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes count {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-#countdown {
-    position      : fixed;
-    left          : 30%;
-    top           : 0;
-    font-size     : 24vw;
-    z-index       : 10;
-    margin        : 20vh auto;
-    height        : 20vh;
-    text-transform: uppercase;
-}
-
-#countdown div {
-    position   : absolute;
-    margin     : 2vh 0;
-    opacity    : 0;
-    left       : 10vw;
-    width      : 80vw;
-    animation  : switch 10s linear 1;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
-    color      : mediumvioletred;
-}
-
-#countdown div:nth-child(1) {
-    animation-delay: 3s;
-}
-
-#countdown div:nth-child(2) {
-    animation-delay: 4s;
-}
-
-#countdown div:nth-child(3) {
-    animation-delay: 5s;
-}
-
-#countdown div:nth-child(4) {
-    animation-delay: 6s;
-}
-
-#countdown div:nth-child(5) {
-    animation-delay: 7s;
-}
-
-#countdown div:nth-child(6) {
-    animation-delay: 8s;
-}
-
-#countdown div:nth-child(7) {
-    animation-delay: 9s;
-}
-
-#countdown div:nth-child(8) {
-    animation-delay: 10s;
-}
-
-#countdown div:nth-child(9) {
-    animation-delay: 11s;
-}
-
-#countdown div:nth-child(10) {
-    animation-delay: 12s;
-}
-
-#countdown div:nth-child(11) {
-    animation-delay: 13s;
-}
-
-/*TODO: counter-increment igual sirve? */
-
-.countdown-reloj {
-    z-index        : 5;
-    display        : flex;
-    position       : absolute;
-    left           : 40%;
-    flex-direction : row;
-    /* writing-mode: vertical-lr;
-        transform  : rotate(180deg); */
-}
-
-.countdown-reloj p {
-    font-size: xx-large;
-}
-
-.cartel-peli {
-    z-index       : 4;
-    position      : absolute;
-    display       : flex;
-    flex-direction: column;
-    top           : -5%;
-    left          : 35%;
-}
-
-/*_______________________________________________________________________CARDS PERSONAJES*/
-.personajes div {
-    display        : flex;
-    flex-direction : row;
-    justify-content: space-around;
-}
-
-.personaje {
-    transition                : height 1s, visibility 1s;
-    transition-timing-function: linear;
-    width                     : 200px;
-    height                    : 0px;
-    /* 260px */
-    border                    : 1px solid #CCC;
-    margin                    : 40px 0;
-    perspective               : 600px;
-    /*hacia el fondo*/
-    z-index                   : 7;
-}
-
-.tarjeta {
-    box-shadow      : 0 0 10px #ff00de, 0 0 12px #ff00de;
-    pointer-events  : none;
-    width           : 100%;
-    height          : 100%;
-    position        : relative;
-    transform-style : preserve-3d;
-    transform-origin: center right;
-    transition      : transform 1s;
-    z-index         : 6;
-}
-
-/*   
-  .tarjeta:hover{ 
-    transform: translateX(-100%) rotateY(-180deg);
-  } */
-
-.is-flipped {
-    transform: translateX(-100%) rotateY(-180deg);
-}
-
-.cara {
-    position           : absolute;
-    width              : 100%;
-    height             : 100%;
-    line-height        : 260px;
-    color              : white;
-    text-align         : center;
-    font-weight        : bold;
-    font-size          : 40px;
-    backface-visibility: hidden;
-}
-
-.p1-lado1 {
-    background     : url('../images/personajes/pika1.jpg') left center;
-    background-size: cover;
-    /*contain;*/
-}
-
-.p1-lado2 {
-    background     : url('../images/personajes/pika2.webp') left center;
-    background-size: cover;
-    /*contain;*/
-    transform      : rotateY(180deg);
-}
-
-.p2-lado1 {
-    background     : url('../images/personajes/lucy1.png') left center;
-    background-size: cover;
-    /*contain;*/
-}
-
-.p2-lado2 {
-    background     : url('../images/personajes/lucy2.png') left center;
-    background-size: cover;
-    /*contain;*/
-    transform      : rotateY(180deg);
-}
-
-.p3-lado1 {
-    background     : url('../images/personajes/tim1.png') left center;
-    background-size: cover;
-    /*contain;*/
-}
-
-.p3-lado2 {
-    background     : url('../images/personajes/tim2.webp') left center;
-    background-size: cover;
-    /*contain;*/
-    transform      : rotateY(180deg);
-}
-
-.aparece {
-    animation: apareceDiv 3s linear 1 forwards;
-}
-
-@keyframes apareceDiv {
-    from {
-        height: 0px;
-    }
-
-    to {
-        height: 260px;
-    }
-}
-
-/*_______________________________________________________FORM*/
-
-@keyframes aparicion-form {
-
-    0% {
-        opacity  : 0;
-        transform: scale(0);
-    }
-
-    30% {
-        opacity  : 1;
-        transform: scale(1);
-    }
-
-    60% {
-        opacity  : 1;
-        transform: scale(2);
-    }
-
-    100% {
-        opacity  : 1;
-        transform: scale(1);
-    }
-
-
-}
-
 .fondo-transparente {
-    z-index        : 0;
-    /* position    : absolute; */
-    /* top         : 0;
-    left           : 0; */
-    overflow       : hidden;
-    display        : flex;
-    width          : 100vw;
-    height         : 90vh;
-    justify-content: center;
-    align-items    : center;
+    position             : fixed;
+    z-index              : 1;
+    /* overflow          : hidden; */
+    /* overflow-y        : scroll; */
+    display              : flex;
+    width                : 100%;
+    height               : 100%;
+    justify-content      : center;
+    align-items          : center;
+    background           : radial-gradient(rgba(0, 0, 0, 0.26), black);
 }
 
-.saludos {
-    position: relative;
-    z-index : 0;
-    width   : 60vw;
-    height  : 60vh;
-}
-
-.invisible {
-    display: none;
-}
-
-/*________________________________________________BTN*/
-
-/*________________________________________________P1*/
-/* .btn-coso{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:10%;
-    width: 15%;
-    background: #350345;
-    } */
-
-#btn-personaje {
-    position       : relative;
-    display        : inline-block;
-    padding        : 5px 10px;
-    color          : #fff;
-    text-decoration: none;
-    overflow       : hidden;
-    transition     : 0.2s;
-    z-index        : 9;
-}
-
-/* #btn-personaje:hover{ 
-background: #a945c7;
-box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
-transition-delay: 1s;
-} */
-
-/*________________________________________________P2*/
-
-#btn-personaje span {
-    position: absolute;
-    display : block;
-}
-
-#span1 {
-    top       : 0;
-    left      : -100%;
-    width     : 100%;
-    height    : 2px;
-    background: linear-gradient(90deg, transparent, #a945c7);
-}
-
-#btn-personaje:hover #span1 {
-    left      : 100%;
-    transition: 1s;
-}
-
-#span3 {
-    bottom    : 0;
-    right     : -100%;
-    width     : 100%;
-    height    : 2px;
-    background: linear-gradient(270deg, transparent, #a945c7);
-}
-
-#btn-personaje:hover #span3 {
-    right           : 100%;
-    transition      : 1s;
-    transition-delay: 0.5s;
-}
-
-#span2 {
-    top       : -100%;
-    right     : 0;
-    width     : 2px;
-    height    : 100%;
-    background: linear-gradient(180deg, transparent, #a945c7);
-}
-
-#btn-personaje:hover #span2 {
-    top             : 100%;
-    transition      : 1s;
-    transition-delay: 0.25s;
-}
-
-#span4 {
-    bottom    : -100%;
-    left      : 0;
-    width     : 2px;
-    height    : 100%;
-    background: linear-gradient(360deg, transparent, #a945c7);
-}
-
-#btn-personaje:hover #span4 {
-    bottom          : 100%;
-    transition      : 1s;
-    transition-delay: 0.75s;
-}
-
-/*__________________________________________________P3*/
-
-input:focus,
-textarea:focus,
-#btn-personaje:active {
-    background         : #a945c7;
-    box-shadow         : 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
-    /* transition-delay: 1s; */
-}
-
-
-
-/*___________________________________________________________NAV*/
+/*_________________________________________________________________________________________________________________NAV*/
 
 .sticky-nav {
     width   : 100%;
@@ -1058,7 +252,144 @@ nav li:not(:hover) {
     animation: aparicion-nav 1s linear 1 forwards;
 }
 
-/*______________________________________________________________________________BAR*/
+/*_________________________________________________________________________________________________________COUNTDOWN*/
+@keyframes switch {
+
+    0% {
+        opacity  : 0;
+        filter   : blur(20px);
+        transform: scale(4);
+    }
+
+    3% {
+        opacity  : 1;
+        filter   : blur(0);
+        transform: scale(1);
+    }
+
+    10% {
+        opacity  : 1;
+        filter   : blur(0);
+        transform: scale(0.9);
+    }
+
+    13% {
+        opacity  : 0;
+        filter   : blur(10px);
+        transform: scale(0.1);
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes count {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+#countdown {
+    position      : fixed;
+    left          : 30%;
+    top           : 0;
+    font-size     : 24vw;
+    z-index       : 10;
+    margin        : 20vh auto;
+    height        : 20vh;
+    text-transform: uppercase;
+}
+
+#countdown div {
+    position   : absolute;
+    margin     : 2vh 0;
+    opacity    : 0;
+    left       : 10vw;
+    width      : 80vw;
+    animation  : switch 10s linear 1;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
+    color      : mediumvioletred;
+}
+
+#countdown div:nth-child(1) {
+    animation-delay: 3s;
+}
+
+#countdown div:nth-child(2) {
+    animation-delay: 4s;
+}
+
+#countdown div:nth-child(3) {
+    animation-delay: 5s;
+}
+
+#countdown div:nth-child(4) {
+    animation-delay: 6s;
+}
+
+#countdown div:nth-child(5) {
+    animation-delay: 7s;
+}
+
+#countdown div:nth-child(6) {
+    animation-delay: 8s;
+}
+
+#countdown div:nth-child(7) {
+    animation-delay: 9s;
+}
+
+#countdown div:nth-child(8) {
+    animation-delay: 10s;
+}
+
+#countdown div:nth-child(9) {
+    animation-delay: 11s;
+}
+
+#countdown div:nth-child(10) {
+    animation-delay: 12s;
+}
+
+#countdown div:nth-child(11) {
+    animation-delay: 13s;
+}
+
+/*TODO: counter-increment igual sirve? */
+
+.countdown-reloj {
+    z-index        : 5;
+    display        : flex;
+    position       : absolute;
+    left           : 40%;
+    flex-direction : row;
+    /* writing-mode: vertical-lr;
+        transform  : rotate(180deg); */
+}
+
+.countdown-reloj p {
+    font-size: xx-large;
+}
+
+.cartel-peli {
+    z-index       : 4;
+    position      : absolute;
+    display       : flex;
+    flex-direction: column;
+    top           : -5%;
+    left          : 35%;
+}
+
+/*________________________________________________________________________________________________LOADER/PANTALLA CARGA*/
 
 .loader {
     width          : 117px;
@@ -1215,43 +546,31 @@ progress {
     }
 }
 
-/*_________________________________________________________________________ACORDEON*/
-details {
-    /* la transicion siempre va en el estado inicial del div | elemento */
-    height    : auto;
-    transition: height .5s ease;
-    overflow  : hidden;
+
+/*************************************************************************************************************************************************************************************************************/
+/**************************************************************************************HOME*******************************************************************************************************************/
+
+/*______________________________________________________________________________________________________________PARALLAX*/
+.fondo-parallax {
+    position           : absolute;
+    z-index            : 0;
+    background         : url("../images/fondo/paredSola.webp");
+    background-repeat  : repeat;
+    background-size    : 600px 325px;
+    /* background-color: black; */
+    /* top             : 0;
+    left               : 0; */
+    height             : 100vh;
+    width              : 100vw;
 }
 
-/* details .hijo{
-    opacity : 0;
-    transition: opacity .3s;
-}
-details[open]{
-    max-height: 500px;
-}
-details[open] .hijo{
-    opacity: 100;
-}  */
-/*FIXME: NO FUNCIONA */
-
-details[open] summary~* {
-    animation: sweep .5s ease-in-out;
+.resto-pagina {
+    z-index   : 1;
+    width     : 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.425));
 }
 
-@keyframes sweep {
-    0% {
-        opacity    : 0;
-        margin-left: -10px
-    }
-
-    100% {
-        opacity    : 1;
-        margin-left: 0px
-    }
-}
-
-/*______________________________________________________________________________________SCROLL*/
+/*________________________________________________________________________________________________MENU SCROLL*/
 
 .menu-scroll {
     position       : fixed;
@@ -1281,4 +600,807 @@ details[open] summary~* {
     width  : 100%;
     height : 100%;
     padding: 25% 50%;
+}
+
+/*________________________________________________________________________________________________________CARTEL*/
+.fondo-cartel {
+    /* background-color: black; */
+    position: absolute;
+    top     : 15%;
+}
+
+.cartel-peli {
+    position: relative;
+    width   : 100%;
+    height  : 100%;
+}
+
+.test {
+    width          : 306px;
+    /*920 dividido 2*/
+    height         : 176px;
+    /*528*/
+    background     : url("../images/cartel/FramesCartel.webp") left center;
+    background-size: 4600px 176px;
+    animation      : cartel 1.5s steps(15) infinite;
+    /* animation   : cartel-2 3s linear infinite; */
+}
+
+@keyframes cartel {
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -4600px;
+    }
+
+    /*13800*/
+}
+
+/*__________________________________________________________________________________________________________HEADER*/
+
+/* .cielo{
+    position: absolute;
+    z-index: 0;
+    background-color: rgb(79, 134, 164);
+    top: 0;
+    left: 0;
+    height: 30%;
+} */
+
+.presentacion-hero {
+    position           : relative;
+    /* background-color: black; */
+    top                : 0;
+    left               : 0;
+    height             : 100%;
+    width              : 100%;
+    overflow           : hidden;
+}
+
+/* .calle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background: url("../images/fondo/calle.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 60%;
+} */
+
+/* .edificios-fondo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    background: url("../images/fondo/edificios-fondo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+} */
+.edificios {
+    width  : 100%;
+    height : 100%;
+    z-index: 6;
+}
+
+/* .edificios-medio{
+    position: absolute;
+    top: -30%;
+    left: -25%;
+    height: 140%;
+    width: 140%;
+    z-index: 4;
+    background: url("../images/fondo/edificios-medioV2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(100px);
+    transform-style: preserve-3d;
+    background-position-y: 50%;
+} */
+
+.edificios-medio {
+    position             : absolute;
+    top                  : 0%;
+    left                 : 0%;
+    height               : 100%;
+    width                : 100%;
+    z-index              : 3;
+    background           : url("../images/fondo/luz.webp");
+    background-repeat    : no-repeat;
+    background-size      : 180% 260%;
+    transform            : translateZ(100px);
+    transform-style      : preserve-3d;
+    background-position-y: 55%;
+    background-position-x: 57%;
+}
+
+@keyframes derEd {
+    from {
+        left: 0%
+    }
+
+    to {
+        left: 14%
+    }
+}
+
+@keyframes izqEd {
+    from {
+        left: 14%
+    }
+
+    to {
+        left: 0%
+    }
+}
+
+.edificios-izquierda {
+    position             : absolute;
+    top                  : -20%;
+    left                 : -15%;
+    height               : 130%;
+    width                : 130%;
+    z-index              : 5;
+    background           : url("../images/fondo/edificios-izquierdaV2.webp");
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    transform            : translateZ(100px);
+    transform-style      : preserve-3d;
+    background-position-y: 50%;
+    transform-origin     : 0 50%;
+    transition           : transform 1s;
+    /* para que tarde en moverse*/
+    pointer-events       : none;
+}
+
+/* TODO: haz de luz en la luminaria 
+*/
+
+.edificios-derecha {
+    position             : absolute;
+    top                  : -23%;
+    left                 : -20%;
+    height               : 130%;
+    width                : 130%;
+    z-index              : 6;
+    background           : url("../images/fondo/edificios-derechaV2.webp");
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    transform            : translateZ(100px);
+    transform-style      : preserve-3d;
+    background-position-y: 50%;
+    transform-origin     : 100% 50%;
+    transition           : transform 1s;
+    pointer-events       : none;
+}
+
+/*_____________________________________________________________________________________________________BOTONES HOME*/
+
+.cartel {
+    /* display: flex;
+    flex-direction: row; */
+    /* height: 5%;
+    width: 60%; */
+    font-size                : 2rem;
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow              : 0 0 10px #ff00de, 0 0 12px #ff00de;
+    -webkit-text-fill-color  : #F4ECFF;
+    -webkit-text-stroke-color: #C546F7;
+    -webkit-text-stroke-width: 0.2px;
+}
+
+/* .cartel:hover{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de;
+}
+
+.sup{
+    z-index: 10;
+}
+
+.trailer{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    z-index: 5;
+}
+
+.market{
+    position: absolute;
+    top: 20%;
+    left: 75%;
+    z-index: 5;
+} */
+
+/*__________________________________________________________________________________________________________PIKACHU*/
+
+.pikachu {
+    position: absolute;
+    bottom  : -131px;
+    /*espacio en blanco de la propia imagen de pikachu*/
+    left    : 45%;
+    z-index : 8;
+    width   : 300px;
+    /*  600 :2 */
+    height  : 450px;
+    /*  900 :2 */
+}
+
+/* animation: [animation-name] [animation-duration] [animation-timing-function]
+[animation-delay] [animation-iteration-count] [animation-direction]
+[animation-fill-mode] [animation-play-state]; */
+.Gderecha {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    /* 300*8 y alto*/
+    animation      : girando-derecha 1s steps(8) 1 forwards;
+}
+
+.Cderecha {
+    background     : url('../images/pikachu home/corriendo.webp') left center;
+    background-size: 2100px 450px;
+    animation      : corriendo-derecha 0.9s steps(7) infinite forwards;
+}
+
+.GderechaF {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    animation      : girando-derecha-frente 1s steps(8) 1 forwards;
+}
+
+.Gizquierda {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    animation      : girando-izquierda 1s steps(8) 1 forwards;
+}
+
+.Cizquierda {
+    background     : url('../images/pikachu home/corriendo.webp') left center;
+    background-size: 2100px 450px;
+    animation      : corriendo-izquierda 0.9s steps(7) infinite forwards;
+}
+
+.GizquierdaF {
+    background     : url('../images/pikachu home/girando.webp') left center;
+    background-size: 2400px 450px;
+    animation      : girando-izquierda-frente 1s steps(8) 1 forwards;
+}
+
+/*animaciones en simultaneo separadas por coma*/
+
+@keyframes corriendo-izquierda {
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -2100px;
+    }
+}
+
+@keyframes corriendo-derecha {
+    from {
+        background-position: 0px;
+        transform          : scaleX(-1);
+    }
+
+    to {
+        background-position: -2100px;
+        transform          : scaleX(-1);
+    }
+}
+
+@keyframes girando-izquierda {
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -2400px;
+    }
+}
+
+@keyframes girando-izquierda-frente {
+    from {
+        background-position: -2400px;
+    }
+
+    to {
+        background-position: 0px;
+    }
+}
+
+@keyframes girando-derecha {
+    from {
+        background-position: 0px;
+        transform          : scaleX(-1);
+    }
+
+    to {
+        background-position: -2400px;
+        transform          : scaleX(-1);
+    }
+}
+
+@keyframes girando-derecha-frente {
+    from {
+        background-position: -2400px;
+        transform          : scaleX(-1);
+    }
+
+    to {
+        background-position: 0px;
+        transform          : scaleX(-1);
+    }
+}
+
+/*______________________________________________________________________________________________________CARROUSEL*/
+.carrousel {
+    transition                : transform 1s;
+    transition-timing-function: linear;
+    position                  : absolute;
+    /* border                 : 10px solid hotpink; */
+    transform                 : rotateX(90deg);
+    overflow                  : hidden;
+    width                     : 60vw;
+    height                    : 50vh;
+    left                      : 20%;
+    z-index                   : 3;
+    box-shadow                : 0 0 10px #ff00de, 0 0 12px #ff00de;
+}
+
+.carrousel div {
+    left     : 100%;
+    /* border: 10px solid rgb(33, 254, 48); */
+    position : absolute;
+    width    : 100%;
+    height   : 100%;
+    z-index  : 4;
+}
+
+/* .imagen1{
+    background: url("../images/escenas/1.png");
+    background-size : contain;
+    background-repeat : no-repeat;
+}
+
+.imagen2{
+    left : 200%;
+    background: url("../images/escenas/2.png");
+    background-size : contain;
+    background-repeat : no-repeat;
+} 
+*/
+
+
+@keyframes carrouselElemA {
+    from {
+        left: 100%
+    }
+
+    to {
+        left: 0%
+    }
+}
+
+@keyframes carrouselElemB {
+    from {
+        left: 0%
+    }
+
+    to {
+        left: -100%
+    }
+}
+
+/* @keyframes carrouselElemC {
+    from {left : -100% }
+    to { left: 0% }
+}
+@keyframes carrouselElemD {
+    from {left: 0% }
+    to {left : 100% } 
+}*/
+/* @keyframes carrouselElemA {
+    from {transform : translate(); }
+    to { transform : translate(-100%, 0%); }
+}
+@keyframes carrouselElemB {
+    from {transform : translate(); }
+    to { transform : translate(-100%, 0%); }
+} */
+
+/*___________________________________________________________________________________________________CARDS PERSONAJES*/
+.personajes div {
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-around;
+}
+
+.personaje {
+    transition                : height 1s, visibility 1s;
+    transition-timing-function: linear;
+    width                     : 200px;
+    height                    : 0px;
+    /* 260px */
+    border                    : 1px solid #CCC;
+    margin                    : 40px 0;
+    perspective               : 600px;
+    /*hacia el fondo*/
+    z-index                   : 7;
+}
+
+.tarjeta {
+    box-shadow      : 0 0 10px #ff00de, 0 0 12px #ff00de;
+    pointer-events  : none;
+    width           : 100%;
+    height          : 100%;
+    position        : relative;
+    transform-style : preserve-3d;
+    transform-origin: center right;
+    transition      : transform 1s;
+    z-index         : 6;
+}
+
+/*   
+  .tarjeta:hover{ 
+    transform: translateX(-100%) rotateY(-180deg);
+  } */
+
+.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+.cara {
+    position           : absolute;
+    width              : 100%;
+    height             : 100%;
+    line-height        : 260px;
+    color              : white;
+    text-align         : center;
+    font-weight        : bold;
+    font-size          : 40px;
+    backface-visibility: hidden;
+}
+
+.p1-lado1 {
+    background     : url('../images/personajes/pika1.jpg') left center;
+    background-size: cover;
+    /*contain;*/
+}
+
+.p1-lado2 {
+    background     : url('../images/personajes/pika2.webp') left center;
+    background-size: cover;
+    /*contain;*/
+    transform      : rotateY(180deg);
+}
+
+.p2-lado1 {
+    background     : url('../images/personajes/lucy1.png') left center;
+    background-size: cover;
+    /*contain;*/
+}
+
+.p2-lado2 {
+    background     : url('../images/personajes/lucy2.png') left center;
+    background-size: cover;
+    /*contain;*/
+    transform      : rotateY(180deg);
+}
+
+.p3-lado1 {
+    background     : url('../images/personajes/tim1.png') left center;
+    background-size: cover;
+    /*contain;*/
+}
+
+.p3-lado2 {
+    background     : url('../images/personajes/tim2.webp') left center;
+    background-size: cover;
+    /*contain;*/
+    transform      : rotateY(180deg);
+}
+
+.aparece {
+    animation: apareceDiv 3s linear 1 forwards;
+}
+
+@keyframes apareceDiv {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 260px;
+    }
+}
+
+/************************************************************************************************************************************************************************************************************/
+/************************************************************************************SALUDOS*****************************************************************************************************************/
+
+/*___________________________________________________________________________________________________________FORM*/
+
+@keyframes aparicion-form {
+
+    0% {
+        opacity  : 0;
+        transform: scale(0);
+    }
+
+    30% {
+        opacity  : 1;
+        transform: scale(1);
+    }
+
+    60% {
+        opacity  : 1;
+        transform: scale(2);
+    }
+
+    100% {
+        opacity  : 1;
+        transform: scale(1);
+    }
+
+
+}
+
+.saludos {
+    position: relative;
+    z-index : 0;
+    width   : 60vw;
+    height  : 60vh;
+}
+
+.invisible {
+    display: none;
+}
+
+form {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+form label {
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    margin        : 5px;
+
+}
+
+form button {
+    margin          : 10px;
+    background-color: blueviolet;
+}
+
+/*________________________________________________BTN*/
+
+/*________________________________________________P1*/
+/* .btn-coso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:10%;
+    width: 15%;
+    background: #350345;
+    } */
+
+#btn-personaje {
+    position       : relative;
+    display        : inline-block;
+    padding        : 5px 10px;
+    color          : #fff;
+    text-decoration: none;
+    overflow       : hidden;
+    transition     : 0.2s;
+    z-index        : 9;
+}
+
+/* #btn-personaje:hover{ 
+background: #a945c7;
+box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+transition-delay: 1s;
+} */
+
+/*________________________________________________P2*/
+
+#btn-personaje span {
+    position: absolute;
+    display : block;
+}
+
+#span1 {
+    top       : 0;
+    left      : -100%;
+    width     : 100%;
+    height    : 2px;
+    background: linear-gradient(90deg, transparent, #f5d2ff);
+}
+
+#btn-personaje:hover #span1 {
+    left      : 100%;
+    transition: 1s;
+}
+
+#span3 {
+    bottom    : 0;
+    right     : -100%;
+    width     : 100%;
+    height    : 2px;
+    background: linear-gradient(270deg, transparent, #f5d2ff);
+}
+
+#btn-personaje:hover #span3 {
+    right           : 100%;
+    transition      : 1s;
+    transition-delay: 0.5s;
+}
+
+#span2 {
+    top       : -100%;
+    right     : 0;
+    width     : 2px;
+    height    : 100%;
+    background: linear-gradient(180deg, transparent, #f5d2ff);
+}
+
+#btn-personaje:hover #span2 {
+    top             : 100%;
+    transition      : 1s;
+    transition-delay: 0.25s;
+}
+
+#span4 {
+    bottom    : -100%;
+    left      : 0;
+    width     : 2px;
+    height    : 100%;
+    background: linear-gradient(360deg, transparent, #f5d2ff);
+}
+
+#btn-personaje:hover #span4 {
+    bottom          : 100%;
+    transition      : 1s;
+    transition-delay: 0.75s;
+}
+
+/*__________________________________________________P3*/
+
+input:focus,
+textarea:focus,
+#btn-personaje:active {
+    background         : #a945c7;
+    box-shadow         : 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+    /* transition-delay: 1s; */
+}
+
+/************************************************************************************************************************************************************************************************************/
+/************************************************************************************CALENDARIO**************************************************************************************************************/
+
+/*_______________________________________________________________________________________________ACORDEON*/
+details {
+    /* la transicion siempre va en el estado inicial del div | elemento */
+    height          : auto;
+    width           : 50vw;
+    transition      : height .5s ease;
+    overflow        : hidden;
+    margin          : 10px;
+    background-color: blueviolet;
+}
+
+.acordeon {
+    z-index        : 2;
+    display        : flex;
+    width          : 100%;
+    height         : 100%;
+    justify-content: center;
+    align-items    : flex-start;
+    padding-top    : 10%;
+}
+
+.acordeon div {
+    z-index       : 2;
+    display       : flex;
+    flex-direction: column;
+}
+
+details a {
+    position: absolute;
+    width   : 50vw;
+    height  : 50vh;
+    z-index : 8;
+}
+
+/*______________________________________________________________________________________________*/
+.elem1 {
+    background-image: url("../images/eventos/pokemonGO.jpg");
+}
+
+.elem2 {
+    background-image: url("../images/eventos/londres.jpg");
+}
+
+.elem3 {
+    background-image: url("../images/eventos/japon.jpg");
+}
+
+.elem4 {
+    background-image: url("../images/eventos/productos.jpg");
+}
+
+.card-calendario {
+    position         : relative;
+    width            : 50vw;
+    height           : 50vh;
+    top              : 0;
+    left             : 0;
+    z-index          : 4;
+    transform        : translateZ(20px);
+    transform-style  : preserve-3d;
+    background-size  : cover;
+    background-repeat: no-repeat;
+    cursor           : pointer;
+}
+
+.cardDelante {
+    position        : absolute;
+    width           : 50vw;
+    height          : 20vh;
+    bottom          : 0;
+    left            : 0;
+    z-index         : 5;
+    transform       : translateZ(50px);
+    transform-style : preserve-3d;
+    background-color: rgba(78, 78, 78, 0.482);
+}
+
+.card-calendario p {
+    position       : absolute;
+    width          : 50vw;
+    bottom         : 0;
+    left           : 0;
+    z-index        : 6;
+    transform      : translateZ(90px);
+    transform-style: preserve-3d;
+    text-align     : center;
+}
+
+/*__________________________________________________________________________________________________*/
+/* details .hijo{
+    opacity : 0;
+    transition: opacity .3s;
+}
+details[open]{
+    max-height: 500px;
+}
+details[open] .hijo{
+    opacity: 100;
+}  */
+/* NO FUNCIONA */
+
+details[open] summary~* {
+    animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+    0% {
+        opacity    : 0;
+        margin-left: -10px;
+    }
+
+    100% {
+        opacity    : 1;
+        margin-left: 0px;
+    }
 }
