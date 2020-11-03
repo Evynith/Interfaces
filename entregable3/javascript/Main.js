@@ -155,22 +155,20 @@ function myCarrousel() {
     }
 }
 //________________________________________________________________________________________________COUNTDOWN
-// let fechaEstreno = new Date("May 3, 2021 00:00:00").getTime();
+let fechaEstreno = new Date("May 3, 2021 00:00:00").getTime();
 
-let fechaEstreno = new Date("November 2, 2020 22:38:00").getTime();
+// let fechaEstreno = new Date("November 3, 2020 00:08:00").getTime();
 
 let countReloj = document.querySelector(".countdown-reloj");
 let dia = -1;
 let hora = -1;
 let minuto = -1;
 let segundo = -1;
-
-if (!countReloj){
-    document.querySelector("#pelicula").classList.remove("invisible");
-}
+let animacionCount = false;
 
 if (countReloj) {
     let x = setInterval(function () { //por cada segundo que pasa cambia el reloj..
+        document.querySelector("#pelicula").classList.add("invisible");
         let fechaActual = new Date().getTime();
         let distancia = fechaEstreno - fechaActual;
 
@@ -197,12 +195,16 @@ if (countReloj) {
         }
         // countReloj.innerHTML = `${dia}d ${hora}h ${minuto}m ${segundo}s `;
 
-        if (fechaActual == fechaEstreno) { //si llega a esa fecha, comienzo animacion
-            crearContador();
+        if ((distancia < 14000) && (distancia > 0)) { //si llega a esa fecha, comienzo animacion
+           if(animacionCount == false) {
+               crearContador();
+               animacionCount = true;
+           }
         }
         if (distancia < 0) { //si llega a 0, dejo de correr el contador
             clearInterval(x);
             countReloj.remove();
+            document.querySelector("#pelicula").classList.remove("invisible");
         }
     }, 1000);
 
@@ -243,6 +245,9 @@ if (countReloj) {
             newDiv2.innerHTML = `${i}`;
             newDiv.appendChild(newDiv2);
         }
+        let newDiv3 = document.createElement("div");
+            newDiv3.innerHTML = "Feliz estreno!!!";
+            newDiv.appendChild(newDiv3);
         document.querySelector(".sticky-nav").appendChild(newDiv);
     }
 }
@@ -391,67 +396,67 @@ if (nav)
 
 //_______________________________________________________________________________________LOAD
 
-// let loadMouse = document.querySelector(".contenedor-mouse");
-// let pantallaCarga = document.querySelector(".pantalla-carga");
-// let divCarga = document.querySelector("#loader-div");
+let loadMouse = document.querySelector(".contenedor-mouse");
+let pantallaCarga = document.querySelector(".pantalla-carga");
+let divCarga = document.querySelector("#loader-div");
 
-// if (divCarga) {
-//     document.querySelector("body").style.overflowY = "hidden";
-//     document.querySelector(".sticky-nav").classList.add("invisible");
-// }
+if (divCarga) {
+    document.querySelector("body").style.overflowY = "hidden";
+    document.querySelector(".sticky-nav").classList.add("invisible");
+}
 
-// function ocultarLoad() {
-//     divCarga.classList.add("invisible");
-//     if (document.querySelector(".fondo")) {
-//         document.querySelector("body").style.overflowY = "scroll";
-//     }
-//     document.querySelector(".sticky-nav").classList.remove("invisible");
-// }
+function ocultarLoad() {
+    divCarga.classList.add("invisible");
+    if (document.querySelector(".fondo")) {
+        document.querySelector("body").style.overflowY = "scroll";
+    }
+    document.querySelector(".sticky-nav").classList.remove("invisible");
+}
 
-// pantallaCarga.onmouseover = () => {
-//     loadMouse.style.display = "block";
-//     loadMouse.style.top = `300px`;
-//     seguir();
-// }
+pantallaCarga.onmouseover = () => {
+    loadMouse.style.display = "block";
+    loadMouse.style.top = `300px`;
+    seguir();
+}
 
-// pantallaCarga.onmouseout = () => {
-//     loadMouse.style.display = "none";
-// }
+pantallaCarga.onmouseout = () => {
+    loadMouse.style.display = "none";
+}
 
-// function seguir() {
-//     pantallaCarga.onmousemove = (e) => {
-//         loadMouse.style.top = `${parseInt(e.clientY)}px`;
-//         loadMouse.style.left = `${parseInt(e.clientX)}px`;
-//     }
+function seguir() {
+    pantallaCarga.onmousemove = (e) => {
+        loadMouse.style.top = `${parseInt(e.clientY)}px`;
+        loadMouse.style.left = `${parseInt(e.clientX)}px`;
+    }
 
-// }
+}
 
-// let loadPika = setInterval(aumentarProgreso, 500);
+let loadPika = setInterval(aumentarProgreso, 500);
 
-// function aumentarProgreso() {
-//     // pikaLoad.style.animation = "pika-carga 0.5s ease-out 1 both";
-//     let pikaLoad = document.querySelector(".load");
-//     let barraProgreso = document.querySelector("#carga");
-//     barraProgreso.value = barraProgreso.value % barraProgreso.max + 15;//cuenta para 3 segundos
-//     let pos = pikaLoad.getBoundingClientRect().left;
-//     let contenedor = document.querySelector(".progreso");
-//     let pos2 = Math.round(((contenedor.getBoundingClientRect().width * Math.round(barraProgreso.value)) / 100) + contenedor.getBoundingClientRect().left);
+function aumentarProgreso() {
+    // pikaLoad.style.animation = "pika-carga 0.5s ease-out 1 both";
+    let pikaLoad = document.querySelector(".load");
+    let barraProgreso = document.querySelector("#carga");
+    barraProgreso.value = barraProgreso.value % barraProgreso.max + 15;//cuenta para 3 segundos
+    let pos = pikaLoad.getBoundingClientRect().left;
+    let contenedor = document.querySelector(".progreso");
+    let pos2 = Math.round(((contenedor.getBoundingClientRect().width * Math.round(barraProgreso.value)) / 100) + contenedor.getBoundingClientRect().left);
 
-//     if (barraProgreso.value == 100) {
-//         ocultarLoad();
-//         clearInterval(loadPika);
-//     }
-//     let pikaLoadAnimate = pikaLoad.animate([
-//         // keyframes
-//         { left: `${pos}px`, },
-//         { left: `${pos2 - pikaLoad.getBoundingClientRect().width}px` }
-//     ], {
-//         // timing options
-//         duration: 1000,
-//         iterations: 1,
-//         fill: 'forwards'
-//     });
-// }
+    if (barraProgreso.value == 100) {
+        ocultarLoad();
+        clearInterval(loadPika);
+    }
+    let pikaLoadAnimate = pikaLoad.animate([
+        // keyframes
+        { left: `${pos}px`, },
+        { left: `${pos2 - pikaLoad.getBoundingClientRect().width}px` }
+    ], {
+        // timing options
+        duration: 1000,
+        iterations: 1,
+        fill: 'forwards'
+    });
+}
 
 //____________________________________________________________________________________________SCROLL
 

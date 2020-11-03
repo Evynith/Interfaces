@@ -570,6 +570,10 @@ a {
     animation-delay: 12s;
 }
 
+#countdown div:nth-child(11) {
+    animation-delay: 13s;
+}
+
 /*TODO: counter-increment igual sirve? */
 
 .countdown-reloj {
