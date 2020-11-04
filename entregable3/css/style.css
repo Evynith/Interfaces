@@ -341,9 +341,7 @@ nav li:not(:hover) {
     left          : 35%;
 }
 
-#countdown-final {
-
-}
+#countdown-final {}
 
 /*________________________________________________________________________________________________LOADER/PANTALLA CARGA*/
 
@@ -607,8 +605,8 @@ progress {
     background       : url(../images/fondo/poster.webp);
     background-repeat: no-repeat;
     background-size  : contain;
-    top              : 24%;
-    left             : 48%;
+    top              : 37%;
+    left             : 52%;
 }
 
 .edificios {
