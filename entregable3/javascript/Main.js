@@ -93,7 +93,7 @@ function aumentarProgreso() {
 //___________________________________________________________________________________________________________________________________________________COUNTDOWN
 let fechaEstreno = new Date("May 10, 2021 00:00:00").getTime();
 
-// let fechaEstreno = new Date("November 4, 2020 00:08:00").getTime();
+// let fechaEstreno = new Date("November 4, 2020 03:13:00").getTime();
 
 let countReloj = document.querySelector(".countdown-reloj");
 let dia = -1;
@@ -180,8 +180,12 @@ if (countReloj) {
         }
         let newDiv3 = document.createElement("div");
         newDiv3.innerHTML = "Feliz estreno!!!";
+        newDiv3.setAttribute("id", "countdown-final");
         newDiv.appendChild(newDiv3);
         document.querySelector(".sticky-nav").appendChild(newDiv);
+        setTimeout(function(){
+            newDiv.remove();
+        }, 19000)
     }
 }
 
