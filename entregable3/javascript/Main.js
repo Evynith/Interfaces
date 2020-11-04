@@ -447,6 +447,16 @@ if(formulario){
         elem.style.animation = "aparicion-form 3s linear 3s 1 forwards";
     })
     btnForm.style.animation = "aparicion-form 3s linear 3s 1 forwards";
+
+    btnForm.onclick = (e) => {
+        e.preventDefault();
+        formulario.style.animation = "click-form 1s linear 1 forwards";
+        setTimeout(function(){
+            window.location.href = "index.html";
+        }, 1000)
+    }
+
+
 }
 
 

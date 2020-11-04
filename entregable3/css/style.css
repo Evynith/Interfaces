@@ -6,15 +6,6 @@
     list-style     : none;
 }
 
-summary::-webkit-details-marker {
-    color           : rgba(0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0);
-}
-
-p {
-    color: ivory;
-}
-
 body {
     /* overflow-y: scroll; */
     overflow-x: hidden;
@@ -45,7 +36,7 @@ h2 {
 p,
 label,
 summary {
-    text-align               : center;
+    /* text-align               : center; */
     text-shadow              : 0 0 10px #2200ff, 0 0 12px #0048ff;
     -webkit-text-fill-color  : #F4ECFF;
     -webkit-text-stroke-color: #4655f7;
@@ -53,24 +44,24 @@ summary {
 }
 
 .fondo {
-    z-index            : 0;
-    background         : url("../images/fondo/paredSola.webp");
-    background-repeat  : repeat;
-    background-size    : 600px 325px;
-    overflow-y         : scroll;
-    height             : 100vh;
-    width              : 100vw;
+    z-index          : 0;
+    background       : url("../images/fondo/paredSola.webp");
+    background-repeat: repeat;
+    background-size  : 600px 325px;
+    overflow-y       : scroll;
+    height           : 100vh;
+    width            : 100vw;
 }
 
 .fondo-transparente {
-    position             : fixed;
-    z-index              : 1;
-    display              : flex;
-    width                : 100%;
-    height               : 100%;
-    justify-content      : center;
-    align-items          : center;
-    background           : radial-gradient(rgba(0, 0, 0, 0.26), black);
+    position       : fixed;
+    z-index        : 1;
+    display        : flex;
+    width          : 100%;
+    height         : 100%;
+    justify-content: center;
+    align-items    : center;
+    background     : radial-gradient(rgba(0, 0, 0, 0.26), black);
 }
 
 /*_________________________________________________________________________________________________________________NAV*/
@@ -99,11 +90,11 @@ summary {
 }
 
 #icon1 {
-    top         : -15%;
+    top: -15%;
 }
 
 #icon2 {
-    top         : 15%;
+    top: 15%;
 }
 
 .animIc1 {
@@ -330,11 +321,11 @@ nav li:not(:hover) {
 /*TODO: counter-increment igual sirve? */
 
 .countdown-reloj {
-    z-index        : 5;
-    display        : flex;
-    position       : absolute;
-    left           : 40%;
-    flex-direction : row;
+    z-index       : 5;
+    display       : flex;
+    position      : absolute;
+    left          : 40%;
+    flex-direction: row;
 }
 
 .countdown-reloj p {
@@ -513,13 +504,13 @@ progress {
 
 /*______________________________________________________________________________________________________________PARALLAX*/
 .fondo-parallax {
-    position           : absolute;
-    z-index            : 0;
-    background         : url("../images/fondo/paredSola.webp");
-    background-repeat  : repeat;
-    background-size    : 600px 325px;
-    height             : 100vh;
-    width              : 100vw;
+    position         : absolute;
+    z-index          : 0;
+    background       : url("../images/fondo/paredSola.webp");
+    background-repeat: repeat;
+    background-size  : 600px 325px;
+    height           : 100vh;
+    width            : 100vw;
 }
 
 .resto-pagina {
@@ -848,11 +839,11 @@ progress {
 }
 
 .carrousel div {
-    left     : 100%;
-    position : absolute;
-    width    : 100%;
-    height   : 100%;
-    z-index  : 4;
+    left    : 100%;
+    position: absolute;
+    width   : 100%;
+    height  : 100%;
+    z-index : 4;
 }
 
 @keyframes carrouselElemA {
@@ -895,6 +886,21 @@ progress {
     z-index                   : 7;
 }
 
+/* .card-contenido {
+    background-color: rgba(255, 255, 240, 0.229);
+    max-width       : 200px;
+    max-height      : 260px;
+} */
+
+/* .card-contenido p{
+    max-width       : 200px;
+} */
+
+.card-contenido{
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.653);
+}
+
 .tarjeta {
     box-shadow      : 0 0 10px #ff00de, 0 0 12px #ff00de;
     pointer-events  : none;
@@ -903,6 +909,7 @@ progress {
     position        : relative;
     transform-style : preserve-3d;
     transform-origin: center right;
+    text-align      : center;
     transition      : transform 1s;
     z-index         : 6;
 }
@@ -916,15 +923,22 @@ progress {
     transform: translateX(-100%) rotateY(-180deg);
 }
 
+.tarjeta p {
+    font-size: small;
+    width       : 100%;
+    /* max-height      : 260px; */
+}
+
 .cara {
     position           : absolute;
     width              : 100%;
     height             : 100%;
-    line-height        : 260px;
+    /* line-height        : 260px; */
     color              : white;
     font-weight        : bold;
     font-size          : 40px;
     backface-visibility: hidden;
+    padding            : 2px;
 }
 
 .p1-lado1 {
@@ -1008,6 +1022,20 @@ progress {
     }
 
 
+}
+
+.bajar-form {
+    animation: click-form 1s linear 1 forwards;
+}
+
+@keyframes click-form {
+    from {
+        transform: translate(0%, 0%);
+    }
+
+    to {
+        transform: translate(0%, 200%);
+    }
 }
 
 .saludos {
@@ -1122,14 +1150,24 @@ form button {
 input:focus,
 textarea:focus,
 #btn-personaje:active {
-    background         : #a945c7;
-    box-shadow         : 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+    background: #a945c7;
+    box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
 }
 
 /************************************************************************************************************************************************************************************************************/
 /************************************************************************************CALENDARIO**************************************************************************************************************/
 
 /*_______________________________________________________________________________________________ACORDEON*/
+
+summary {
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    color           : rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
 details {
     /* la transicion siempre va en el estado inicial del div | elemento */
     height          : auto;
